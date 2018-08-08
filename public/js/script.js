@@ -1,3 +1,5 @@
+// $.noConflict();
+
 jQuery(document).ready(function($){
 
 //  include jBox
@@ -44,21 +46,91 @@ jQuery(document).ready(function($){
     });
 
 
+//  click on logo and remove mobile menu also icon change
+    $("._r-main-logo").click(function(){
+
+        $("ul").removeClass("_r-show-mobile");
+    });
+
+    $("._r-main-logo").click(function(){
+        if($(window).width() < 768){
+        $("._r-mobile-menu-cross").hide();}
+    });
+    $("._r-main-logo").click(function(){
+        if($(window).width() < 768){
+        $("._r-mobile-menu").show();}
+    });
 
 
-        //  click on logo and remove mobile menu also icon change
-        $("._r-main-logo").click(function(){
+    // admin dashboard
+     $('#showmenu').click(function() {
+            $('.menu').show();
+            $('.menu1').hide();
+            $('.menu2').hide();
+            $('.menu3').hide();
+    });
+     $('#showmenu1').click(function() {
+            $('.menu1').show();
+            $('.menu').hide();
+            $('.menu2').hide();
+            $('.menu3').hide();
+    });
+     $('#showmenu2').click(function() {
+            $('.menu2').show();
+            $('.menu1').hide();
+            $('.menu').hide();
+            $('.menu3').hide();
+    });
+     $('#showmenu3').click(function() {
+            $('.menu3').show();
+            $('.menu1').hide();
+            $('.menu2').hide();
+            $('.menu').hide();
+    });
 
-            $("ul").removeClass("_r-show-mobile");
-        });
+     // extra menu
+      $('#_r_extra_menu_show').click(function() {
+            $('._r_extra_menu').toggle();
+    });
 
-        $("._r-main-logo").click(function(){
-            if($(window).width() < 768){
-            $("._r-mobile-menu-cross").hide();}
-        });
-        $("._r-main-logo").click(function(){
-            if($(window).width() < 768){
-            $("._r-mobile-menu").show();}
-        });
+
+     // notice slider
+     var _scroll = {
+        delay: 1000,
+        easing: 'linear',
+        items: 1,
+        duration: 0.07,
+        timeoutDuration: 0,
+        pauseOnHover: 'immediate'
+    };
+    $('#ticker-1').carouFredSel({
+        width: 1000,
+        align: false,
+        items: {
+            width: 'variable',
+            height: 35,
+            visible: 1
+        },
+        scroll: _scroll
+    });
+ 
+    // $('#ticker-2').carouFredSel({
+    //     width: 1000,
+    //     align: false,
+    //     circular: false,
+    //     items: {
+    //         width: 'variable',
+    //         height: 35,
+    //         visible: 2
+    //     },
+    //     scroll: _scroll
+    // });
+ 
+    //  set carousels to be 100% wide
+    $('.caroufredsel_wrapper').css('width', '100%');
+ 
+    //  set a large width on the last DD so the ticker won't show the first item at the end
+    $('#ticker-2 dd:last').width(2000);
+    
 
 });

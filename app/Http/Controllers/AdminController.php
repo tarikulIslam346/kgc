@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Menu;
+use App\Submenu;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+
 
 class AdminController extends Controller
 {
@@ -19,11 +22,33 @@ class AdminController extends Controller
     	if(\Auth::check())
     	{
     		$menus = Menu::all();
+    		$submenus = Submenu::all();
 
-    		return view('admin.dashboard',compact('menus'));
+    		return view('admin.dashboard',compact('menus','submenus'));
     	}
 
     	return view('admin.index');
+    }
+
+        public function store(){
+
+    	if(  ! auth()->attempt(request(['email','password'])) ) {
+            // Authentication passed...
+             return back(); 
+        
+        }
+
+        $menus = Menu::all();
+
+
+            return view('admin.dashboard',compact('menus'));
+       
+    }
+    public function destroy(){
+
+    	auth()->logout();
+
+    	return redirect('/admin');
     }
 
     //this method is used for create nav titile of page
@@ -53,33 +78,74 @@ class AdminController extends Controller
     	 return redirect('/dashboard');
 
     }
-    // public function update_menu(){
-    // 	$id = request('id');
+    public function update_menu($id){
+    	$name = request('name');
+    	// dd($name);
 
-    // 	$menus = Menu::all();
+    	$menu = Menu::find($id);
 
-    // 	 return view('admin.update_dashboard ')->with('id','menus');
+        $menu->name = $name ;
 
-    // }
+        $menu->save();
 
-    public function store(){
+        return redirect('/dashboard');
 
-    	if(  ! auth()->attempt(request(['email','password'])) ) {
-            // Authentication passed...
-             return back(); 
-        
-        }
+    	//return view('admin.update_dashboard ')->with('id','menus');
 
-        $menus = Menu::all();
-
-
-            return view('admin.dashboard',compact('menus'));
-       
     }
-    public function destroy(){
+    public function show_menu($id){
 
-    	auth()->logout();
 
-    	return redirect('/admin');
+    	$published = Input::has('show') ? true : false;
+
+    	$menu = Menu::find($id);
+
+    	$menu->confirmed = $published ;
+
+    	$menu->save();
+
+    	return redirect('/dashboard');
+
+    	//dd($published);
+
     }
+
+    // for sub menu /////////////////////////////////////
+
+     public function create_submenu(){
+
+    	$this->validate(request(),[
+    		'name' => 'required|unique:menus|max:255',
+
+    	]);
+
+    	 Submenu::create(request(['name']));
+
+    	
+
+    	 // view('admin.dashboard',compact(''))
+
+    	 return redirect('/dashboard');
+    
+    }
+
+        public function update_submenu($id){
+    	$name = request('name');
+    	// dd($name);
+
+    	$submenu = Submenu::find($id);
+
+        $submenu->name = $name ;
+
+        $submenu->save();
+
+        return redirect('/dashboard');
+
+    	//return view('admin.update_dashboard ')->with('id','menus');
+
+    }
+
+
+
+
 }

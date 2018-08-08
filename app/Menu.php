@@ -14,6 +14,6 @@ class Menu extends Model
 
     public static function menulist(){
 
-    	return static::get();
+    	return static::where('confirmed',1)->get();
     }
 }

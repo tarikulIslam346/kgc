@@ -26,9 +26,12 @@
          <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
          <link href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/animate.min.css">
-        <link rel="stylesheet" href="css/jBox.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/animate.min.css">
+        <link rel="stylesheet" href="/css/jBox.css">
+
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
         
    
@@ -51,6 +54,7 @@
 <script src="js/jquery-3.3.1.js"></script>
 <script src="js/jBox.min.js"></script>
 <script src="js/script.js"></script>
+<script src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
  
     </body>
 </html>

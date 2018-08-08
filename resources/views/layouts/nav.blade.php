@@ -15,16 +15,25 @@
                  <li><a href="/"><br>{{strtoupper('Home')}}</a></li>
                  <li><a href="#"><br>{{strtoupper('About us')}}</a></li>
                  <li><a href="#"><br>{{strtoupper('Commitee')}}</a></li>
+
+                 
                  @if (isset($menus))
+
                  @foreach($menus as $menu)
                   <li><a href="#"><br>{{strtoupper($menu->name)}}</a></li>
 
                  @endforeach
                  @endif
+                 
              </ul>
              
-             <ul class="_r-menu-item _r-right-menu-item _r_ul_deco">
-                 <li><a class="_r-all-wings" href="#"><i class="fas fa-th"></i></a></li>
+            <ul class="_r-menu-item _r-right-menu-item _r_ul_deco">
+                <li id="_r_extra_menu_show"><a class="_r-all-wings" href="#" ><i class="fas fa-th"></i></a></li>
+                 <div class="_r_extra_menu" style="display: none;">
+                    <li>Home</li>
+                    <li>About Us</li>
+                    <li>Committee</li>
+                </div>
              </ul>
              @if(\Auth::check())
              <ul style="margin: auto;">
