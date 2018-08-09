@@ -13,26 +13,55 @@
 
              <ul class="_r-menu-item _r-left-menu-item _r_ul_deco">
                  <li><a href="/"><br>{{strtoupper('Home')}}</a></li>
-                 <li><a href="#"><br>{{strtoupper('About us')}}</a></li>
-                 <li><a href="#"><br>{{strtoupper('Commitee')}}</a></li>
-
                  
+
+                 @php
+                   $count = 0;
+
+                 @endphp
+
                  @if (isset($menus))
 
                  @foreach($menus as $menu)
-                  <li><a href="#"><br>{{strtoupper($menu->name)}}</a></li>
+
+                  @if($count == 4)
+                    @break
+
+                  @endif
+                   <li><a href="#"><br>{{ strtoupper($menu->name) }}</a></li>
+                  
+
+                
+                  @php
+                    $count++;
+                  @endphp
 
                  @endforeach
                  @endif
+
+               
                  
              </ul>
              
             <ul class="_r-menu-item _r-right-menu-item _r_ul_deco">
+
+
                 <li id="_r_extra_menu_show"><a class="_r-all-wings" href="#" ><i class="fas fa-th"></i></a></li>
                  <div class="_r_extra_menu" style="display: none;">
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Committee</li>
+
+                  
+                    @if (isset($menus))
+
+                   @foreach($menus as $menu)
+                   @if($count >=5) @continue   @endif
+                   
+                    <li>{{strtoupper($menu->name)}}</li>
+
+                  @endforeach
+                  @endif
+
+                
+                    
                 </div>
              </ul>
              @if(\Auth::check())

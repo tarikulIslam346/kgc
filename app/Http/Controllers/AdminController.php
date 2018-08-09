@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Menu;
 use App\Submenu;
+use App\Layout;
+use App\LayoutChoice;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -23,8 +25,9 @@ class AdminController extends Controller
     	{
     		$menus = Menu::all();
     		$submenus = Submenu::all();
+    		$layouts = Layout::all();
 
-    		return view('admin.dashboard',compact('menus','submenus'));
+    		return view('admin.dashboard',compact('menus','submenus','layouts'));
     	}
 
     	return view('admin.index');
@@ -143,6 +146,35 @@ class AdminController extends Controller
 
     	//return view('admin.update_dashboard ')->with('id','menus');
 
+    }
+
+
+    public function create_layout(){
+
+    	//$name = request('layout_name');
+
+    	// $this->validate(request(),[
+    	// 	'layout_name ' => 'required',
+
+    	// ]);
+
+    	$choice = new LayoutChoice ;
+
+    	$choice->choice =$request->choice;
+
+    	//$choice->layout_name = $request->layout_name;
+        
+        $choice->save();
+    	dd(request('choice'));
+
+    	//dd(request('layout_name'));
+
+         // dd(request($name);
+     //    $layoutchoices = LayoutChoice::all();
+
+    	// $layouts = Layout::all();
+
+     //     return view('admin.dashboard',compact('name','layouts','layoutchoices'));
     }
 
 
