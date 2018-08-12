@@ -38,3 +38,8 @@ Route::post('/layout','AdminController@create_layout');
 Route::post('/nav','AdminController@create_navigation');
 
 Route::get('/{name}','AdminController@show_navigation');
+
+Route::get('/{name}/{id}','LayoutController@show_heighercommitee');
+
+
+Route::post('/heigher/{id}','LayoutController@store_heighercommitee');

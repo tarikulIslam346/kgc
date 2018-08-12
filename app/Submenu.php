@@ -8,4 +8,6 @@ class Submenu extends Model
 {
     //
     protected $fillable = ['name'];
+
+    
 }

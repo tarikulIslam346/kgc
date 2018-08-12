@@ -116,66 +116,60 @@
                   </div>
                   <div class="menu1" style="display: none;">
                     <!---SubMenu create ----->  
-                    <div class="card">
-                     <div class="card-body">
-                      
-                       <form action="/create_submenu" method="POST">
-                        @csrf
-                          <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Add Submenu title here</span>
-                            </div>
+                    <!---SubMenu create ----->
+                   <div class="card">
+                    <div class="card-body">
 
-                            <input type="text" class="form-control" name="name" placeholder="Title">
+                      <form action="/create_submenu" method="POST">
+                       @csrf
+                         <div class="input-group mb-3">
+                           <div class="input-group-prepend">
+                               <span class="input-group-text">Add Submenu title here</span>
+                           </div>
 
-                            <button type="submit" class="btn btn-success" style="border-radius:25px;"><i class="fa fa-plus"></i></button>
-                          </div> 
-                        </form>
+                           <input type="text" class="form-control" name="name" placeholder="Title">
 
-                      
-                           
-                      
-                    
-                        <table class="table  table-striped table-dark">
-                          <thead>
-                            <tr>
-                              <th>Navigation Subitem name</th>
-                              {{-- <th>Delete</th> --}}
-                              <th> Edit</th>
-                              {{-- <th> Show</th> --}}
-                            </tr>
-                          </thead>
-                        <tbody>
+                           <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i></button>
+                         </div>
+                       </form>
+                       <table class="table table-striped table-dark">
+                         <thead>
+                           <tr>
+                             <th>Navigation Subitem name</th>
+                             <!-- {{-- <th>Delete</th> --}} -->
+                             <th> Edit</th>
+                             <th> Selected Layout</th>
+                             <!-- {{-- <th> Show</th> --}} -->
+                           </tr>
+                         </thead>
+                       <tbody>
+                        @if(isset($submenus))
+                         @foreach($submenus as $menu)
+                           <tr>
+                             <td>{{ $menu->name }}</td>
 
-
-                         @if(isset($submenus))
-                          @foreach($submenus as $menu)
-                            <tr>
-                              <td>{{ $menu->name }}</td>
-                        
+                              <td>
+                                 <form method="POST" action="/update_submenu/ {{ $menu->id }}">
+                                       @csrf
+                                     <div class="row">
+                                       <div class="col-md-6">
+                                         <input type="text" class="form-control" name="name" id="name" required>
+                                       </div>
+                                       <button type="submit" class="btn btn-success"><i class="fa fa-edit"></i></button>
+                                     </div>
+                                   </form>
+                               </td>
                                <td>
-                                  <form method="POST" action="/update_submenu/ {{ $menu->id }}">
-                                        @csrf
-
-                                      <div class="row">
-                                      <div class="form-group col-md-4">
-                                      <input type="text" class="form-control" name="name" id="name" required>
-                                     
-                                    </div>
-                                    </div>
-
-                                    <button type="submit" class="btn btn-small btn-success"><i class="fa fa-edit"></i>Edit</button>
-                                    </form>
-                                </td>
-                      
-                            </tr>
-                            @endforeach
-                            @endif
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                    <!---SubMenu create ----->    
+                                 <!-- selected layout goes here-->
+                               </td>
+                           </tr>
+                           @endforeach
+                           @endif
+                         </tbody>
+                       </table>
+                     </div>
+                   </div>
+                   <!---SubMenu create ----->   
                   </div>
 
                   <div class="menu2" style="display: none;">
@@ -213,7 +207,15 @@
                       
 
                         <label for="My Layout Name">My Layout Name</label>
-                          <input type="text" class="form-control" name="choice" >
+
+                         <select class="custom-select custom-select-sm" name="submenu_id">
+                              <option selected>select layout </option>
+                              @if(isset($submenus))                                       
+                                @foreach($submenus as $sub)
+                                   <option value="{{$sub->id}}">{{$sub->name}}</option>
+                                @endforeach
+                              @endif
+                        </select>
                           
                         
                         
@@ -221,32 +223,16 @@
                         <button type="submit" class="btn btn primary" name="Submit" >
                           <i class="fa fa-plus"></i>
                         </button>
+
                       </form>
 
-                      @if(isset($name) && ($name == "heigher commitee"))
-                      <h1>heigher commitee</h1>
+                      @if(isset($layouts) )
+                      @foreach($layouts as $layout)
+                      @if($layout->layout_name == "Heigher Commitee")
+                      @include('admin.heighercommitee')
+                      @endif
+                      @endforeach
 
-                     <form class="form-inline">
-                        <label class="sr-only" for="inlineFormInputName2">Name</label>
-                        <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe">
-
-                        <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
-                        <div class="input-group mb-2 mr-sm-2">
-                          <div class="input-group-prepend">
-                            <div class="input-group-text">@</div>
-                          </div>
-                          <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Username">
-                        </div>
-
-                        <div class="form-check mb-2 mr-sm-2">
-                          <input class="form-check-input" type="checkbox" id="inlineFormCheck">
-                          <label class="form-check-label" for="inlineFormCheck">
-                            Remember me
-                          </label>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary mb-2">Submit</button>
-                      </form>
                       @endif
                       
                       @if(isset($layoutchoices))

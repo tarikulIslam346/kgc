@@ -8,10 +8,10 @@
           <div class="col-md-12">
             <div class="row">
               <div class="col-md-12">
-                <img src="img/s4.jpeg" alt="New York" style="width: 100%; height: 450px">
+                <img src="/img/s4.jpeg" alt="New York" style="width: 100%; height: 450px">
               </div>
             </div>
-            <!-- <div class="row">
+            <div class="row">
               <div class="col-md-12">
                 <div id="wrapper">
                   <div class="first">
@@ -28,7 +28,7 @@
                   </div>
                 </div>
               </div>
-            </div> -->
+            </div>
             <div class="row _r_section_body">
               <div class="col-md-3">
                 <ul>
@@ -36,7 +36,14 @@
                 @foreach($submenulist as $nav)
                 
                    @for($i=0;$i<count($nav->submenulist);$i++)
-                  <li class="text-center"><a href="">{{$nav->submenulist[$i]}}</a></li>
+                   @php 
+                   $var = \App\Submenu::where('name',$nav->submenulist[$i])->get();
+
+                 
+                    @endphp
+                   @foreach($var as $v)
+                  <li class="text-center"><a href="/{{$nav->submenulist[$i]}}/{{$v->id}}">{{$nav->submenulist[$i]}}</a></li>
+                  @endforeach
                   @endfor
                   @endforeach
                   @endif
@@ -46,14 +53,18 @@
                 <h1 class="text-center" style="padding-bottom: 30px">Sub Menu Name</h1>
                 <div class="row justify-content-md-center">
                   <div class="col-md-4 _r_top">
-                    <img src="img/com.jpeg">
+                    <img src="/img/com.jpeg">
                     <h5 class="text-center">Title</h5>
                     <p class="text-center">Content</p>
                   </div>
                 </div>
                 <div class="row _r_bottom">
                   <div class="col-md-12">
-                    <p>Since the growth in usage of the World Wide Web, news tickers have largely syndicated news posts from the websites of the broadcasting services which produce the broadcasts. Since the growth in usage of the World Wide Web, news tickers have largely syndicated news posts from the websites of the broadcasting services which produce the broadcasts. Since the growth in usage of the World Wide Web, news tickers have largely syndicated news posts from the websites of the broadcasting services which produce the broadcasts. Since the growth in usage of the World Wide Web, news tickers have largely syndicated news posts from the websites of the broadcasting services which produce the broadcasts.</p>
+                    @if(isset($h))
+                   {{--  @foreach($h as $hf) --}}
+                    <p>{{ $h->paragraph }}</p>
+                   {{--  @endforeach --}}
+                    @endif
                   </div>
                 </div>
               </div>

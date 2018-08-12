@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Navigation extends Model
 {
     //
-    protected $guraded = [];
+    // protected $guraded = [];
+
+    protected $fillable = ['menu','submenulist'];
 
     protected $casts = [
 

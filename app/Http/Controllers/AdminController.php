@@ -153,7 +153,7 @@ class AdminController extends Controller
 
     public function create_layout(){
 
-    $name = request('layout_name');
+    // $name = request('layout_name');
 
     	// $this->validate(request(),[
     	// 	'layout_name ' => 'required',
@@ -167,28 +167,30 @@ class AdminController extends Controller
     	//$choice->layout_name = $request->layout_name;
         
         // $choice->save();
-    	//dd(request()->all());
+    Layout::create(request(['layout_name','submenu_id']));
 
     	//dd(request('layout_name'));
 
          // dd(request($name);
-        $layoutchoices = LayoutChoice::all();
+     //    $layoutchoices = LayoutChoice::all();
 
-    	$layouts = Layout::all();
+    	// $layouts = Layout::all();
 
-       return view('admin.dashboard',compact('name','layouts','layoutchoices'));
+      return redirect('/dashboard');
     }
 
 
     public function create_navigation(){
 
-        $nav = new Navigation;
+    	 Navigation::Create(request()->except('_token','Submit'));
 
-        $nav->menu = request('menu');
+        // $nav = new Navigation;
 
-        $nav->submenulist = request('submenulist');
+        // $nav->menu = request('menu');
 
-        $nav->save();
+        // $nav->submenulist = request('submenulist');
+
+        // $nav->save();
 
         // dd(request('submenulist'));
 
