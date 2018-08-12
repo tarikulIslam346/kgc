@@ -10,7 +10,7 @@ class Navigation extends Model
     protected $guraded = [];
 
     protected $casts = [
-    	
+
     	'submenulist' => 'array'
 
     ];

@@ -30,89 +30,88 @@
                 <div class="col-md-12">
                   <div class="menu" style="display: none;">
 
-                    <!---Menu create ----->
-                    <div class="card">
-                     <div class="card-body">
-                      
-                       <form action="/create_menu" method="POST">
-                        @csrf
-                          <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Add menu title here</span>
-                            </div>
+                   <!-- Menu create -->
+                   <div class="card">
+                    <div class="card-body">
 
-                            <input type="text" class="form-control" name="name" placeholder="Title">
+                      <form action="/create_menu" method="POST">
+                       @csrf
+                         <div class="input-group mb-3">
+                           <div class="input-group-prepend">
+                               <span class="input-group-text">Add menu title here</span>
+                           </div>
 
-                            <button type="submit" class="btn btn-success" style="border-radius:25px;"><i class="fa fa-plus"></i></button>
+                           <input type="text" class="form-control" name="name" placeholder="Title">
 
-
-                          </div>
-                          @if($errors->has('name'))
-                            <div class="alert alert-primary" role="alert">{{ $errors->first('name')}} 
-                            </div>                           
-                            @endif 
-                        </form>
-
-                      
-                           
-                      
-                    
-                        <table class="table table-striped table-dark">
-                          <thead>
-                            <tr>
-                              <th>Navigation name</th>
-                              <th>Delete</th>
-                              <th> Edit</th>
-                              <th> Show</th>
-                            </tr>
-                          </thead>
-                        <tbody>
+                           <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i></button>
 
 
-                         @if(isset($menus))
-                          @foreach($menus as $menu)
-                            <tr>
-                              <td>{{ $menu->name }}</td>
-                              <td>
-                                <a href="/delete_menu/{{ $menu->id }}" class="btn btn-primary"><i class="fa fa-minus-square"></i>
-                                </a>
-                              </td>
-                               <td>
-                                  <form method="POST" action="/update_menu/ {{ $menu->id }}">
-                                        @csrf
+                         </div>
+                         @if($errors->has('name'))
+                           <div class="alert alert-primary" role="alert">{{ $errors->first('name')}}
+                           </div>
+                           @endif
+                       </form>
 
-                                      <div class="row">
-                                      <div class="form-group col-md-4">
-                                      <input type="text" class="form-control" name="name" id="name" required>
-                                     
-                                    </div>
-                                    </div>
 
-                                    <button type="submit" class="btn btn-small btn-success"><i class="fa fa-edit"></i>Edit</button>
+
+
+
+                       <table class="table table-striped table-dark">
+                         <thead>
+                           <tr>
+                             <th>Navigation name</th>
+                             <th>Show</th>
+                             <th>Edit Nav Name</th>
+                             <th>Delete</th>
+                           </tr>
+                         </thead>
+                       <tbody>
+
+
+                        @if(isset($menus))
+                         @foreach($menus as $menu)
+                           <tr>
+                             <td>{{ $menu->name }}</td>
+                             <td>
+                                 <form method="POST" action="/show_menu/ {{ $menu->id }}">
+                                               @csrf
+
+                                               @if($menu->confirmed == 1)
+
+                                               <input checked data-toggle="toggle" name="show" type="checkbox" >
+                                               @else
+                                               <input  data-toggle="toggle" name="show" type="checkbox" >
+                                               @endif
+
+                                              <button type="submit" class="btn btn-small">Ok</button>
+
                                     </form>
-                                </td>
-                                <td>
-                                  <form method="POST" action="/show_menu/ {{ $menu->id }}">
-                                                @csrf
+                               </td>
+                              <td>
+                                 <form method="POST" action="/update_menu/ {{ $menu->id }}">
+                                       @csrf
 
-                                                @if($menu->confirmed == 1)
+                                     <div class="row">
+                                     <div class="col-md-6">
+                                     <input type="text" class="form-control" name="name" id="name" required>
 
-                                                <input checked data-toggle="toggle" name="show" type="checkbox" >
-                                                @else
-                                                <input  data-toggle="toggle" name="show" type="checkbox" >
-                                                @endif
-
-                                               <button type="submit" class="btn btn-small">Ok</button>
-                       
-                                     </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                            @endif
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>  
+                                   </div>
+                                   <button type="submit" class="btn btn-success"><i class="fa fa-edit"></i></button>
+                                   </div>
+                                   </form>
+                               </td>
+                               <td>
+                               <a href="/delete_menu/{{ $menu->id }}" class="btn btn-danger"><i class="fa fa-minus-square"></i>
+                               </a>
+                             </td>
+                           </tr>
+                           @endforeach
+                           @endif
+                         </tbody>
+                       </table>
+                     </div>
+                    </div>
                     <!---Menu create ----->                  
                   </div>
                   <div class="menu1" style="display: none;">
@@ -274,7 +273,9 @@
                   <div class="menu3" style="display: none;">
                    <div class="card">
                      <div class="card-body">
-                      <form action="/" method="POST">
+
+                      <form action="/nav" method="POST">
+                        @csrf
 
                       <div class="form-row">
                         <div class="col-md-4 mb-3">
@@ -283,7 +284,7 @@
                               <option selected>select nav catagory</option>
                               @if(isset($menus))
                                 @foreach($menus as $menu)
-                                  <option value="{{$menu->id}}">{{$menu->name}}</option>
+                                  <option value="{{$menu->name}}">{{$menu->name}}</option>
                                 @endforeach
                               @endif
                             </select>
@@ -298,7 +299,7 @@
                                   @if(isset($submenus))
                                   @foreach($submenus as $submenu)
                                   <div class="custom-control custom-checkbox">
-                                      <input type="checkbox" class="custom-control-input" id="{{$submenu->name}}">
+                                      <input type="checkbox" class="custom-control-input" id="{{$submenu->name}}" name="submenulist[]" value="{{$submenu->name}}">
                                       <label class="custom-control-label" for="{{$submenu->name}}">{{$submenu->name}}</label>
                                   </div>
                            
@@ -318,6 +319,53 @@
                         </div>
                         <input type="submit" class="btn btn primary" name="Submit" value="Send">
                       </form>
+                      <br>
+
+
+
+                       <table class="table table-striped table-dark">
+                          <thead>
+                            <tr>
+                              <th>Navigation Item</th>
+                              
+                              <th> Navigation subitem</th>
+                            </tr>
+                          </thead>
+                        <tbody>
+
+
+                         @if(isset($nav))
+                          @foreach($nav as $n)
+                            <tr>
+                              <td>{{ $n->menu}}</td>
+
+                              
+                              
+                               <td>
+                                @for($i=0;$i<count( $n->submenulist);$i++)
+                                {{$n->submenulist[$i]}} ,
+                                  @endfor
+                                 
+                                  {{-- <form method="POST" action="/show_menu/ {{ $menu->id }}">
+                                                @csrf
+
+                                                @if($menu->confirmed == 1)
+
+                                                <input checked data-toggle="toggle" name="show" type="checkbox" >
+                                                @else
+                                                <input  data-toggle="toggle" name="show" type="checkbox" >
+                                                @endif
+
+                                               <button type="submit" class="btn btn-small">Ok</button>
+                       
+                                     </form> --}}
+                                </td>
+                              
+                            </tr>
+                            @endforeach
+                            @endif
+                          </tbody>
+                        </table>
 
                       </div>
 

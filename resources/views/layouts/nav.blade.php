@@ -28,7 +28,7 @@
                     @break
 
                   @endif
-                   <li><a href="#"><br>{{ strtoupper($menu->name) }}</a></li>
+                   <li><a href="/{{$menu->name}}" ><br>{{ strtoupper($menu->name) }}</a></li>
                   
 
                 

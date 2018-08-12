@@ -6,6 +6,7 @@ use App\Menu;
 use App\Submenu;
 use App\Layout;
 use App\LayoutChoice;
+use App\Navigation;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -26,8 +27,9 @@ class AdminController extends Controller
     		$menus = Menu::all();
     		$submenus = Submenu::all();
     		$layouts = Layout::all();
+    		$nav = Navigation::all();
 
-    		return view('admin.dashboard',compact('menus','submenus','layouts'));
+    		return view('admin.dashboard',compact('menus','submenus','layouts','nav'));
     	}
 
     	return view('admin.index');
@@ -151,39 +153,58 @@ class AdminController extends Controller
 
     public function create_layout(){
 
-    	//$name = request('layout_name');
+    $name = request('layout_name');
 
     	// $this->validate(request(),[
     	// 	'layout_name ' => 'required',
 
     	// ]);
 
-    	$choice = new LayoutChoice ;
+    	// $choice = new LayoutChoice ;
 
-    	$choice->choice =$request->choice;
+    	// $choice->choice =request('choice');
 
     	//$choice->layout_name = $request->layout_name;
         
-        $choice->save();
-    	dd(request('choice'));
+        // $choice->save();
+    	//dd(request()->all());
 
     	//dd(request('layout_name'));
 
          // dd(request($name);
-     //    $layoutchoices = LayoutChoice::all();
+        $layoutchoices = LayoutChoice::all();
 
-    	// $layouts = Layout::all();
+    	$layouts = Layout::all();
 
-     //     return view('admin.dashboard',compact('name','layouts','layoutchoices'));
+       return view('admin.dashboard',compact('name','layouts','layoutchoices'));
     }
 
 
     public function create_navigation(){
 
-    
+        $nav = new Navigation;
 
+        $nav->menu = request('menu');
+
+        $nav->submenulist = request('submenulist');
+
+        $nav->save();
+
+        // dd(request('submenulist'));
+
+        return redirect('/dashboard');
 
     }
+      public function show_navigation($nav){
+
+      	// dd($nav);
+
+      	$submenulist = Navigation::where('menu',$nav)
+      	->get();
+
+      	return view('page',compact('submenulist'));
+
+      }
 
 
 

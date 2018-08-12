@@ -33,3 +33,8 @@ Route::post('/update_submenu/{id}','AdminController@update_submenu');
 
 
 Route::post('/layout','AdminController@create_layout');
+
+
+Route::post('/nav','AdminController@create_navigation');
+
+Route::get('/{name}','AdminController@show_navigation');
