@@ -194,10 +194,11 @@
 
                             <select class="custom-select custom-select-sm" name="layout_name">
                               <option selected>select layout </option>
-                             {{--  @if(isset($menus))--}}                                       @foreach($layouts as $layout)
+                               @if(isset($layouts))                                       
+                               @foreach($layouts as $layout)
                                   <option value="{{$layout->layout_name}}">{{$layout->layout_name}}</option>
                                 @endforeach
-                              {{-- @endif --}}
+                              @endif
                             </select>
 
 

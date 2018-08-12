@@ -51,10 +51,10 @@
  </div>
 </div>
 
-<script src="js/jquery-3.3.1.js"></script>
-<script src="js/jBox.min.js"></script>
-<script src="js/script.js"></script>
-<script src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
+<script src="/js/jquery-3.3.1.js"></script>
+<script src="/js/jBox.min.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/jquery.carouFredSel-6.2.1-packed.js"></script>
  
     </body>
 </html>
