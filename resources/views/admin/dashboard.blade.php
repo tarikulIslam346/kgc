@@ -95,7 +95,13 @@
                                   <form method="POST" action="/show_menu/ {{ $menu->id }}">
                                                 @csrf
 
+                                                @if($menu->confirmed == 1)
+
                                                 <input checked data-toggle="toggle" name="show" type="checkbox" >
+                                                @else
+                                                <input  data-toggle="toggle" name="show" type="checkbox" >
+                                                @endif
+
                                                <button type="submit" class="btn btn-small">Ok</button>
                        
                                      </form>
@@ -257,6 +263,7 @@
                       @endif
 
                       </div>
+                    </div>
                            
                       
                     
@@ -284,14 +291,29 @@
                         </div>
                         <div class="col-md-4 mb-3">
                           <label for="validationServer02">Nav Sub catagory</label>
-                            <select class="custom-select custom-select-sm">
-                              <option selected>select nav subcatagory</option>
-                                @if(isset($submenus))
+
+                          <!-- Material unchecked -->
+<!-- Default checked -->           
+                                
+                                  @if(isset($submenus))
                                   @foreach($submenus as $submenu)
-                                    <option value="{{$submenu->id}}">{{$submenu->name}}</option>
+                                  <div class="custom-control custom-checkbox">
+                                      <input type="checkbox" class="custom-control-input" id="{{$submenu->name}}">
+                                      <label class="custom-control-label" for="{{$submenu->name}}">{{$submenu->name}}</label>
+                                  </div>
+                           
+                                    
                                   @endforeach
                                 @endif
-                            </select>
+                                 
+                                
+                                
+                                {{-- @if(isset($submenus))
+                                  @foreach($submenus as $submenu)
+                                    <input type="checkbox" value="{{$submenu->name}}">{{$submenu->name}}
+                                  @endforeach
+                                @endif --}}
+                           
                           </div>
                         </div>
                         <input type="submit" class="btn btn primary" name="Submit" value="Send">
