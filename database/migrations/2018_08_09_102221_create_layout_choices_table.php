@@ -16,7 +16,7 @@ class CreateLayoutChoicesTable extends Migration
         Schema::create('layout_choices', function (Blueprint $table) {
             $table->increments('id');
             $table->string('choice');
-            $table->string('layout_name');
+            $table->integer('submenu_id')->unique();
             $table->timestamps();
         });
     }

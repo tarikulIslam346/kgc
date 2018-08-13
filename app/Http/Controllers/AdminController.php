@@ -56,7 +56,7 @@ class AdminController extends Controller
     	return redirect('/admin');
     }
 
-    //this method is used for create nav titile of page
+    //this method is used for create navigation item of page
 
     public function create_menu(){
 
@@ -73,20 +73,47 @@ class AdminController extends Controller
     
     }
 
-     //this method is used for delete nav titile of page
+     //this method is used for delete navegtion item titile of page
     public function delete_menu(){
 
     	$id = request('id');
 
+       // delete from navigation 
+
+        //1. get the menu id
+      $menu = Menu::where('id',$id)->get();
+
+      //2. then delete from navigation
+      foreach($menu as $m){
+
+        Navigation::where('menu', $m->name)->delete();
+        
+      }
+     //delete from menulist
+
+
     	Menu::where('id',$id)->delete();
+
+
+
+       
 
     	 return redirect('/dashboard');
 
     }
     public function update_menu($id){
     	$name = request('name');
-    	// dd($name);
 
+        //upadate on navigation table
+      //      $menu = Menu::where('menu',$name)->get();
+
+      // foreach($menu as $m){
+
+      //   dd(Navigation::where('menu', $m->name)->get());
+        
+      // }
+    	
+        // update from navigation item(menu) table
     	$menu = Menu::find($id);
 
         $menu->name = $name ;
@@ -95,7 +122,7 @@ class AdminController extends Controller
 
         return redirect('/dashboard');
 
-    	//return view('admin.update_dashboard ')->with('id','menus');
+
 
     }
     public function show_menu($id){
@@ -152,31 +179,24 @@ class AdminController extends Controller
 
 
     public function create_layout(){
+        $id = request('submenu_id');
 
-    // $name = request('layout_name');
+    
+    //   $choice =  LayoutChoice::all();
 
-    	// $this->validate(request(),[
-    	// 	'layout_name ' => 'required',
+   //dd($id);
+   LayoutChoice::updateOrCreate(request(['choice','submenu_id']));
 
-    	// ]);
+     $choices =  LayoutChoice::select()->where('submenu_id',$id)->get();
+     // foreach($choices as $choice)
+     // $choices = $choice->choice;
 
-    	// $choice = new LayoutChoice ;
+     // foreach($choices as $choice)$var = $choice->choice;
 
-    	// $choice->choice =request('choice');
 
-    	//$choice->layout_name = $request->layout_name;
-        
-        // $choice->save();
-    Layout::create(request(['layout_name','submenu_id']));
 
-    	//dd(request('layout_name'));
 
-         // dd(request($name);
-     //    $layoutchoices = LayoutChoice::all();
-
-    	// $layouts = Layout::all();
-
-      return redirect('/dashboard');
+      return view('admin.adminlayoutform',compact('choices'));
     }
 
 
@@ -184,25 +204,16 @@ class AdminController extends Controller
 
     	 Navigation::Create(request()->except('_token','Submit'));
 
-        // $nav = new Navigation;
-
-        // $nav->menu = request('menu');
-
-        // $nav->submenulist = request('submenulist');
-
-        // $nav->save();
-
-        // dd(request('submenulist'));
 
         return redirect('/dashboard');
 
     }
       public function show_navigation($nav){
 
-      	// dd($nav);
 
       	$submenulist = Navigation::where('menu',$nav)
-      	->get();
+
+      	             ->get();
 
       	return view('page',compact('submenulist'));
 

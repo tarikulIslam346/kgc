@@ -9,7 +9,7 @@
           <div class="row _r_row_wrap">
             <div class="col-md-2 _r_col_wrap">
               <div class="text-center _r_logo">
-                <img src="img/logo.png">
+                <img src="/img/logo.png">
               </div>
               <nav class="navbar navbar-expand-lg">
                 <button class="navbar-toggler pull-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -136,20 +136,21 @@
                          <thead>
                            <tr>
                              <th>Navigation Subitem name</th>
-                             <!-- {{-- <th>Delete</th> --}} -->
+                             
                              <th> Edit</th>
+
                              <th> Selected Layout</th>
-                             <!-- {{-- <th> Show</th> --}} -->
+                            
                            </tr>
                          </thead>
                        <tbody>
                         @if(isset($submenus))
-                         @foreach($submenus as $menu)
+                         @foreach($submenus as $submenu)
                            <tr>
-                             <td>{{ $menu->name }}</td>
+                             <td>{{ $submenu->name }}</td>
 
                               <td>
-                                 <form method="POST" action="/update_submenu/ {{ $menu->id }}">
+                                 <form method="POST" action="/update_submenu/ {{ $submenu->id }}">
                                        @csrf
                                      <div class="row">
                                        <div class="col-md-6">
@@ -159,9 +160,16 @@
                                      </div>
                                    </form>
                                </td>
+                                @php
+                                  $var =  \App\LayoutChoice::select('choice')->where('submenu_id',$submenu->id )->get();
+                                 @endphp
+                                 @foreach($var as $v)
                                <td>
                                  <!-- selected layout goes here-->
+                                 {{$v->choice}}
+                                
                                </td>
+                               @endforeach
                            </tr>
                            @endforeach
                            @endif
@@ -191,7 +199,7 @@
 
                           <label for="Layout catagory">Layout catagory</label>
 
-                            <select class="custom-select custom-select-sm" name="layout_name">
+                            <select class="custom-select custom-select-sm" name="choice">
                               <option selected>select layout </option>
                                @if(isset($layouts))                                       
                                @foreach($layouts as $layout)
@@ -226,26 +234,16 @@
 
                       </form>
 
-                      @if(isset($layouts) )
+                  {{--     @if(isset($layouts) )
                       @foreach($layouts as $layout)
                       @if($layout->layout_name == "Heigher Commitee")
                       @include('admin.heighercommitee')
                       @endif
                       @endforeach
 
-                      @endif
+                      @endif --}}
                       
-                      @if(isset($layoutchoices))
-                      <ul class="list-group">
-                        <li class="list-group-item active">Layout name You choice</li>
-                        @foreach($layoutchoices as $layout)
-                        <li class="list-group-item" style="color:black;">
-                          {{$layout->choice}}
-                          ({{$layout->name}})</li>
-                          @endforeach
-                      
-                      </ul>
-                      @endif
+                     
 
                       </div>
                     </div>
@@ -294,12 +292,7 @@
                                 @endif
                                  
                                 
-                                
-                                {{-- @if(isset($submenus))
-                                  @foreach($submenus as $submenu)
-                                    <input type="checkbox" value="{{$submenu->name}}">{{$submenu->name}}
-                                  @endforeach
-                                @endif --}}
+                          
                            
                           </div>
                         </div>
@@ -332,19 +325,7 @@
                                 {{$n->submenulist[$i]}} ,
                                   @endfor
                                  
-                                  {{-- <form method="POST" action="/show_menu/ {{ $menu->id }}">
-                                                @csrf
-
-                                                @if($menu->confirmed == 1)
-
-                                                <input checked data-toggle="toggle" name="show" type="checkbox" >
-                                                @else
-                                                <input  data-toggle="toggle" name="show" type="checkbox" >
-                                                @endif
-
-                                               <button type="submit" class="btn btn-small">Ok</button>
-                       
-                                     </form> --}}
+             
                                 </td>
                               
                             </tr>

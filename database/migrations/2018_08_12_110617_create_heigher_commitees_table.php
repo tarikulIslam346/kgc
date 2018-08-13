@@ -17,7 +17,7 @@ class CreateHeigherCommiteesTable extends Migration
             $table->increments('id');
             $table->string('heading');
             $table->string('paragraph');
-            $table->integer('submenu_id');
+            $table->integer('submenu_id')->unique();
             $table->timestamps();
         });
     }

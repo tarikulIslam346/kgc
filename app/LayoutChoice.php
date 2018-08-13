@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class LayoutChoice extends Model
 {
     //
-    protected $fillable = ['choice','layout_name'];
+    protected $fillable = ['choice','submenu_id'];
 }

@@ -16,7 +16,7 @@ class CreateLayoutsTable extends Migration
         Schema::create('layouts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('layout_name');
-            $table->integer('submenu_id')->nullable();
+            // $table->integer('submenu_id')->nullable()->unique();
             $table->timestamps();
         });
     }

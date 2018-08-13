@@ -295,6 +295,7 @@ a:hover{
 }
 ._r_dashboard ._r_dashboard_wrap ._r_col_wrap ul>li:hover{
     background-color: lightseagreen;
+    cursor: pointer;
 }
 ._r_dashboard ._r_dashboard_wrap ._r_col_wrap ._r_logo img{
     width: 100px;

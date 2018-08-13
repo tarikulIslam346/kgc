@@ -31,39 +31,17 @@
             </div>
             <div class="row _r_section_body">
               <div class="col-md-3">
-                <ul>
-                @if(isset($submenulist))
-                @foreach($submenulist as $nav)
-                
-                   @for($i=0;$i<count($nav->submenulist);$i++)
-                   @php 
-                   $var = \App\Submenu::where('name',$nav->submenulist[$i])->get();
-
-                 
-                    @endphp
-                   @foreach($var as $v)
-                  <li class="text-center"><a href="/{{$nav->submenulist[$i]}}/{{$v->id}}">{{$nav->submenulist[$i]}}</a></li>
-                  @endforeach
-                  @endfor
-                  @endforeach
-                  @endif
-                </ul>
+                @include('pagenav')
               </div>
               <div class="col-md-9 _r_section_speech_body_right">
                 <h1 class="text-center" style="padding-bottom: 30px">Sub Menu Name</h1>
-                <div class="row justify-content-md-center">
-                  <div class="col-md-4 _r_top">
-                    <img src="/img/com.jpeg">
-                    <h5 class="text-center">Title</h5>
-                    <p class="text-center">Content</p>
-                  </div>
-                </div>
+              
                 <div class="row _r_bottom">
                   <div class="col-md-12">
                     @if(isset($h))
-                   {{--  @foreach($h as $hf) --}}
-                    <p>{{ $h->paragraph }}</p>
-                   {{--  @endforeach --}}
+                    @foreach($h as $hf)
+                    <p>{{ $hf->heading }}{{ $hf->paragraph }}</p>
+                    @endforeach
                     @endif
                   </div>
                 </div>
@@ -73,6 +51,20 @@
         </div>
       </div>
     </section>
+  {{--   <script>
+      $(document).ready(function(){
+        $('#loadcontent').click(function(){
+           console.log($(this).attr('href'));
+          $.get($(this).attr('href'),function(data){
+            console.log(data);
+
+          });
+
+        })
+        
+
+      });
+    </script> --}}
 
 
 
