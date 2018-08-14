@@ -38,7 +38,7 @@
                        @csrf
                          <div class="input-group mb-3">
                            <div class="input-group-prepend">
-                               <span class="input-group-text">Add menu title here</span>
+                               <span class="input-group-text">Add Menu Title Here</span>
                            </div>
 
                            <input type="text" class="form-control" name="name" placeholder="Title">
@@ -61,8 +61,8 @@
                          <thead>
                            <tr>
                              <th>Navigation name</th>
-                             <th>Show</th>
-                             <th>Edit Nav Name</th>
+                             <th>Show / Hide</th>
+                             <th>Edit Navigation Name</th>
                              <th>Delete</th>
                            </tr>
                          </thead>
@@ -84,7 +84,7 @@
                                                <input  data-toggle="toggle" name="show" type="checkbox" >
                                                @endif
 
-                                              <button type="submit" class="btn btn-small">Ok</button>
+                                              <button type="submit" class="btn btn-small _r_show_menu"><i class="fa fa-check"></i></button>
 
                                     </form>
                                </td>
@@ -97,7 +97,7 @@
                                      <input type="text" class="form-control" name="name" id="name" required>
 
                                    </div>
-                                   <button type="submit" class="btn btn-success"><i class="fa fa-edit"></i></button>
+                                   <button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>
                                    </div>
                                    </form>
                                </td>
@@ -136,8 +136,9 @@
                          <thead>
                            <tr>
                              <th>Navigation Subitem name</th>
-                             
-                             <th> Edit</th>
+
+                             <!-- {{-- <th>Delete</th> --}} -->
+                             <th>Edit Navigation Subitem name</th>
 
                              <th> Selected Layout</th>
                             
@@ -325,7 +326,19 @@
                                 {{$n->submenulist[$i]}} ,
                                   @endfor
                                  
-             
+                                {{--    <form method="POST" action="/show_menu/ {{ $menu->id }}">
+                                                @csrf
+
+                                                @if($menu->confirmed == 1)
+
+                                                <input checked data-toggle="toggle" name="show" type="checkbox" >
+                                                @else
+                                                <input  data-toggle="toggle" name="show" type="checkbox" >
+                                                @endif
+
+                                               <button type="submit" class="btn btn-small"><i class="fa fa-check"></i></button>
+                       
+                                     </form>  --}}
                                 </td>
                               
                             </tr>

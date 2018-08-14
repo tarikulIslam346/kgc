@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHeigherCommiteesTable extends Migration
+class CreateImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateHeigherCommiteesTable extends Migration
      */
     public function up()
     {
-        Schema::create('heigher_commitees', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('heading');
+            $table->string('img_url');
             $table->string('name');
             $table->string('title');
-            $table->integer('submenu_id')->unique();
-            $table->longText('description');
+            $table->integer('submenu_id');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateHeigherCommiteesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('heigher_commitees');
+        Schema::dropIfExists('images');
     }
 }

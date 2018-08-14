@@ -19,14 +19,29 @@ class LayoutController extends Controller
 
          return view('admin.dashboard',compact('name'));
     }
+
+
+    //heigher commitee message layout for  immage and message
     public function store_heighercommitee(Request $request, $id){
 
+      
+    	$file = $request->file('avatar')->store('public');
 
-    	$file =$request->file('avatar')->store('public');
 
+    	 // $var = HeigherCommitee::select('id')->where('submenu_id',$id)->get();
 
+    
+                //create
+    	 		$high = new HeigherCommitee;
+    			$high->heading = $file;
+    			$high->name = request('name');
+    			$high->title = request('title');
+    			$high->description = request('description');
+    			$high->submenu_id = $id;
+    			$high->save();
 
-    	  HeigherCommitee::where('submenu_id',$id)->update(['heading'=>$file]);
+    	
+
     
         return redirect('/dashboard');
 
@@ -34,41 +49,19 @@ class LayoutController extends Controller
 
     public function show_heighercommitee($name,$id){
 
-    	
-    	 // $submenu = Submenu::find($id);
-    	 
 
-    	 // $var = Navigation::all();
 
     	 $h = HeigherCommitee::select()->where('submenu_id',$id)->get();
 
-    	 // $this->show_menu()
-
-
-    	//  foreach($var as $v){
-
-    	//  	for($i=0;$i<count($v->submenulist);$i++){
-
-    	//  		if($v->submenulist[$i] == $submenu->name)
-
-    	//  			$var = Navigation::select()->where('menu',$v->menu)->get();
-
-    	//  			dd($var[0]->menu);
-
-    	//  		return view('page',compact('h','submenulist'));
-
-    	//  			// echo 'ok';
-    	//  		//dd($v->submenulist[$i] );
-
-    	// 		// Navigation::find('submenulist',$submenu->name);
-    	// 	}
-    	// }
-    		//dd($submenulist);
-
-    	// $h = HeigherCommitee::find($id);
-    	//     // $h->paragraph
+    
     	return view('page',compact('h'));
-    	// return Response::json($h);
+    	
        
     }
+
+    public function store_images(Request $request, $id){
+
+        dd(request()->all());
+    }
+
 }

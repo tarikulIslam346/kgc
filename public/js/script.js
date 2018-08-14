@@ -131,6 +131,25 @@ jQuery(document).ready(function($){
  
     //  set a large width on the last DD so the ticker won't show the first item at the end
     $('#ticker-2 dd:last').width(2000);
+
+
+    $("#single-file-input").change(function () {
+           readURL(this, 'singleImageId');
+           $('.upload-icon').css('border-style', 'none');
+       });
+
+
+
+   function readURL(input, id) {
+       if (input.files && input.files[0]) {
+           var reader = new FileReader();
+
+           reader.onload = function (e) {
+               $('#' + id).attr('src', e.target.result);
+           }
+           reader.readAsDataURL(input.files[0]);
+       }
+   }
     
 
 });

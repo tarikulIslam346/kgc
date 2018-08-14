@@ -33,7 +33,39 @@
               <div class="col-md-3">
                 @include('pagenav')
               </div>
-              <div class="col-md-9 _r_section_speech_body_right">
+
+                <div class="col-md-9 _r_section_speech_body_right">
+                  <h1 class="text-center" style="padding-bottom: 30px">Sub Menu Name</h1>
+                    @if(isset($h))
+                           @foreach($h as $hf)
+                  <div class="row justify-content-md-center">
+                      <div class="col-md-4 _r_top">
+                      
+                            <img src="{{ Storage::disk('local')->url($hf->heading) }}"/>
+                              
+                            
+                            <br>
+                          
+                          <h5 class="text-center">{{$hf->name}}</h5>
+                          <p class="text-center">{{$hf->title}}</p>
+                      </div>
+                  </div>
+                  <div class="row _r_bottom">
+                      <div class="col-md-12">
+                    
+                          
+                            <p>{{$hf->description}}</p>
+                              
+                             
+                          
+                      </div>
+                  </div>
+                  @endforeach
+                  @endif
+              </div>
+
+
+              {{-- <div class="col-md-9 _r_section_speech_body_right">
                 <h1 class="text-center" style="padding-bottom: 30px">Sub Menu Name</h1>
               
                 <div class="row _r_bottom">
@@ -47,7 +79,7 @@
                     @endif
                   </div>
                 </div>
-              </div>
+              </div> --}}
             </div>
           </div>
         </div>

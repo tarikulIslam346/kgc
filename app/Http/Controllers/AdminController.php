@@ -105,15 +105,15 @@ class AdminController extends Controller
     	$name = request('name');
 
         //upadate on navigation table
-      //      $menu = Menu::where('menu',$name)->get();
+     $menu = Menu::where('id',$id)->get();
 
-      // foreach($menu as $m){
+      //2. then delete from navigation
+      foreach($menu as $m){
 
-      //   dd(Navigation::where('menu', $m->name)->get());
+        Navigation::where('menu', $m->name)->update(['menu'=>$name]);
         
-      // }
-    	
-        // update from navigation item(menu) table
+      }
+
     	$menu = Menu::find($id);
 
         $menu->name = $name ;
@@ -138,7 +138,7 @@ class AdminController extends Controller
 
     	return redirect('/dashboard');
 
-    	//dd($published);
+    	
 
     }
 
