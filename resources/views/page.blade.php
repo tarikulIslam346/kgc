@@ -40,7 +40,9 @@
                   <div class="col-md-12">
                     @if(isset($h))
                     @foreach($h as $hf)
-                    <p>{{ $hf->heading }}{{ $hf->paragraph }}</p>
+                    <img src="{{ Storage::disk('local')->url($hf->heading) }}"/>
+                    <br>
+                    <p>{{ $hf->paragraph }}</p>
                     @endforeach
                     @endif
                   </div>

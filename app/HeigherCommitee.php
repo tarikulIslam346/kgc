@@ -8,4 +8,9 @@ class HeigherCommitee extends Model
 {
     //
     protected $fillbale= ['heading','paragraph','submenu_id'];
+
+    // protected $casts = [
+
+    // 	'heading' => 'array'
+    // ];
 }

@@ -22,24 +22,11 @@ class LayoutController extends Controller
     public function store_heighercommitee(Request $request, $id){
 
 
-    	// request()->file('avatar')->store('avatars');
-    	Storage::disk('local')->put(request('avatar'), 'myimage');
+    	$file =$request->file('avatar')->store('public');
 
-    	$contents = Storage::get(request('avatar'));
 
-    	$url = Storage::url(request('avatar'));
 
-    	$size = Storage::size(request('avatar'));
-
-    	dd($size);
-
-   
-        // $h = new HeigherCommitee;
-        // $h->paragraph = request('paragraph');
-        // $h->heading = request('heading');
-        // $h->submenu_id = $submenu_id;
-        // $h->save();
-
+    	  HeigherCommitee::where('submenu_id',$id)->update(['heading'=>$file]);
     
         return redirect('/dashboard');
 

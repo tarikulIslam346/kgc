@@ -2,18 +2,19 @@
 
 @section('content')
 
-<!--designe-->
-{{--   @foreach($submenus as $submenu) --}}
-{{-- 
-                    @php 
-                   $var = \App\Submenu::select('name')->where('id',$submenu->id)->get();
-
-                 
-                    @endphp --}}
+<!--designe-->   
+                   
+       
+                  
+                    <div class="container">
+                      <h1>Upload image here</h1>
+                      <hr>
+                    @if(isset($choices))
                     @foreach($choices as $choice)
-                    
+
                   @if($choice->choice == "Heigher Commitee")
-                  <form action="/heigher/{{$choice->submenu_id}}" method="post" encrypt="multipart/form-data">
+
+                  <form action="/heigher/{{$choice->submenu_id}}" method="POST" enctype="multipart/form-data">
 
                       @csrf
                  {{--        <label class="sr-only" for="inlineFormInputName2">Heading</label>
@@ -29,16 +30,19 @@
                           placeholder="Username" name="paragraph">
                         </div> --}}
                        <input type="file" name="avatar">
+                       
                         
 
-                        <button type="submit" class="btn btn-primary btn-sm" value>Submit</button>
+                        <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                       {{--    @foreach($var as $v)
                         {{$v->name}}
                         @endforeach --}}
                       </form>
                    {{--    @endforeach --}}
                    @endif
-                   @endforeach 
+                   @endforeach
+                   @endif
+                   </div> 
                    
 
 <!--designe-->
