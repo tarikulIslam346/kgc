@@ -3,16 +3,21 @@
 @section('content')
 
 <section class="_r_sector_wrap" id="about_us">
+
+{{-- <div class="cotainer-fluid"> --}}
+  {{-- <div class="row"> --}}
+        {{-- <div class="col-md-12"> --}}
+          <img src="/img/s4.jpeg" alt="New York" style="width: 100%; height: 450px">
+        {{-- </div> --}}
+      {{-- </div> --}}
+{{-- </div> --}}
+
+
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="row">
-              <div class="col-md-12">
-                <img src="/img/s4.jpeg" alt="New York" style="width: 100%; height: 450px">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-12" style="padding: 0">
                 <div id="wrapper">
                   <div class="first">
                     <dl id="ticker-1">
@@ -30,7 +35,7 @@
               </div>
             </div>
             <div class="row _r_section_body">
-              <div class="col-md-3">
+              <div class="col-md-3" style="background-color: gray">
                 @include('pagenav')
               </div>
 
@@ -49,27 +54,14 @@
                                         <div class="col-md-4 _r_top">
                                             <img src="{{ Storage::url( $hf->heading ) }}"/>
                                             <h5 class="text-center">{{ $hf->name }}</h5>
+                                            
+                                        </div>
+                                        <div class="col-md-12 _r_top">
                                             <p class="text-center">{{ $hf->description}}</p> 
-                                         
                                         </div>
                                     </div>
-                                   
-                                   
-                                   
-                                    
-                                  
-                                    
                                 </div>
-
-                        
-                         
-                      
                            {{--  <img src="/images/{{ $img->img_url[$i] }}"/> --}}
-                             
-                              
-                            
-                            
-                          
                           {{-- <h5 class="text-center">{{$hf->name}}</h5>
                           <p class="text-center">{{$hf->title}}</p> --}}
                         

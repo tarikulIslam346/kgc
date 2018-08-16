@@ -207,57 +207,60 @@
                    <!---SubMenu create ----->   
                   </div>
 
-                  <div class="menu2" style="display: none;">
+                <div class="menu2" style="display: none;">
                    <!---Layout create ----->  
-                    
-                    
-                     
-
-                      <div class="card">
+                  
+                    <div class="card">
                      <div class="card-body">
-
-
                       <form action="/layout" method="POST">
                         @csrf
 
-                     
-                          
-
-
-                          <label for="Layout catagory">Layout catagory</label>
-
-                            <select class="custom-select custom-select-sm" name="choice">
-                              <option selected>select layout </option>
-                               @if(isset($layouts))                                       
-                               @foreach($layouts as $layout)
+                        <div class="container-fluid">
+                          <div class="row _r_submenu_style">
+                          <div class="col-md-6">
+                            <div class="row">
+                              <div class="col-md-4 _r_col_deco">
+                                <label for="My Layout Name">Select Submenu</label>
+                              </div>
+                              <div class="col-md-8 _r_select_deco">
+                                <select class="custom-select custom-select-sm" name="submenu_id">
+                                      <option selected>select layout </option>
+                                      @if(isset($submenus))                                       
+                                      @foreach($submenus as $sub)
+                                     <option value="{{$sub->id}}">{{$sub->name}}</option>
+                                  @endforeach
+                                @endif
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="row">
+                              <div class="col-md-4 _r_col_deco">
+                                <label for="Layout catagory">Select Layout</label>
+                              </div>
+                              <div class="col-md-8 _r_select_deco">
+                                <select class="custom-select custom-select-sm" name="choice">
+                                  <option selected>select layout </option>
+                                   @if(isset($layouts))                                       
+                                   @foreach($layouts as $layout)
                                   <option value="{{$layout->layout_name}}">{{$layout->layout_name}}</option>
                                 @endforeach
                               @endif
                             </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+                        <!-- <div class="container-fluid"> -->
+                          <div class="row _r_sub_button">
+                            <div class="col-md-10">
+                              <button type="submit" class="btn btn-primary pull-right" name="Submit" >submit</button>
+                            </div>
+                          </div>
+                        <!-- </div> -->
 
-
-                          
-                        
-
-                      
-
-                        <label for="My Layout Name">Sub navigation item</label>
-
-                         <select class="custom-select custom-select-sm" name="submenu_id">
-                              <option selected>select layout </option>
-                              @if(isset($submenus))                                       
-                                @foreach($submenus as $sub)
-                                   <option value="{{$sub->id}}">{{$sub->name}}</option>
-                                @endforeach
-                              @endif
-                        </select>
-                          
-                        
-                        
-                        
-                        <button type="submit" class="btn btn primary" name="Submit" >
-                          <i class="fa fa-plus"></i>
-                        </button>
 
                       </form>
 
@@ -269,14 +272,24 @@
                       @endforeach
 
                       @endif --}}
+
+                      <!-- <div class="container-fluid"> -->
+                        <div class="row" style="padding-top: 30px">
+                        <div class="col-md-2">
+                          <img src="/img/img_paragraph.png" style="width: 100%">
+                          <p>Image With Text</p>
+                        </div>
+
+                        <div class="col-md-2">
+                          <img src="/img/committee_layout.png" style="width: 100%">
+                          <p>Committee Image</p>
+                        </div>
+                      </div>
+                      <!-- </div> -->
                       
                      
-
                       </div>
                     </div>
-                           
-                      
-                    
                      
                     <!---Layout create ----->    
                   </div>
@@ -396,5 +409,34 @@
 
 
 <!--designe-->
+
+<style>
+.menu2 ._r_submenu_style{
+    padding-bottom: 40px;
+}
+.menu2 ._r_col_deco{
+    background-color: #111;
+    color: #fff;
+    padding: 5px 15px;
+}
+
+.menu2 ._r_col_deco label{
+    margin-bottom: 0px;
+}
+
+.menu2 ._r_select_deco select{
+   border-radius: 0;
+    height: 34px;
+}
+
+.menu2 ._r_select_deco{
+   padding-left: 0;
+}
+
+.menu2 ._r_sub_button{
+   padding-bottom: 20px;
+   border-bottom: 2px solid #000;
+}
+</style>
 
 @endsection

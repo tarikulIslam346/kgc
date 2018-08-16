@@ -272,6 +272,12 @@ a:hover{
 ._r_sector_wrap ._r_section_body ._r_section_speech_body_right ._r_top h5{
     padding: 20px 0 0 0;
 }
+
+._r_sector_wrap ._r_section_body ._r_section_body_right ._r_top,
+._r_sector_wrap ._r_section_body ._r_section_body_right ._r_bottom,
+._r_sector_wrap ._r_section_body ._r_section_speech_body_right ._r_top{
+    padding: 30px;
+}
 ._r_sector_wrap ._r_section_body ._r_section_body_right ._r_top p,
 ._r_sector_wrap ._r_section_body ._r_section_body_right ._r_bottom p,
 ._r_sector_wrap ._r_section_body ._r_section_speech_body_right ._r_top p{
