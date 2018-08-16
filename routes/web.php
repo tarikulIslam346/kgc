@@ -39,7 +39,7 @@ Route::post('/nav','AdminController@create_navigation');
 
 Route::get('/{name}','AdminController@show_navigation');
 
-Route::get('/{name}/{id}','LayoutController@show_heighercommitee');
+Route::get('/{name}/{id}/{menu}','LayoutController@show_heighercommitee');
 
 
 

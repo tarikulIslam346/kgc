@@ -69,7 +69,7 @@ class AdminController extends Controller
 
     	 
 
-    	 return redirect('/dashboard');
+    	 return redirect('/dashboard')->with('success','Menu created succesfully');
     
     }
 
@@ -81,14 +81,17 @@ class AdminController extends Controller
        // delete from navigation 
 
         //1. get the menu id
+
       $menu = Menu::where('id',$id)->get();
 
       //2. then delete from navigation
+
       foreach($menu as $m){
 
         Navigation::where('menu', $m->name)->delete();
         
       }
+
      //delete from menulist
 
 
@@ -98,16 +101,20 @@ class AdminController extends Controller
 
        
 
-    	 return redirect('/dashboard');
+    	 return redirect('/dashboard')->with('success','Navigation itemdeleted succesfully');
 
     }
+
     public function update_menu($id){
+
     	$name = request('name');
 
-        //upadate on navigation table
+        //1.upadate on navigation table
+
      $menu = Menu::where('id',$id)->get();
 
-      //2. then delete from navigation
+      //2. then update from navigation
+
       foreach($menu as $m){
 
         Navigation::where('menu', $m->name)->update(['menu'=>$name]);
@@ -120,7 +127,7 @@ class AdminController extends Controller
 
         $menu->save();
 
-        return redirect('/dashboard');
+        return redirect('/dashboard')->with('success','Navigation item Edited succesfully');
 
 
 
@@ -136,18 +143,19 @@ class AdminController extends Controller
 
     	$menu->save();
 
-    	return redirect('/dashboard');
+    	return redirect('/dashboard')->with('success','Show Navigation item succesfully');
 
     	
 
     }
 
-    // for sub menu /////////////////////////////////////
+    /*******************for sub menu ************************************/
 
      public function create_submenu(){
 
     	$this->validate(request(),[
-    		'name' => 'required|unique:menus|max:255',
+
+    		'name' => 'required|unique:submenus|max:255',
 
     	]);
 
@@ -155,13 +163,14 @@ class AdminController extends Controller
 
     	
 
-    	 // view('admin.dashboard',compact(''))
+    	
 
-    	 return redirect('/dashboard');
+    	 return redirect('/dashboard')->with('success','Sub navigation item created succesfully');
     
     }
 
-        public function update_submenu($id){
+   public function update_submenu($id){
+
     	$name = request('name');
     	// dd($name);
 
@@ -171,28 +180,23 @@ class AdminController extends Controller
 
         $submenu->save();
 
-        return redirect('/dashboard');
+        return redirect('/dashboard')->with('success','Sub navigation item updated succesfully');
 
     	//return view('admin.update_dashboard ')->with('id','menus');
 
     }
-
+ /*******************for sub menu **********************************************************/
+ /**************For layout *****************************************************************/
 
     public function create_layout(){
         $id = request('submenu_id');
 
     
-    //   $choice =  LayoutChoice::all();
 
-   //dd($id);
    LayoutChoice::updateOrCreate(request(['choice','submenu_id']));
 
      $choices =  LayoutChoice::select()->where('submenu_id',$id)->get();
-     // foreach($choices as $choice)
-     // $choices = $choice->choice;
-
-     // foreach($choices as $choice)$var = $choice->choice;
-
+   
 
 
 

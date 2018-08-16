@@ -29,8 +29,6 @@ class LayoutController extends Controller
     	$file = $request->file('avatar')->store('public');
 
 
-    	 // $var = HeigherCommitee::select('id')->where('submenu_id',$id)->get();
-
     
                 //create
     	 		$high = new HeigherCommitee;
@@ -44,13 +42,14 @@ class LayoutController extends Controller
     	
 
     
-        return redirect('/dashboard');
+        return redirect('/dashboard')->with('success','Heigher commitee stroed successfully');
 
     }
 
-    public function show_heighercommitee($name,$id){
+    public function show_heighercommitee($name,$id,$menu){
 
 
+            // dd($menu);
 
     	 $h = HeigherCommitee::where('submenu_id',$id)->get();
  
@@ -60,9 +59,13 @@ class LayoutController extends Controller
 
          $image = Image::where('submenu_id',$id)->get();
 
+         $submenulist = Navigation::where('menu',$menu)
+
+                     ->get();
+
      
     
-    return view('page',compact('h','image'));
+    return view('page',compact('h','image','submenulist'));
     	
        
     }
@@ -77,15 +80,6 @@ class LayoutController extends Controller
 
         ]);
 
-
-        // $name = json_encode(request('name'));
-
-        // dd($name);
-
-        // foreach(request('name') as $name){
-        //     dd($name);
-        //     $name[] =  $name;
-        // }
 
 
 

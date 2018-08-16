@@ -35,6 +35,50 @@
               </div>
 
                 <div class="col-md-9 _r_section_speech_body_right">
+
+                   @if(isset($h))
+                           @foreach($h as $hf)
+
+                          
+                 
+                        <div class=" _r_section_body_right">
+
+                                    
+                                    <div class="row justify-content-md-center">
+
+                                        <div class="col-md-4 _r_top">
+                                            <img src="{{ Storage::url( $hf->heading ) }}"/>
+                                            <h5 class="text-center">{{ $hf->name }}</h5>
+                                            <p class="text-center">{{ $hf->description}}</p> 
+                                         
+                                        </div>
+                                    </div>
+                                   
+                                   
+                                   
+                                    
+                                  
+                                    
+                                </div>
+
+                        
+                         
+                      
+                           {{--  <img src="/images/{{ $img->img_url[$i] }}"/> --}}
+                             
+                              
+                            
+                            
+                          
+                          {{-- <h5 class="text-center">{{$hf->name}}</h5>
+                          <p class="text-center">{{$hf->title}}</p> --}}
+                        
+                      </div>
+                  </div>
+                
+         
+                  @endforeach
+                  @endif
                  
   
 

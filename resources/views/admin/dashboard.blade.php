@@ -34,6 +34,16 @@
                    <div class="card">
                     <div class="card-body">
 
+                        @if(session('success'))
+                            <div class="alert  alert-success fade show" role="alert">
+                               {{ session('success') }} 
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                                  
+                           @endif
+
                       <form action="/create_menu" method="POST">
                        @csrf
                          <div class="input-group mb-3">
@@ -48,9 +58,16 @@
 
                          </div>
                          @if($errors->has('name'))
-                           <div class="alert alert-primary" role="alert">{{ $errors->first('name')}}
-                           </div>
+                              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                              <p>{{ $errors->first('name') }} </p>
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
                            @endif
+
+
+                        
                        </form>
 
 
@@ -119,6 +136,15 @@
                     <!---SubMenu create ----->
                    <div class="card">
                     <div class="card-body">
+                       @if(session('success'))
+                            <div class="alert  alert-success fade show" role="alert">
+                               {{ session('success') }} 
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                                  
+                           @endif
 
                       <form action="/create_submenu" method="POST">
                        @csrf
@@ -215,7 +241,7 @@
 
                       
 
-                        <label for="My Layout Name">My Layout Name</label>
+                        <label for="My Layout Name">Sub navigation item</label>
 
                          <select class="custom-select custom-select-sm" name="submenu_id">
                               <option selected>select layout </option>
@@ -300,6 +326,14 @@
                         <input type="submit" class="btn btn primary" name="Submit" value="Send">
                       </form>
                       <br>
+                      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <p>**Do not add same Nav Sub catagory in multiple Nav catagory** </p>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+
+                      
 
 
 
