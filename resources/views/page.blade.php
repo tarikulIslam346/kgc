@@ -35,22 +35,66 @@
               </div>
 
                 <div class="col-md-9 _r_section_speech_body_right">
-                  <h1 class="text-center" style="padding-bottom: 30px">Sub Menu Name</h1>
-                    @if(isset($h))
-                           @foreach($h as $hf)
-                  <div class="row justify-content-md-center">
-                      <div class="col-md-4 _r_top">
+                 
+  
+
+                   @if(isset($image))
+                           @foreach($image as $img)
+
+                          
+                 
+                        <div class=" _r_section_body_right">
+
+                                    
+                                    <div class="row justify-content-md-center">
+
+                                        <div class="col-md-4 _r_top">
+                                            <img src="/images/{{ $img->img_url[0] }}"/>
+                                            <h5 class="text-center">{{ $img->name[0] }}</h5>
+                                            {{-- <p class="text-center">Content</p> --}}
+                                        </div>
+                                    </div>
+                                   
+                                   
+                                   
+                                    
+                                    <div class="row _r_bottom">
+                                        @for($i=1 ; $i< count($img->img_url); $i++)
+                                     
+                                      {{-- @for($i=0 ; $i< count($img->img_url); $i++) --}}
+                                        <div class="col-md-4">
+                                          {{-- @if($i>0) --}}
+                                            <img src="/images/{{ $img->img_url[$i] }}"/>
+                                            <h5 class="text-center">{{ $img->name[$i] }}</h5>
+                                            <p class="text-center">Content</p>
+                                            {{-- @endif --}}
+                                        </div>
+                                         @endfor
+                                          
+                               
+                                        
+                                    </div>{{-- 
+                                   
+                                    @endfor --}}
+                                    
+                                </div>
+
+                        
+                         
                       
-                            <img src="{{ Storage::disk('local')->url($hf->heading) }}"/>
+                           {{--  <img src="/images/{{ $img->img_url[$i] }}"/> --}}
+                             
                               
                             
-                            <br>
+                            
                           
-                          <h5 class="text-center">{{$hf->name}}</h5>
-                          <p class="text-center">{{$hf->title}}</p>
+                          {{-- <h5 class="text-center">{{$hf->name}}</h5>
+                          <p class="text-center">{{$hf->title}}</p> --}}
+                        
                       </div>
                   </div>
-                  <div class="row _r_bottom">
+                
+               {{--    <div class="row _r_bottom">
                       <div class="col-md-12">
                     
                           
@@ -59,46 +103,19 @@
                              
                           
                       </div>
-                  </div>
+                  </div> --}}
                   @endforeach
                   @endif
               </div>
 
 
-              {{-- <div class="col-md-9 _r_section_speech_body_right">
-                <h1 class="text-center" style="padding-bottom: 30px">Sub Menu Name</h1>
-              
-                <div class="row _r_bottom">
-                  <div class="col-md-12">
-                    @if(isset($h))
-                    @foreach($h as $hf)
-                    <img src="{{ Storage::disk('local')->url($hf->heading) }}"/>
-                    <br>
-                    <p>{{ $hf->paragraph }}</p>
-                    @endforeach
-                    @endif
-                  </div>
-                </div>
-              </div> --}}
+         
             </div>
           </div>
         </div>
       </div>
     </section>
-  {{--   <script>
-      $(document).ready(function(){
-        $('#loadcontent').click(function(){
-           console.log($(this).attr('href'));
-          $.get($(this).attr('href'),function(data){
-            console.log(data);
 
-          });
-
-        })
-        
-
-      });
-    </script> --}}
 
 
 

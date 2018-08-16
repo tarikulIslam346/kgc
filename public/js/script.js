@@ -133,14 +133,16 @@ jQuery(document).ready(function($){
     $('#ticker-2 dd:last').width(2000);
 
 
+
+// single image input
+
     $("#single-file-input").change(function () {
            readURL(this, 'singleImageId');
            $('.upload-icon').css('border-style', 'none');
        });
+        
 
-
-
-   function readURL(input, id) {
+    function readURL(input, id) {
        if (input.files && input.files[0]) {
            var reader = new FileReader();
 
@@ -150,6 +152,65 @@ jQuery(document).ready(function($){
            reader.readAsDataURL(input.files[0]);
        }
    }
-    
+
+
+   // Multi image input
+    var count = 1;
+    $('.add_row').on('click', function() {
+        $('.mytbody').append('<div class="col-md-4"><div class="_r_wrap_col">'+
+                                    '<div class="_r_committee_member upload-icon"><img id="multiImageId'+count+'"></div>'+
+                                    '<label> Insert Image <input type="file" name="filename[]" id="multi-file-input'+count+'"></label>'+
+                                    '<input type="text" name="name[]" placeholder="Name" class="_r_input_deco">'+
+                                    // '<input type="text" name="member_position" placeholder="Position" class="_r_input_deco"></div>'+
+                                    '<div class="_r_remove_deco"><i class="fa fa-trash remove_area"></i></div>'+
+                                    '</div>');
+
+
+
+        $(".remove_area").on('click', function(){
+            $(this).parent().parent("div").remove();
+        });
+
+
+         $("#multi-file-input"+count).change(function () {
+                readURL(this);
+                // $('.upload-icon').css('border-style', 'none');
+            });
+
+         console.log("#multi-file-input"+count);
+          function readURL(input, id) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    count--;
+                    $('#multiImageId'+count).attr('src', e.target.result);
+                    console.log("#multi-file-input"+count);
+                    count++;
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+            count++;
+        });
+
+
+    // signature show
+        $("#multi-file-input").change(function () {
+            readURL(this, 'multiImageId');
+            $('.upload-icon').css('border-style', 'none');
+        });
+
+         console.log("#multi-file-input");
+          function readURL(input, id) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#' + id).attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }     
 
 });

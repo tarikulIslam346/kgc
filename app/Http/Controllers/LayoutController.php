@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Navigation;
 
 use App\Submenu;
+use App\Image;
 
 use App\HeigherCommitee;
 use Illuminate\Support\Facades\Storage;
@@ -51,17 +52,62 @@ class LayoutController extends Controller
 
 
 
-    	 $h = HeigherCommitee::select()->where('submenu_id',$id)->get();
+    	 $h = HeigherCommitee::where('submenu_id',$id)->get();
+ 
+   
 
+        
+
+         $image = Image::where('submenu_id',$id)->get();
+
+     
     
-    	return view('page',compact('h'));
+    return view('page',compact('h','image'));
     	
        
     }
 
     public function store_images(Request $request, $id){
 
-        dd(request()->all());
+
+        $this->validate(request(), [
+                 'name' => 'required',
+                'filename' => 'required',
+                'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
+        ]);
+
+
+        // $name = json_encode(request('name'));
+
+        // dd($name);
+
+        // foreach(request('name') as $name){
+        //     dd($name);
+        //     $name[] =  $name;
+        // }
+
+
+
+        if(request()->hasfile('filename'))
+         {
+
+            foreach(request()->file('filename') as $image)
+            {
+                $name=$image->getClientOriginalName();
+                $image->move(public_path().'/images/', $name);  
+                $data[] = $name;  
+            }
+         }
+
+         $image= new Image;
+         $image->img_url= $data;
+         $image->name = request('name');
+         $image->submenu_id = $id;
+        
+         $image->save();
+
+        return redirect('/dashboard')->with('success', 'Your images has been successfully');
     }
 
 }

@@ -47,3 +47,5 @@ Route::get('/{name}/{id}','LayoutController@show_heighercommitee');
 Route::post('/heigher/{id}','LayoutController@store_heighercommitee');
 
 Route::post('/image/{id}','LayoutController@store_images');
+
+// Route::get('/image/{id}','LayoutController@store_images');

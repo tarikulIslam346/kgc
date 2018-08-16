@@ -558,3 +558,73 @@ code {
   padding-top: 50px;
 }
 
+
+/*multi image input*/
+
+/*layout committee member*/
+
+#_r_committee_member{
+  display: flex;
+}
+#_r_committee_member ._r_section_body_right{
+  margin: auto;
+}
+#_r_committee_member ._r_committee_member img{
+  width: 200px;
+  height: 235px;
+  /*background-color: red;*/
+  border:1px solid;
+}
+#_r_committee_member label{
+ padding: 10px;
+    background: #009688;
+    display: table;
+    color: #fff;
+    width: 200px;
+    margin-top: 2px;
+    text-align: center;
+}
+#_r_committee_member input[type="file"] {
+    display: none;
+}
+#_r_committee_member ._r_input_deco {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid red;
+    margin-bottom: 5px;
+}
+#_r_committee_member input:focus {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid red;
+    margin-bottom: 5px;
+}
+#_r_committee_member input {
+    width: 200px;
+}
+#_r_committee_member .col-md-4 {
+    margin-bottom: 30px;
+}
+#_r_committee_member ._r_remove_deco i{
+    position: absolute;
+    top: 12px;
+    font-size: 22px;
+    left: 80px;
+    color: red;
+}
+#_r_committee_member .add_row{
+    width: 250px;
+    border: none;
+    background-color: lightcoral;
+}
+#_r_committee_member ._r_add_button{
+    display: flex;
+}
+#_r_committee_member button{
+    margin: auto;
+}
+#_r_committee_member ._r_wrap_col{
+    padding-left: 53px;
+}
