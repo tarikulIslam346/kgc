@@ -1,5 +1,10 @@
 
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
 /* Global */
+*{
+ font-size: 12px;
+   font-family: 'Comfortaa', cursive;
+}
 
 .jBox-wrapper {
   text-align: left;

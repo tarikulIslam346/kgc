@@ -7,6 +7,7 @@ use App\Submenu;
 use App\Layout;
 use App\LayoutChoice;
 use App\Navigation;
+use App\Schedule;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -28,8 +29,9 @@ class AdminController extends Controller
     		$submenus = Submenu::all();
     		$layouts = Layout::all();
     		$nav = Navigation::all();
+        $schedules = Schedule::all();
 
-    		return view('admin.dashboard',compact('menus','submenus','layouts','nav'));
+    		return view('admin.dashboard',compact('menus','submenus','layouts','nav','schedules'));
     	}
 
     	return view('admin.index');
@@ -185,6 +187,23 @@ class AdminController extends Controller
     	//return view('admin.update_dashboard ')->with('id','menus');
 
     }
+
+      public function delete_submenu($id){
+
+
+    Submenu::where('id',$id)->delete();
+
+
+
+       
+
+       return redirect('/dashboard')->with('success','Navigation sub item deleted succesfully');
+
+        // return redirect('/dashboard')->with('success','Sub navigation item updated succesfully');
+
+      //return view('admin.update_dashboard ')->with('id','menus');
+
+    }
  /*******************for sub menu **********************************************************/
  /**************For layout *****************************************************************/
 
@@ -222,6 +241,97 @@ class AdminController extends Controller
       	return view('page',compact('submenulist'));
 
       }
+
+
+      /**********************schedule***********************/
+
+      public function schedule_store(){
+
+
+      $this->validate(request(),[
+
+        'tournamnet' => 'required|max:255',
+
+        'prize_money' => 'required|integer',
+
+        'start_date' => 'required|date|date_format:Y-m-d',
+
+        'closing_date' => 'required|date|date_format:Y-m-d'
+
+
+      ]);
+
+      Schedule::create(request()->except('_token','Submit'));
+
+       return redirect('/dashboard')->with('success','Schedule created succesfully');
+
+
+      }
+
+      public function update_tournament($id){
+
+
+         $this->validate(request(),[
+
+        'tournament' => 'required|alpha|max:255'
+      ]);
+
+
+          $tournamnet = Schedule::find($id);
+
+          $tournamnet->tournament = request('tournament');
+
+          $tournamnet->save();
+
+
+          return redirect('/dashboard')->with('success','Tournament name updated succesfully');
+
+
+      }
+      public function update_winner($id){
+
+
+         $this->validate(request(),[
+
+        'winner' => 'required|max:255'
+      ]);
+
+
+          $tournament = Schedule::find($id);
+
+          $tournament->winner = request('winner');
+
+          $tournament->save();
+
+
+          return redirect('/dashboard')->with('success','Winner name updated succesfully');
+
+
+      }
+
+    public function update_prize($id){
+
+
+         $this->validate(request(),[
+
+        'prize_money' => 'required|integer'
+
+          ]);
+
+
+          $tournament = Schedule::find($id);
+
+          $tournament->prize_money = request('prize_money');
+
+          $tournament->save();
+
+
+          return redirect('/dashboard')->with('success','Prize money  updated succesfully');
+
+
+      }
+
+
 
 
 

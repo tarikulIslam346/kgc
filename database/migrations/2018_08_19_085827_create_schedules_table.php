@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateImagesTable extends Migration
+class CreateSchedulesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('schedules', function (Blueprint $table) {
             $table->increments('id');
-            $table->longText('img_url');
-            $table->longText('name');
-            // $table->string('title');
-            $table->integer('submenu_id')->unique();
+            $table->string('tournament');
+            $table->integer('prize_money');
+            $table->string('winner');
+            $table->date('start_date');
+            $table->date('closing_date');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('schedules');
     }
 }

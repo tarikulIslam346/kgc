@@ -68,24 +68,49 @@ jQuery(document).ready(function($){
             $('.menu1').hide();
             $('.menu2').hide();
             $('.menu3').hide();
+            $('.menu4').hide();
+            $('.menu5').hide();
     });
      $('#showmenu1').click(function() {
             $('.menu1').show();
             $('.menu').hide();
             $('.menu2').hide();
             $('.menu3').hide();
+            $('.menu4').hide();
+            $('.menu5').hide();
     });
      $('#showmenu2').click(function() {
             $('.menu2').show();
             $('.menu1').hide();
             $('.menu').hide();
             $('.menu3').hide();
+            $('.menu4').hide();
+            $('.menu5').hide();
     });
      $('#showmenu3').click(function() {
             $('.menu3').show();
             $('.menu1').hide();
             $('.menu2').hide();
             $('.menu').hide();
+            $('.menu4').hide();
+            $('.menu5').hide();
+    });
+        $('#showmenu4').click(function() {
+            $('.menu4').show();
+            // $('.menu4').addClass('active');
+            $('.menu3').hide();
+            $('.menu2').hide();
+            $('.menu1').hide();
+            $('.menu').hide();
+            $('.menu5').hide();
+    });
+           $('#showmenu5').click(function() {
+            $('.menu5').show();
+            $('.menu1').hide();
+            $('.menu2').hide();
+            $('.menu').hide();
+            $('.menu3').hide();
+            $('.menu4').hide();
     });
 
      // extra menu

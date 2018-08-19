@@ -16,7 +16,7 @@ class CreateNavigationsTable extends Migration
         Schema::create('navigations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('menu')->unique();
-            $table->string('submenulist');
+            $table->longText('submenulist');
             $table->timestamps();
         });
     }

@@ -19,19 +19,43 @@
         <!-- Popper JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 
-        <!-- Latest compiled JavaScript -->
+        <!-- Latest compiled JavaScript for bootstrap-->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> 
+
+        <!---date picker--------->
+        
+
+    {{--     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" /> --}}
+
+        {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> --}}
+
+    {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script> --}}
+        <!--  jQuery -->
+      {{--   <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script> --}}
+
+
+
+      
+
+        <!---date picker--------->
+
+
 
         <!-- Fontawesome -->
          <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+
          <link href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+         <!---local css files--------->
 
         <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="/css/animate.min.css">
         <link rel="stylesheet" href="/css/jBox.css">
 
         <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+
+        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
         
    

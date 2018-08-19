@@ -12,7 +12,8 @@
               </div>
 
              <ul class="_r-menu-item _r-left-menu-item _r_ul_deco">
-                 <li><a href="/"><br>{{strtoupper('Home')}}</a></li>
+                 <li><a href="/" style="font-size: 12px;font-family: 'Comfortaa', cursive;">
+                  <br>{{strtoupper('Home')}}</a></li>
                  
 
                  @php
@@ -28,7 +29,8 @@
                     @break
 
                   @endif
-                   <li><a href="/{{$menu->name}}" ><br>{{ strtoupper($menu->name) }}</a></li>
+                   <li><a href="/{{$menu->name}}" style="font-size: 12px;font-family: 'Comfortaa', cursive;">
+                    <br>{{ strtoupper($menu->name) }}</a></li>
                   
 
                 

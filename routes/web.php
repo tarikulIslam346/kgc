@@ -31,6 +31,8 @@ Route::post('/create_submenu','AdminController@create_submenu');
 
 Route::post('/update_submenu/{id}','AdminController@update_submenu');
 
+Route::get('/delete_submenu/{id}','AdminController@delete_submenu');
+
 
 Route::post('/layout','AdminController@create_layout');
 
@@ -49,3 +51,11 @@ Route::post('/heigher/{id}','LayoutController@store_heighercommitee');
 Route::post('/image/{id}','LayoutController@store_images');
 
 // Route::get('/image/{id}','LayoutController@store_images');
+
+Route::post('/schedule','AdminController@schedule_store');
+
+Route::post('/update_tournament/{id}','AdminController@update_tournament');
+
+Route::post('/update_winner/{id}','AdminController@update_winner');
+
+Route::post('/update_prize/{id}','AdminController@update_prize');
