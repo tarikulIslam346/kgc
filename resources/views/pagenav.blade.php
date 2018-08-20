@@ -15,7 +15,7 @@
 
                        @foreach($var as $v)
 
-                      <li class="text-center">
+                      <li class="text-center active">
 
                         <a href="/{{$nav->submenulist[$i]}}/{{$v->id}}/{{$nav->menu}}" id="loadcontent">
 

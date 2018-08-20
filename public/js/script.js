@@ -1,4 +1,28 @@
 // $.noConflict();
+function setStyle(id, className) {
+    localStorage.removeItem('lastId');
+    localStorage.removeItem('lastClass');
+    localStorage.setItem('lastId', id);
+    localStorage.setItem('lastClass', className);
+
+    var ids = ['showmenu', 'showmenu1', 'showmenu2', 'showmenu3', 'showmenu4', 'showmenu5'];
+    var classes = ['menu', 'menu1', 'menu2', 'menu3', 'menu4', 'menu5'];
+
+    ids.forEach(function (item, index) {
+        if(ids[index] === id) {
+            $('.'+className).show();
+            if(document.getElementById(id))
+                document.getElementById(id).classList.add("active");
+        } else {
+            $('.'+classes[index]).hide();
+            if(document.getElementById(ids[index]))
+                document.getElementById(ids[index]).classList.remove("active");
+        }
+    });
+}
+var lastId = localStorage.getItem('lastId');
+var lastClass = localStorage.getItem('lastClass');
+setStyle(lastId, lastClass);
 
 jQuery(document).ready(function($){
 
@@ -60,104 +84,6 @@ jQuery(document).ready(function($){
         if($(window).width() < 768){
         $("._r-mobile-menu").show();}
     });
-
-
-    // admin dashboard
-     $('#showmenu').click(function() {
-            $('.menu').show();
-            $('.menu1').hide();
-            $('.menu2').hide();
-            $('.menu3').hide();
-            $('.menu4').hide();
-            $('.menu5').hide();
-    });
-     $('#showmenu1').click(function() {
-            $('.menu1').show();
-            $('.menu').hide();
-            $('.menu2').hide();
-            $('.menu3').hide();
-            $('.menu4').hide();
-            $('.menu5').hide();
-    });
-     $('#showmenu2').click(function() {
-            $('.menu2').show();
-            $('.menu1').hide();
-            $('.menu').hide();
-            $('.menu3').hide();
-            $('.menu4').hide();
-            $('.menu5').hide();
-    });
-     $('#showmenu3').click(function() {
-            $('.menu3').show();
-            $('.menu1').hide();
-            $('.menu2').hide();
-            $('.menu').hide();
-            $('.menu4').hide();
-            $('.menu5').hide();
-    });
-        $('#showmenu4').click(function() {
-            $('.menu4').show();
-            // $('.menu4').addClass('active');
-            $('.menu3').hide();
-            $('.menu2').hide();
-            $('.menu1').hide();
-            $('.menu').hide();
-            $('.menu5').hide();
-    });
-           $('#showmenu5').click(function() {
-            $('.menu5').show();
-            $('.menu1').hide();
-            $('.menu2').hide();
-            $('.menu').hide();
-            $('.menu3').hide();
-            $('.menu4').hide();
-    });
-
-     // extra menu
-      $('#_r_extra_menu_show').click(function() {
-            $('._r_extra_menu').toggle();
-    });
-
-
-     // notice slider
-     var _scroll = {
-        delay: 1000,
-        easing: 'linear',
-        items: 1,
-        duration: 0.07,
-        timeoutDuration: 0,
-        pauseOnHover: 'immediate'
-    };
-    $('#ticker-1').carouFredSel({
-        width: 1000,
-        align: false,
-        items: {
-            width: 'variable',
-            height: 35,
-            visible: 1
-        },
-        scroll: _scroll
-    });
- 
-    // $('#ticker-2').carouFredSel({
-    //     width: 1000,
-    //     align: false,
-    //     circular: false,
-    //     items: {
-    //         width: 'variable',
-    //         height: 35,
-    //         visible: 2
-    //     },
-    //     scroll: _scroll
-    // });
- 
-    //  set carousels to be 100% wide
-    $('.caroufredsel_wrapper').css('width', '100%');
- 
-    //  set a large width on the last DD so the ticker won't show the first item at the end
-    $('#ticker-2 dd:last').width(2000);
-
-
 
 // single image input
 

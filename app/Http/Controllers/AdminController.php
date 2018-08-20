@@ -231,7 +231,7 @@ class AdminController extends Controller
         return redirect('/dashboard');
 
     }
-      public function show_navigation($nav){
+      public function show_navigation($id,$nav){
 
 
       	$submenulist = Navigation::where('menu',$nav)
@@ -250,7 +250,7 @@ class AdminController extends Controller
 
       $this->validate(request(),[
 
-        'tournamnet' => 'required|max:255',
+        'tournament' => 'required|max:255',
 
         'prize_money' => 'required|integer',
 
@@ -277,11 +277,11 @@ class AdminController extends Controller
       ]);
 
 
-          $tournamnet = Schedule::find($id);
+          $tournaments = Schedule::find($id);
 
-          $tournamnet->tournament = request('tournament');
+          $tournaments->tournament = request('tournament');
 
-          $tournamnet->save();
+          $tournaments->save();
 
 
           return redirect('/dashboard')->with('success','Tournament name updated succesfully');

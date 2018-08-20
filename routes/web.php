@@ -39,7 +39,7 @@ Route::post('/layout','AdminController@create_layout');
 
 Route::post('/nav','AdminController@create_navigation');
 
-Route::get('/{name}','AdminController@show_navigation');
+Route::get('/{id}/{name}','AdminController@show_navigation');
 
 Route::get('/{name}/{id}/{menu}','LayoutController@show_heighercommitee');
 
@@ -50,7 +50,7 @@ Route::post('/heigher/{id}','LayoutController@store_heighercommitee');
 
 Route::post('/image/{id}','LayoutController@store_images');
 
-// Route::get('/image/{id}','LayoutController@store_images');
+
 
 Route::post('/schedule','AdminController@schedule_store');
 
@@ -59,3 +59,11 @@ Route::post('/update_tournament/{id}','AdminController@update_tournament');
 Route::post('/update_winner/{id}','AdminController@update_winner');
 
 Route::post('/update_prize/{id}','AdminController@update_prize');
+
+
+
+Route::get('/schedule','ScheduleController@index');
+
+Route::get('/schedule_search','ScheduleController@search');
+
+Route::get('/schedule_details','ScheduleController@details');

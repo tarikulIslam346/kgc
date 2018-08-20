@@ -22,7 +22,7 @@
 
     <label for="tournament">Enter Tournamnet Name</label>
 
-    <input type="text" class="form-control" id="tournament" name="tournamnet" placeholder="Enter tournament name" required>
+    <input type="text" class="form-control" id="tournament" name="tournament" placeholder="Enter tournament name" required>
 
   </div>
 

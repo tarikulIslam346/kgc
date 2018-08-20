@@ -639,3 +639,8 @@ code {
 #_r_committee_member ._r_wrap_col{
     padding-left: 53px;
 }
+
+.active {
+    background-color: red;
+    color: white;
+}
