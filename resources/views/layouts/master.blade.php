@@ -24,6 +24,7 @@
 
                <!----TinyMc--------->
         <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+        {{-- <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=5g5faf78gvk6yfq9bd3bbfjo858kjx1q8o0nbiwtygo2e4er"></script> --}}
        
 <!-------TinyMc--------->
 

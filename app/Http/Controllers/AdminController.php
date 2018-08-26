@@ -9,6 +9,7 @@ use App\LayoutChoice;
 // use App\Navigation;
 use App\Schedule;
 use App\ScheduleDetail;
+use App\Notice;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -33,7 +34,10 @@ class AdminController extends Controller
         $schedules = Schedule::all();
         $scheduleDetails = ScheduleDetail::all();
 
-    		return view('admin.dashboard',compact('menus','submenus','layouts','schedules','scheduleDetails'));
+        $notices = Notice::all();
+
+    		return view('admin.dashboard',compact('menus','submenus','layouts','schedules','scheduleDetails',
+          'notices'));
     	}
 
     	return view('admin.index');
@@ -255,8 +259,9 @@ class AdminController extends Controller
       public function show_navigation($id,$nav){
 
              $menu = Menu::find($id);
+             $notices = Notice::all();
 
-        return view('page',compact('menu'));
+        return view('page',compact('menu','notices'));
 
 
       	// $submenulist = Navigation::where('menu',$nav)
@@ -356,7 +361,31 @@ class AdminController extends Controller
 
       }
 
+/**************************Create Notice*********************/
 
+public function store_notice(){
+
+   $this->validate(request(),[
+
+     'notice' => 'required'
+
+   ]);
+
+   Notice::create(request(['notice']));
+
+   return redirect('/dashboard')->with('success','Notice craeted succesfully');
+
+
+}
+
+public function delete_notice($id){
+
+   Notice::destroy($id);
+
+   return redirect('/dashboard')->with('success','Notice deleted succesfully');
+
+
+}
 
 
 

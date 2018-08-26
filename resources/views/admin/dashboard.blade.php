@@ -16,22 +16,21 @@
                   <span class="navbar-toggler-icon bg-light"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
                   <ul class="mr-auto">
                     <li id="showmenu" onclick="setStyle('showmenu', 'menu')">Create Nav Item</li>
                     <li id="showmenu1" onclick="setStyle('showmenu1', 'menu1')">Create Sub Nav Item</li>
-                    
-                  {{--  @if($name == 'submenu')
-                   
-                         <li id="showmenu1" active>Create Sub Nav Item</li>
-                         @endif --}}
-
                     <li id="showmenu2" onclick="setStyle('showmenu2', 'menu2')">Create Layout</li>
                     <li id="showmenu3" onclick="setStyle('showmenu3', 'menu3')">Create Menu</li>
                     <li id="showmenu4" onclick="setStyle('showmenu4', 'menu4')">Schedule</li>
                     <li id="showmenu5" onclick="setStyle('showmenu5', 'menu5')">Show Schedule</li>
                     <li id="showmenu6" onclick="setStyle('showmenu6', 'menu6')">Insert Schedule Details</li>
                     <li id="showmenu7" onclick="setStyle('showmenu7', 'menu7')">Show Schedule Details</li>
+                    <li id="showmenu8" onclick="setStyle('showmenu8', 'menu8')">Create Notice</li>
                   </ul>
+
+                  
                 </div>
               </nav>
             </div>
@@ -124,6 +123,17 @@
                    <div class="card">
                     <div class="card-body">
                       @include("admin.showScheduleDetails")
+
+                      </div>
+                    </div>
+                    <!---show_schedule ----->                  
+                  </div>
+                  <div class="menu8" style="display: none;">
+
+                   <!-- show_schedule -->
+                   <div class="card">
+                    <div class="card-body">
+                      @include("admin.notice")
 
                       </div>
                     </div>

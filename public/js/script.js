@@ -5,8 +5,8 @@ function setStyle(id, className) {
     localStorage.setItem('lastId', id);
     localStorage.setItem('lastClass', className);
 
-    var ids = ['showmenu', 'showmenu1', 'showmenu2', 'showmenu3', 'showmenu4', 'showmenu5','showmenu6','showmenu7'];
-    var classes = ['menu', 'menu1', 'menu2', 'menu3', 'menu4', 'menu5','menu6','menu7'];
+    var ids = ['showmenu', 'showmenu1', 'showmenu2', 'showmenu3', 'showmenu4', 'showmenu5','showmenu6','showmenu7','showmenu8'];
+    var classes = ['menu', 'menu1', 'menu2', 'menu3', 'menu4', 'menu5','menu6','menu7','menu8'];
 
     ids.forEach(function (item, index) {
         if(ids[index] === id) {

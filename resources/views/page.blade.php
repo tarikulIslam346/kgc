@@ -21,14 +21,22 @@
                 <div id="wrapper">
                   <div class="first">
                     <dl id="ticker-1">
-                      <dt>News ticker</dt>
-                        <dd>A news ticker (sometimes referred to as a &quot;crawler&quot;) resides in the lower third of the television screen space on television news networks dedicated to presenting headlines or minor pieces of news.</dd>
+                      @if(isset($notices))
+                      @foreach($notices as $notice)
+                     <dt>{{\Carbon\Carbon::parse($notice->created_at)->format('F d ')}}</dt>
+                        <dd>{!!$notice->notice!!}</dd>
                   
-                      <dt>Scoreboard style</dt>
+                    {{--   <dt>
+                      Scoreboard style</dt>
                         <dd>It may also refer to a long, thin scoreboard-style display seen around the front of some offices or public buildings.</dd>
                   
                       <dt>Mohammad Imran</dt>
-                        <dd>Since the growth in usage of the World Wide Web, news tickers have largely syndicated news posts from the websites of the broadcasting services which produce the broadcasts.</dd>
+                        <dd>
+                          Since the growth in usage of the World Wide Web, news tickers have largely syndicated news posts from the websites of the broadcasting services which produce the broadcasts.
+                        </dd> --}}
+                       
+                        @endforeach
+                         @endif
                     </dl>
                   </div>
                 </div>

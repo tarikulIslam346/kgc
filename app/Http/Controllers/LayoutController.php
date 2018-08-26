@@ -10,6 +10,7 @@ use App\Submenu;
 use App\Image;
 
 use App\Text;
+use App\Notice;
 
 use App\HeigherCommitee;
 use Illuminate\Support\Facades\Storage;
@@ -48,7 +49,7 @@ class LayoutController extends Controller
 
     }
 
-    public function show_heighercommitee($name,$id,$menu){
+    public function show_pages($name,$id,$menu){
 
 
             // dd($menu);
@@ -61,13 +62,15 @@ class LayoutController extends Controller
 
          $image = Image::where('submenu_id',$id)->get();
 
-          $text = Text::where('submenu_id',$id)->get();
+        $text = Text::where('submenu_id',$id)->get();
+
+        $notices = Notice::all();
 
 
         $menu = Menu::find($menu);
      
     
-    return view('page',compact('h','image','menu','text'));
+    return view('page',compact('h','image','menu','text','notices'));
 
     //      $submenulist = Navigation::where('menu',$menu)
 
