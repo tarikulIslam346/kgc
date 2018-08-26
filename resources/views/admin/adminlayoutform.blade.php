@@ -34,7 +34,7 @@
                    </div>
                    <div class="row justify-content-md-center">
                        <div class="col-md-10">
-                           <textarea placeholder="Write Your Speech Here" name="description" required></textarea>
+                            <textarea placeholder="Write Your Speech Here" id="message_text" name="description"></textarea>
                        </div>
                    </div>
                     <button type="submit" class="btn btn-primary btn-sm">Submit</button>
@@ -104,6 +104,33 @@
                      
                    
                    @endif
+                    @if($choice->choice == "Text")
+
+                
+                 
+
+                  <form action="/text/{{$choice->submenu_id}}" method="POST">
+
+                      @csrf
+
+
+
+             
+                   <div class="row justify-content-md-center">
+                       <div class="col-md-10">
+                            <textarea placeholder="Write Your Speech Here" id="message_text" name="details"></textarea>
+                       </div>
+                   </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+
+                      </form>
+                   {{--    @endforeach --}}
+                  
+
+
+                  
+                   </div> 
+                   @endif
                       
 
 
@@ -116,6 +143,25 @@
                 
                    @endforeach
                    @endif
+                   <script>
+            tinymce.init({ 
+                selector:'#message_text',
+                  body_class: 'my_class',
+                 theme: 'modern',
+                    width: 600,
+                    height: 300,
+                    plugins: [
+                      'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+                      'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+                      'save table contextmenu directionality emoticons template paste textcolor'
+                    ],
+                    content_css: 'css/content.css',
+                    toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons'
+  
+               
+              
+            });
+        </script>
 
   
 

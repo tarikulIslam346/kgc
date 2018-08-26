@@ -39,9 +39,9 @@ Route::post('/layout','AdminController@create_layout');
 
 Route::post('/nav','AdminController@create_navigation');
 
-Route::get('/{id}/{name}','AdminController@show_navigation');
+Route::get('/nav/{id}/{name}','AdminController@show_navigation');
 
-Route::get('/{name}/{id}/{menu}','LayoutController@show_heighercommitee');
+Route::get('/navigation/{name}/{id}/{menu}','LayoutController@show_heighercommitee');
 
 
 
@@ -49,6 +49,8 @@ Route::get('/{name}/{id}/{menu}','LayoutController@show_heighercommitee');
 Route::post('/heigher/{id}','LayoutController@store_heighercommitee');
 
 Route::post('/image/{id}','LayoutController@store_images');
+
+Route::post('/text/{id}','LayoutController@store_text');
 
 
 
@@ -66,4 +68,10 @@ Route::get('/schedule','ScheduleController@index');
 
 Route::get('/schedule_search','ScheduleController@search');
 
-Route::get('/schedule_details','ScheduleController@details');
+Route::get('/{id}/schedule/details','ScheduleController@delete_schedule_details');
+
+Route::post('/schedule_details','ScheduleController@details_store');
+
+Route::get('/schedule/{id}','ScheduleController@show_details');
+
+Route::get('/delete_schedule/{id}','ScheduleController@delete_schedule');

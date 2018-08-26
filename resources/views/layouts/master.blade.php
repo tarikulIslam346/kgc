@@ -22,6 +22,11 @@
         <!-- Latest compiled JavaScript for bootstrap-->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> 
 
+               <!----TinyMc--------->
+        <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+       
+<!-------TinyMc--------->
+
         <!---date picker--------->
         
 

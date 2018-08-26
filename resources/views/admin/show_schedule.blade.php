@@ -18,7 +18,8 @@
               <th>Update Winner Name</th>
               <th>Prize Money</th>
               <th>Update Prize Money</th>
-              <th>Start date</th>
+              <th>Schedule Deuration</th>
+               <th>Delete</th>
            
            </tr>
          </thead>
@@ -30,7 +31,7 @@
            <tr>
              <td>{{ $schedule->tournament }}</td>
              <td>
-			 	<form method="POST" action="/update_tournament/ {{  $schedule->id }}">
+			 	<form method="POST" action="/update_tournament/{{ $schedule->id }}">
 			                           @csrf
 
                      <div class="row">
@@ -44,7 +45,7 @@
             </td>
             <td>{{ $schedule->winner }}</td>
              <td>
-			 	<form method="POST" action="/update_winner/ {{  $schedule->id }}">
+			 	<form method="POST" action="/update_winner/{{ $schedule->id }}">
 			                           @csrf
 
                      <div class="row">
@@ -58,7 +59,7 @@
             </td>
             <td>{{ $schedule->prize_money}}  BDT </td>
             <td>
-        	<form method="POST" action="/update_prize/ {{  $schedule->id }}">
+        	<form method="POST" action="/update_prize/{{ $schedule->id }}">
 		                           @csrf
 
                  <div class="row">
@@ -70,7 +71,13 @@
                </div>
 		    </form>
             </td>
-            <td>{{ $schedule->start_date }}  </td>
+            <td>{{ \Carbon\Carbon::parse($schedule->start_date)->format('F d ') }} - 
+              {{ \Carbon\Carbon::parse($schedule->closing_date )->format('F d ')}} </td>
+
+               <td>
+                   <a href="/delete_schedule/{{ $schedule->id}}" class="btn btn-danger"><i class="fa fa-minus-square"></i>
+                               </a>
+                             </td>
             
            </tr>
              

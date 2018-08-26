@@ -1,14 +1,23 @@
+                @if(session('error'))
+                            <div class="alert  alert-danger fade show" role="alert">
+                               {{ session('error') }} 
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                           @endif
+
                 <form action="/nav" method="POST">
                         @csrf
 
                       <div class="form-row">
                         <div class="col-md-4 mb-3">
                           <label for="validationServer01">Nav catagory</label>
-                            <select class="custom-select custom-select-sm" name="menu">
+                            <select class="custom-select custom-select-sm" name="menu" required>
                               <option selected>select nav catagory</option>
                               @if(isset($menus))
                                 @foreach($menus as $menu)
-                                  <option value="{{$menu->name}}">{{$menu->name}}</option>
+                                  <option value="{{$menu->id}}">{{$menu->name}}</option>
                                 @endforeach
                               @endif
                             </select>
@@ -17,13 +26,15 @@
                         <div class="col-md-4 mb-3">
                           <label for="validationServer02">Nav Sub catagory</label>
 
-                          <!-- Material unchecked -->
+                         <!-- Material unchecked -->
 <!-- Default checked -->           
                                 
                                   @if(isset($submenus))
                                   @foreach($submenus as $submenu)
                                   <div class="custom-control custom-checkbox">
-                                      <input type="checkbox" class="custom-control-input" id="{{$submenu->name}}" name="submenulist[]" value="{{$submenu->name}}">
+                                      <input type="checkbox" class="custom-control-input" 
+                                      id="{{$submenu->name}}" name="submenulist[]" 
+                                      value="{{$submenu->id}}">
                                       <label class="custom-control-label" for="{{$submenu->name}}">{{$submenu->name}}</label>
                                   </div>
                            
@@ -59,25 +70,34 @@
                             </tr>
                           </thead>
                         <tbody>
-
-
-                         @if(isset($nav))
-                          @foreach($nav as $n)
+                          @if(isset($menus))
+                           @foreach($menus as $m)
                             <tr>
-                              <td>{{ $n->menu}}</td>
+                             
+
+                              <td>{{ $m->name}}</td>
+
+                        {{--  @if(isset($nav)) --}}
+                        <td>
+                          @foreach($m->submenus as $submenu)
+                            
 
                               
                               
-                               <td>
-                                @for($i=0;$i<count( $n->submenulist);$i++)
-                                {{$n->submenulist[$i]}} ,
-                                  @endfor
+                               
+                                {{-- @for($i=0;$i<count( $n->submenulist);$i++) --}}
+                                 <i class="fa fa-th"></i> {{$submenu->name}} 
+                              {{--     @endfor --}}
                                  
                               
-                                </td>
                               
-                            </tr>
+                              
+                           
                             @endforeach
+                              </td>
+                           
+                               </tr>
+                                  @endforeach
                             @endif
                           </tbody>
-                        </table>
+</table>

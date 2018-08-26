@@ -6,8 +6,9 @@ use App\Menu;
 use App\Submenu;
 use App\Layout;
 use App\LayoutChoice;
-use App\Navigation;
+// use App\Navigation;
 use App\Schedule;
+use App\ScheduleDetail;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -28,10 +29,11 @@ class AdminController extends Controller
     		$menus = Menu::all();
     		$submenus = Submenu::all();
     		$layouts = Layout::all();
-    		$nav = Navigation::all();
+    		//$nav = Navigation::all();
         $schedules = Schedule::all();
+        $scheduleDetails = ScheduleDetail::all();
 
-    		return view('admin.dashboard',compact('menus','submenus','layouts','nav','schedules'));
+    		return view('admin.dashboard',compact('menus','submenus','layouts','schedules','scheduleDetails'));
     	}
 
     	return view('admin.index');
@@ -45,10 +47,7 @@ class AdminController extends Controller
         
         }
 
-        $menus = Menu::all();
-
-
-            return view('admin.dashboard',compact('menus'));
+       return $this->dashboard();       
        
     }
     public function destroy(){
@@ -86,14 +85,6 @@ class AdminController extends Controller
 
       $menu = Menu::where('id',$id)->get();
 
-      //2. then delete from navigation
-
-      foreach($menu as $m){
-
-        Navigation::where('menu', $m->name)->delete();
-        
-      }
-
      //delete from menulist
 
 
@@ -103,7 +94,7 @@ class AdminController extends Controller
 
        
 
-    	 return redirect('/dashboard')->with('success','Navigation itemdeleted succesfully');
+    	 return redirect('/dashboard')->with('success','Navigation item deleted succesfully');
 
     }
 
@@ -113,15 +104,15 @@ class AdminController extends Controller
 
         //1.upadate on navigation table
 
-     $menu = Menu::where('id',$id)->get();
+     // $menu = Menu::where('id',$id)->get();
 
       //2. then update from navigation
 
-      foreach($menu as $m){
+      // foreach($menu as $m){
 
-        Navigation::where('menu', $m->name)->update(['menu'=>$name]);
+      //   Navigation::where('menu', $m->name)->update(['menu'=>$name]);
         
-      }
+      // }
 
     	$menu = Menu::find($id);
 
@@ -210,6 +201,11 @@ class AdminController extends Controller
     public function create_layout(){
         $id = request('submenu_id');
 
+         $this->validate(request(),[
+        'choice' => 'required',
+        'submenu_id' => 'required|unique:layout_choices'
+      ]);
+
     
 
    LayoutChoice::updateOrCreate(request(['choice','submenu_id']));
@@ -225,20 +221,49 @@ class AdminController extends Controller
 
     public function create_navigation(){
 
-    	 Navigation::Create(request()->except('_token','Submit'));
+  foreach(request('submenulist') as $submenu){
+      $submneu_id[] = $submenu;
+     }
+    
+     
+    
+     for($i=0 ;$i<count($submneu_id) ;$i++){
 
+      $submneu = Submenu::find($submneu_id[$i]);
 
+      if(  $submneu->menu_id  == null){
+
+      $submneu->menu_id = request('menu');
+
+      $submneu->save();
+
+        }else{
+
+          return redirect('/dashboard')->with('error','submenu already exists');
+
+        }
+    }
+ 
         return redirect('/dashboard');
+
+    	 // Navigation::Create(request()->except('_token','Submit'));
+
+
+      //   return redirect('/dashboard');
 
     }
       public function show_navigation($id,$nav){
 
+             $menu = Menu::find($id);
 
-      	$submenulist = Navigation::where('menu',$nav)
+        return view('page',compact('menu'));
 
-      	             ->get();
 
-      	return view('page',compact('submenulist'));
+      	// $submenulist = Navigation::where('menu',$nav)
+
+      	//              ->get();
+
+      	// return view('page',compact('submenulist'));
 
       }
 
@@ -273,7 +298,7 @@ class AdminController extends Controller
 
          $this->validate(request(),[
 
-        'tournament' => 'required|alpha|max:255'
+        'tournament' => 'required'
       ]);
 
 

@@ -17,7 +17,7 @@ class CreateSchedulesTable extends Migration
             $table->increments('id');
             $table->string('tournament');
             $table->integer('prize_money');
-            $table->string('winner');
+            $table->string('winner')->nullable();
             $table->date('start_date');
             $table->date('closing_date');
             $table->timestamps();

@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Navigation;
+use App\Menu;
 
 use App\Submenu;
 use App\Image;
+
+use App\Text;
 
 use App\HeigherCommitee;
 use Illuminate\Support\Facades\Storage;
@@ -59,13 +61,21 @@ class LayoutController extends Controller
 
          $image = Image::where('submenu_id',$id)->get();
 
-         $submenulist = Navigation::where('menu',$menu)
+          $text = Text::where('submenu_id',$id)->get();
 
-                     ->get();
+
+        $menu = Menu::find($menu);
+     
+    
+    return view('page',compact('h','image','menu','text'));
+
+    //      $submenulist = Navigation::where('menu',$menu)
+
+    //                  ->get();
 
      
     
-    return view('page',compact('h','image','submenulist'));
+    // return view('page',compact('h','image','submenulist'));
     	
        
     }
@@ -88,9 +98,9 @@ class LayoutController extends Controller
 
             foreach(request()->file('filename') as $image)
             {
-                $name=$image->getClientOriginalName();
-                $image->move(public_path().'/images/', $name);  
-                $data[] = $name;  
+               $image_name=$image->getClientOriginalName();
+                $image->move(public_path().'/images/', $image_name);  
+                $data[] = $image_name;   
             }
          }
 
@@ -103,5 +113,26 @@ class LayoutController extends Controller
 
         return redirect('/dashboard')->with('success', 'Your images has been successfully');
     }
+
+
+     public function store_text( $id){
+
+        $this->validate(request(), [
+            'details' => 'required'
+
+        ]);
+
+
+         $text= new Text;
+         $text->details = request('details');
+         $text->submenu_id = $id;
+         $text->save();
+
+         return redirect('/dashboard')->with('success', 'Your text of this page  has been added successfully');
+
+     }
+
+
+
 
 }

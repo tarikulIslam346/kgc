@@ -57,7 +57,11 @@
                                             
                                         </div>
                                         <div class="col-md-12 _r_top">
-                                            <p class="text-center">{{ $hf->description}}</p> 
+                                            <p class="text-center">
+                                              {!! $hf->description !!};
+
+
+                                            </p> 
                                         </div>
                                     </div>
                                 </div>
@@ -140,6 +144,37 @@
                           
                       </div>
                   </div> --}}
+                  @endforeach
+                  @endif
+
+                  @if(isset($text))
+                           @foreach($text as $page)
+
+                          
+                 
+                        <div class=" _r_section_body_right">
+
+                                    
+                                    <div class="row justify-content-md-center">
+
+                                       
+                                        <div class="col-md-12 _r_top">
+                                            <p class="text-center">
+                                              {!! $page->details !!};
+
+
+                                            </p> 
+                                        </div>
+                                    </div>
+                                </div>
+                           {{--  <img src="/images/{{ $img->img_url[$i] }}"/> --}}
+                          {{-- <h5 class="text-center">{{$hf->name}}</h5>
+                          <p class="text-center">{{$hf->title}}</p> --}}
+                        
+                      </div>
+                  </div>
+                
+         
                   @endforeach
                   @endif
               </div>

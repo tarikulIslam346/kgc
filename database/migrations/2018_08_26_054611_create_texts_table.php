@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNavigationsTable extends Migration
+class CreateTextsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateNavigationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('navigations', function (Blueprint $table) {
+        Schema::create('texts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('menu')->unique();
-            $table->longText('submenulist');
+            $table->longtext('details');
+            $table->integer('submenu_id')->unique();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateNavigationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('navigations');
+        Schema::dropIfExists('texts');
     }
 }

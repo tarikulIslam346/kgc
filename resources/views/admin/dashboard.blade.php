@@ -29,6 +29,8 @@
                     <li id="showmenu3" onclick="setStyle('showmenu3', 'menu3')">Create Menu</li>
                     <li id="showmenu4" onclick="setStyle('showmenu4', 'menu4')">Schedule</li>
                     <li id="showmenu5" onclick="setStyle('showmenu5', 'menu5')">Show Schedule</li>
+                    <li id="showmenu6" onclick="setStyle('showmenu6', 'menu6')">Insert Schedule Details</li>
+                    <li id="showmenu7" onclick="setStyle('showmenu7', 'menu7')">Show Schedule Details</li>
                   </ul>
                 </div>
               </nav>
@@ -96,14 +98,36 @@
                   </div>
                    <div class="menu5" style="display: none;">
 
-                   <!-- Green fee create -->
+                   <!-- show_schedule -->
                    <div class="card">
                     <div class="card-body">
                       @include("admin.show_schedule")
 
                       </div>
                     </div>
-                    <!---Green fee create ----->                  
+                    <!---show_schedule ----->                  
+                  </div>
+                     <div class="menu6" style="display: none;">
+
+                   <!-- show_schedule -->
+                   <div class="card">
+                    <div class="card-body">
+                      @include("admin.scheduleDetails")
+
+                      </div>
+                    </div>
+                    <!---show_schedule ----->                  
+                  </div>
+                       <div class="menu7" style="display: none;">
+
+                   <!-- show_schedule -->
+                   <div class="card">
+                    <div class="card-body">
+                      @include("admin.showScheduleDetails")
+
+                      </div>
+                    </div>
+                    <!---show_schedule ----->                  
                   </div>
 
                 </div>

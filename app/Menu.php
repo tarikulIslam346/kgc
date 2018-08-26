@@ -16,4 +16,8 @@ class Menu extends Model
 
     	return static::where('confirmed',1)->get();
     }
+
+       public function submenus(){
+    	return $this->hasMany(Submenu::class);
+    }
 }

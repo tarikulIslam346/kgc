@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 use App\Schedule;
+use App\ScheduleDetail;
 
 class ScheduleController extends Controller
 {
@@ -31,7 +32,7 @@ class ScheduleController extends Controller
         
          ->orderBy('id', 'desc')
 
-         ->simplePaginate(3);
+         ->simplePaginate(5);
           // ->orWhere('Address', 'like', '%'.$query.'%')
          // ->orWhere('City', 'like', '%'.$query.'%')
          // ->orWhere('PostalCode', 'like', '%'.$query.'%')
@@ -41,7 +42,7 @@ class ScheduleController extends Controller
       else
       {
        $data = Schedule::orderBy('id', 'desc')
-       ->simplePaginate(3);
+       ->simplePaginate(5);
          // ->get();
       }
       $total_row = $data->count();
@@ -49,25 +50,24 @@ class ScheduleController extends Controller
       {
        foreach($data as $row)
        {
-        $output .= '
-        <tr>
-         <td>'.Carbon::parse($row->start_date)->format('F d ').'-'.Carbon::parse($row->closing_date)->format('F d ').'</td>
-         <td>'.$row->tournament.'</td>
+        $output .= "<div class='row'>
+        <div class='col-sm'>".Carbon::parse($row->start_date)->format('F d ').'-'.Carbon::parse($row->closing_date)->format('F d ')."</div>
+         <div class='col-sm' style='background-color:red;'><a href='/schedule/".$row->id."'>"
+         .$row->tournament."
+         </a></div>
     
-         <td>'.$row->prize_money.'</td>
-         <td>'.$row->winner.'</td>
-        </tr>
-        ';
+         <div class='col-sm' >".$row->prize_money."</div>
+         <div class='col-sm'>".$row->winner."</div></div>";
       
        }
       }
       else
       {
-       $output = '
-       <tr>
-        <td align="center" colspan="5">No Data Found</td>
-       </tr>
-       ';
+       $output =  "
+       <div class='row'>
+        <div class='col-sm'>No Data Found</div>
+       </div>
+       ";
       }
       $data = array(
        'table_data'  => $output,
@@ -77,6 +77,40 @@ class ScheduleController extends Controller
       echo json_encode($data);
      }
     }
+
+    public function delete_schedule($id){
+
+       Schedule::destroy($id);
+        return redirect('/dashboard')->with('success','Schedule  deleted succesfully');
+
+
+
+    }
+
+     public function details_store(){
+
+       ScheduleDetail::create(request()->except('_token','Submit'));
+
+
+       return redirect('/dashboard')->with('success','Schedule details created succesfully');
+     }
+
+    public function delete_schedule_details($id){
+     
+     ScheduleDetail::destroy($id);
+
+          return redirect('/dashboard')->with('success','Schedule details deleted succesfully');
+
+    }
+     public function show_details( $id){
+
+         $scheduleDetails =  ScheduleDetail::where('schedule_id',$id)->get();
+         $schedulename =  Schedule::where('id',$id)->get();
+
+         return view('scheduleDetailpage',compact('scheduleDetails','schedulename'));
+
+
+     }
 
 
 

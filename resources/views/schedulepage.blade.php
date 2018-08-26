@@ -2,6 +2,7 @@
 
 @section('content')
 
+
   <div class="container box">
    
    <div class="panel panel-default">
@@ -15,9 +16,9 @@
     </div>
      </div>
 
-     <div class="table-responsive">
+    {{--  <div class="table-responsive"> --}}
       {{-- <h3 align="center">Total Data : <span id="total_records"></span></h3> --}}
-      <table class="table table-striped table-bordered" style="border:none;">
+{{--       <table class="table table-striped table-bordered" style="border:none;">
        <thead>
         <tr>
          <th>Date</th>
@@ -28,10 +29,28 @@
         </tr>
        </thead>
        <tbody>
-
        </tbody>
-      </table>
-     </div>
+      </table> --}}
+    {{--  </div> --}}
+    <div class="row">
+      <div class="col-sm">
+        Date
+      </div>
+      <div class="col-sm">
+        Touranment
+      </div>
+      <div class="col-sm">
+        Prize Money
+      </div>
+      <div class="col-sm">
+        Winner
+      </div>
+    </div>
+    <div  id="list">
+    </div>
+
+
+
     </div>    
    </div>
   </div>
@@ -39,9 +58,7 @@
 
 <script>
 $(document).ready(function(){
-
  fetch_customer_data();
-
  function fetch_customer_data(query = '')
  {
   $.ajax({
@@ -51,12 +68,11 @@ $(document).ready(function(){
    dataType:'json',
    success:function(data)
    {
-    $('tbody').html(data.table_data);
+    $('#list').html(data.table_data);
     // $('#total_records').text(data.total_data);
    }
   })
  }
-
  $(document).on('click', '#search', function(){
   var query = $('#text').val();
   fetch_customer_data(query);

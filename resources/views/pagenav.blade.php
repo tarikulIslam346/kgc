@@ -1,36 +1,32 @@
-                  <ul>
+          <ul>
               
-                    @if(isset($submenulist))
+                    @if(isset($menu))
                     
-                    @foreach($submenulist as $nav)
+                    @foreach($menu->submenus as $submenu)
                     
-                       @for($i=0;$i<count($nav->submenulist);$i++)
-
+                     {{--   @for($i=0;$i<count($nav->submenulist);$i++)
                        @php 
-
                        $var = \App\Submenu::where('name',$nav->submenulist[$i])->get();
-
                      
                         @endphp
+ --}}
+                      {{--  @foreach($var as $v) --}}
 
-                       @foreach($var as $v)
+                      <li class="text-center">
 
-                      <li class="text-center active">
+                        <a href="/navigation/{{$submenu->name}}/{{$submenu->id}}/{{$menu->id}}" id="loadcontent">
 
-                        <a href="/{{$nav->submenulist[$i]}}/{{$v->id}}/{{$nav->menu}}" id="loadcontent">
-
-                          {{$nav->submenulist[$i]}}
+                          {{$submenu->name}}
                           
                         </a>
 
                       </li>
 
-                      @endforeach
-
-                      @endfor
+             {{--          @endforeach
+                      @endfor --}}
 
                       @endforeach
 
                       @endif
 
-                    </ul>
+</ul>

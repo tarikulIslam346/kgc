@@ -1,4 +1,13 @@
-<form action="/layout" method="POST">
+                 @if(session('success'))
+                            <div class="alert  alert-success fade show" role="alert">
+                               {{ session('success') }} 
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                                  
+                           @endif
+                <form action="/layout" method="POST">
                         @csrf
 
                         <div class="container-fluid">

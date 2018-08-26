@@ -9,4 +9,10 @@ class Schedule extends Model
     //
 
     protected $fillable = ['tournament','prize_money','winner','start_date','closing_date'];
+
+   public function scheduleDetails(){
+
+    	return $this->hasMany(ScheduleDetail::class);
+    	
+    }
 }

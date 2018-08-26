@@ -30,7 +30,7 @@
                     @break
 
                   @endif
-                   <li><a href="/{{$menu->id}}/{{$menu->name}}" style="font-size: 12px;font-family: 'Comfortaa', cursive;">
+                   <li><a href="/nav/{{$menu->id}}/{{$menu->name}}" style="font-size: 12px;font-family: 'Comfortaa', cursive;">
                     <br>{{ strtoupper($menu->name) }}</a></li>
                   
 
@@ -70,7 +70,7 @@
              @if(\Auth::check())
              <ul style="margin: auto;">
                  <li style="color:#fff;"><a href="/dashboard" >{{strtoupper(\Auth::user()->name)}}</a>
-                 <a href="/destroy" type="button" class="btn btn-success">Logout</a>
+                 <a href="/destroy" type="button" class="btn btn-success"><i class="fa fa-ship"></i>Logout</a>
                  </li>
              </ul>
              @endif

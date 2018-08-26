@@ -1,4 +1,4 @@
-        @if(session('success'))
+@if(session('success'))
                             <div class="alert  alert-success fade show" role="alert">
                                {{ session('success') }} 
                               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -20,6 +20,15 @@
                            <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i></button>
                          </div>
                        </form>
+
+                          @if($errors->has('name'))
+                              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                              <p>{{ $errors->first('name') }} </p>
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                           @endif
                        <table class="table table-striped table-dark">
                          <thead>
                            <tr>
@@ -28,9 +37,10 @@
                              <!-- {{-- <th>Delete</th> --}} -->
                              <th>Edit Navigation Subitem name</th>
 
-                             <th> Selected Layout</th>
+                            
 
                              <th>Delete</th>
+                              <th> Selected Layout</th>
                             
                            </tr>
                          </thead>
@@ -39,6 +49,7 @@
                          @foreach($submenus as $submenu)
                            <tr>
                              <td>{{ $submenu->name }}</td>
+
 
                               <td>
                                  <form method="POST" action="/update_submenu/ {{ $submenu->id }}">
@@ -51,8 +62,14 @@
                                      </div>
                                    </form>
                                </td>
+
+                            <td>
+                               <a href="/delete_submenu/{{ $submenu->id  }}" class="btn btn-danger"><i class="fa fa-minus-square"></i>
+                               </a>
+                             </td>
                                 @php
-                                  $var =  \App\LayoutChoice::select('choice')->where('submenu_id',$submenu->id )->get();
+                                  $var =  \App\LayoutChoice::select('choice')
+                                            ->where('submenu_id',$submenu->id )->get();
                                  @endphp
                                  @foreach($var as $v)
                                <td>
@@ -63,12 +80,9 @@
 
                             
                                @endforeach
-                                   <td>
-                               <a href="/delete_submenu/{{ $submenu->id  }}" class="btn btn-danger"><i class="fa fa-minus-square"></i>
-                               </a>
-                             </td>
+                           
                            </tr>
                            @endforeach
                            @endif
                          </tbody>
-                       </table>
+</table>
