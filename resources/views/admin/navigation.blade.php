@@ -32,10 +32,12 @@
                                   @if(isset($submenus))
                                   @foreach($submenus as $submenu)
                                   <div class="custom-control custom-checkbox">
+                                    @if($submenu->menu_id == null)
                                       <input type="checkbox" class="custom-control-input" 
                                       id="{{$submenu->name}}" name="submenulist[]" 
                                       value="{{$submenu->id}}">
                                       <label class="custom-control-label" for="{{$submenu->name}}">{{$submenu->name}}</label>
+                                      @endif
                                   </div>
                            
                                     
