@@ -4,7 +4,7 @@
 
  <section class="_r_section_login_wrap">
                 <div class="container">
-                    <div class="row justify-content-md-center" style="height: 100vh;display: flex;background-image: url(img/s1.jpeg);">
+                    <div class="row justify-content-md-center">
                         <div class="col-md-3 col-sm-1" style="margin: auto;"  id="_r_login_header" >
                             <header>
                               <h2>Admin Login</h2>
@@ -26,32 +26,7 @@
                     </div>
                 </div>
             </section>
-{{-- <div class="row">
-  <div class="col-sm-2"></div>
-  <div class="col-sm-6">
-<div class="card">
-	 <div class="card-body">
- <form action="/store" method="POST">
- 	@csrf --}}
-  {{-- <div class="form-group">
-    <label for="email">Email address:</label>
-    <input type="email" name="email" class="form-control" id="email">
-  </div>
-  <div class="form-group">
-    <label for="pwd">Password:</label>
-    <input type="password" name="password" class="form-control" id="pwd">
-  </div>
-  <div class="form-group form-check">
-    <label class="form-check-label">
-      
-    </label>
-  </div> --}}
-  {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
-{{--  </form> --}}
-{{-- </div>
-</div>
-</div>
-</div> --}}
+
 
 @endsection
 
