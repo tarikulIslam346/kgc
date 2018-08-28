@@ -196,20 +196,32 @@ class AdminController extends Controller
     $image_path = public_path()."/images1/$h->heading";  // Value is not URL but directory file path
 
 }
-//dd($image_path);
+
  \File::delete([
             $image_path
         ]);
     
-    // $hc=  HeigherCommitee::where('submenu_id',$id)->get();
-    
-    // foreach( $hc as $h){
-    
-    // Storage::disk('local')->delete($h->heading);
-    
-    // }
-    
+  
     HeigherCommitee::where('submenu_id',$id)->delete();
+
+    $images =  Image::where('submenu_id',$id)->get();
+     $images_path = '';
+
+ foreach( $images  as $image ){
+  for($i=0;$i<count($image->img_url) ;$i++){
+    $images_path = public_path()."/images/".$image->img_url[$i]; 
+
+    // dd( $images_path );
+     \File::delete([
+            $images_path
+        ]);
+
+    } // Value is not URL but directory file path
+  }
+
+
+
+
     
     Image::where('submenu_id',$id)->delete();
     
