@@ -27,6 +27,10 @@ li{
     color: #fff;
 }
 
+.toggle.btn{
+    min-height: 28px !important;
+}
+
 .btn{
     border-radius:0;
     padding: 4px 18px; 
@@ -626,12 +630,17 @@ code {
     color: red;
 }
 #_r_committee_member .add_row{
-    width: 250px;
-    border: none;
+    /*width: 250px;
+    border: none;*/
     background-color: lightcoral;
 }
 #_r_committee_member ._r_add_button{
     display: flex;
+    width: 83px;
+    border-radius: 0;
+    height: 28px;
+    margin-top: 10px;
+    cursor: pointer;
 }
 #_r_committee_member button{
     margin: auto;

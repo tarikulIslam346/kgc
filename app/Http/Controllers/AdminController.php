@@ -6,13 +6,16 @@ use App\Menu;
 use App\Submenu;
 use App\Layout;
 use App\LayoutChoice;
-// use App\Navigation;
+use App\Image;
 use App\Schedule;
 use App\ScheduleDetail;
 use App\Notice;
+use App\HeigherCommitee;
+use App\Text;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
 
 
 class AdminController extends Controller
@@ -25,27 +28,25 @@ class AdminController extends Controller
 
     public function dashboard(){
 
-    	if(\Auth::check())
-    	{
-    		$menus = Menu::all();
-    		$submenus = Submenu::all();
-    		$layouts = Layout::all();
-    		//$nav = Navigation::all();
+      if(\Auth::check())
+      {
+        $menus = Menu::all();
+        $submenus = Submenu::all();
+        $layouts = Layout::all();
         $schedules = Schedule::all();
         $scheduleDetails = ScheduleDetail::all();
-
         $notices = Notice::all();
 
-    		return view('admin.dashboard',compact('menus','submenus','layouts','schedules','scheduleDetails',
+        return view('admin.dashboard',compact('menus','submenus','layouts','schedules','scheduleDetails',
           'notices'));
-    	}
+      }
 
-    	return view('admin.index');
+      return view('admin.index');
     }
 
         public function store(){
 
-    	if(  ! auth()->attempt(request(['email','password'])) ) {
+      if(  ! auth()->attempt(request(['email','password'])) ) {
             // Authentication passed...
              return back(); 
         
@@ -56,69 +57,66 @@ class AdminController extends Controller
     }
     public function destroy(){
 
-    	auth()->logout();
+      auth()->logout();
 
-    	return redirect('/admin');
+      return redirect('/admin');
     }
 
     //this method is used for create navigation item of page
 
     public function create_menu(){
 
-    	$this->validate(request(),[
-    		'name' => 'required|unique:menus|max:255',
+      $this->validate(request(),[
+        'name' => 'required|unique:menus|max:255',
 
-    	]);
+      ]);
 
-    	 Menu::create(request(['name']));
+       Menu::create(request(['name']));
 
-    	 
+       
 
-    	 return redirect('/dashboard')->with('success','Menu created succesfully');
+       return redirect('/dashboard')->with('success','Menu created succesfully');
     
     }
 
-     //this method is used for delete navegtion item titile of page
+     //this method is used for delete navigtion item of page
     public function delete_menu(){
 
-    	$id = request('id');
+      $id = request('id');
 
-       // delete from navigation 
+       
 
-        //1. get the menu id
+        //update submenu.menu_id
 
-      $menu = Menu::where('id',$id)->get();
+      $submenus = Submenu::where('menu_id',$id)->get();
+      
+      foreach($submenus as $submenu){
+          
+          $submenu->menu_id = 0;
+          
+           $submenu->save();
+      }
+     
 
-     //delete from menulist
+     //delete from menu
 
 
-    	Menu::where('id',$id)->delete();
+      Menu::where('id',$id)->delete();
 
 
 
        
 
-    	 return redirect('/dashboard')->with('success','Navigation item deleted succesfully');
+       return redirect('/dashboard')->with('success','Navigation item deleted succesfully');
 
     }
 
     public function update_menu($id){
 
-    	$name = request('name');
+      $name = request('name');
 
-        //1.upadate on navigation table
 
-     // $menu = Menu::where('id',$id)->get();
-
-      //2. then update from navigation
-
-      // foreach($menu as $m){
-
-      //   Navigation::where('menu', $m->name)->update(['menu'=>$name]);
-        
-      // }
-
-    	$menu = Menu::find($id);
+      $menu = Menu::find($id);
 
         $menu->name = $name ;
 
@@ -132,17 +130,17 @@ class AdminController extends Controller
     public function show_menu($id){
 
 
-    	$published = Input::has('show') ? true : false;
+      $published = Input::has('show') ? true : false;
 
-    	$menu = Menu::find($id);
+      $menu = Menu::find($id);
 
-    	$menu->confirmed = $published ;
+      $menu->confirmed = $published ;
 
-    	$menu->save();
+      $menu->save();
 
-    	return redirect('/dashboard')->with('success','Show Navigation item succesfully');
+      return redirect('/dashboard')->with('success','Show Navigation item succesfully');
 
-    	
+      
 
     }
 
@@ -150,28 +148,28 @@ class AdminController extends Controller
 
      public function create_submenu(){
 
-    	$this->validate(request(),[
+      $this->validate(request(),[
 
-    		'name' => 'required|unique:submenus|max:255',
+        'name' => 'required|unique:submenus|max:255',
 
-    	]);
+      ]);
 
-    	 Submenu::create(request(['name']));
+       Submenu::create(request(['name']));
 
-    	
+      
 
-    	
+      
 
-    	 return redirect('/dashboard')->with('success','Sub navigation item created succesfully');
+       return redirect('/dashboard')->with('success','Sub navigation item created succesfully');
     
     }
 
    public function update_submenu($id){
 
-    	$name = request('name');
-    	// dd($name);
+      $name = request('name');
+    
 
-    	$submenu = Submenu::find($id);
+      $submenu = Submenu::find($id);
 
         $submenu->name = $name ;
 
@@ -179,7 +177,7 @@ class AdminController extends Controller
 
         return redirect('/dashboard')->with('success','Sub navigation item updated succesfully');
 
-    	//return view('admin.update_dashboard ')->with('id','menus');
+      //return view('admin.update_dashboard ')->with('id','menus');
 
     }
 
@@ -187,6 +185,24 @@ class AdminController extends Controller
 
 
     Submenu::where('id',$id)->delete();
+    
+    LayoutChoice::where('submenu_id',$id)->delete();
+    
+    // $hc=  HeigherCommitee::where('submenu_id',$id)->get();
+    
+    // foreach( $hc as $h){
+    
+    // Storage::disk('local')->delete($h->heading);
+    
+    // }
+    
+    HeigherCommitee::where('submenu_id',$id)->delete();
+    
+    Image::where('submenu_id',$id)->delete();
+    
+    Text::where('submenu_id',$id)->delete();
+    
+    
 
 
 
@@ -194,15 +210,14 @@ class AdminController extends Controller
 
        return redirect('/dashboard')->with('success','Navigation sub item deleted succesfully');
 
-        // return redirect('/dashboard')->with('success','Sub navigation item updated succesfully');
-
-      //return view('admin.update_dashboard ')->with('id','menus');
+    
 
     }
  /*******************for sub menu **********************************************************/
  /**************For layout *****************************************************************/
 
     public function create_layout(){
+        
         $id = request('submenu_id');
 
          $this->validate(request(),[
@@ -250,7 +265,7 @@ class AdminController extends Controller
  
         return redirect('/dashboard');
 
-    	 // Navigation::Create(request()->except('_token','Submit'));
+       // Navigation::Create(request()->except('_token','Submit'));
 
 
       //   return redirect('/dashboard');
@@ -264,11 +279,11 @@ class AdminController extends Controller
         return view('page',compact('menu','notices'));
 
 
-      	// $submenulist = Navigation::where('menu',$nav)
+        // $submenulist = Navigation::where('menu',$nav)
 
-      	//              ->get();
+        //              ->get();
 
-      	// return view('page',compact('submenulist'));
+        // return view('page',compact('submenulist'));
 
       }
 

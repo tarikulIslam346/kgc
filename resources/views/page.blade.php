@@ -4,13 +4,9 @@
 
 <section class="_r_sector_wrap" id="about_us">
 
-{{-- <div class="cotainer-fluid"> --}}
-  {{-- <div class="row"> --}}
-        {{-- <div class="col-md-12"> --}}
+
           <img src="/img/s4.jpeg" alt="New York" style="width: 100%; height: 450px">
-        {{-- </div> --}}
-      {{-- </div> --}}
-{{-- </div> --}}
+
 
 
       <div class="container">
@@ -26,14 +22,7 @@
                      <dt>{{\Carbon\Carbon::parse($notice->created_at)->format('F d ')}}</dt>
                         <dd>{!!$notice->notice!!}</dd>
                   
-                    {{--   <dt>
-                      Scoreboard style</dt>
-                        <dd>It may also refer to a long, thin scoreboard-style display seen around the front of some offices or public buildings.</dd>
-                  
-                      <dt>Mohammad Imran</dt>
-                        <dd>
-                          Since the growth in usage of the World Wide Web, news tickers have largely syndicated news posts from the websites of the broadcasting services which produce the broadcasts.
-                        </dd> --}}
+          
                        
                         @endforeach
                          @endif
@@ -60,7 +49,10 @@
                                     <div class="row justify-content-md-center">
 
                                         <div class="col-md-4 _r_top">
-                                            <img src="{{ Storage::url( $hf->heading ) }}"/>
+                                            <img src="{{ Storage::url( $hf->heading ) }}"
+                                            
+                                            />
+                                         
                                             <h5 class="text-center">{{ $hf->name }}</h5>
                                             
                                         </div>
@@ -73,9 +65,7 @@
                                         </div>
                                     </div>
                                 </div>
-                           {{--  <img src="/images/{{ $img->img_url[$i] }}"/> --}}
-                          {{-- <h5 class="text-center">{{$hf->name}}</h5>
-                          <p class="text-center">{{$hf->title}}</p> --}}
+                      
                         
                       </div>
                   </div>
@@ -99,7 +89,7 @@
                                         <div class="col-md-4 _r_top">
                                             <img src="/images/{{ $img->img_url[0] }}"/>
                                             <h5 class="text-center">{{ $img->name[0] }}</h5>
-                                            {{-- <p class="text-center">Content</p> --}}
+                                     
                                         </div>
                                     </div>
                                    
@@ -109,49 +99,31 @@
                                     <div class="row _r_bottom">
                                         @for($i=1 ; $i< count($img->img_url); $i++)
                                      
-                                      {{-- @for($i=0 ; $i< count($img->img_url); $i++) --}}
+                                    
                                         <div class="col-md-4">
-                                          {{-- @if($i>0) --}}
+                                          
                                             <img src="/images/{{ $img->img_url[$i] }}"/>
                                             <h5 class="text-center">{{ $img->name[$i] }}</h5>
-                                            <p class="text-center">Content</p>
-                                            {{-- @endif --}}
+                                           
+                                           
                                         </div>
                                          @endfor
                                           
                                
                                         
-                                    </div>{{-- 
-                                   
-                                    @endfor --}}
+                                    </div>
                                     
                                 </div>
 
                         
                          
                       
-                           {{--  <img src="/images/{{ $img->img_url[$i] }}"/> --}}
-                             
-                              
-                            
-                            
-                          
-                          {{-- <h5 class="text-center">{{$hf->name}}</h5>
-                          <p class="text-center">{{$hf->title}}</p> --}}
+                  
                         
                       </div>
                   </div>
                 
-               {{--    <div class="row _r_bottom">
-                      <div class="col-md-12">
-                    
-                          
-                            <p>{{$hf->description}}</p>
-                              
-                             
-                          
-                      </div>
-                  </div> --}}
+           
                   @endforeach
                   @endif
 
@@ -175,9 +147,7 @@
                                         </div>
                                     </div>
                                 </div>
-                           {{--  <img src="/images/{{ $img->img_url[$i] }}"/> --}}
-                          {{-- <h5 class="text-center">{{$hf->name}}</h5>
-                          <p class="text-center">{{$hf->title}}</p> --}}
+                           
                         
                       </div>
                   </div>

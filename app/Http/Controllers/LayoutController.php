@@ -29,13 +29,33 @@ class LayoutController extends Controller
     public function store_heighercommitee(Request $request, $id){
 
       
-    	$file = $request->file('avatar')->store('public');
+        $this->validate(request(), [
+            
+                 
+                'avatar' => 'required',
+                
+                'avatar.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+
+        ]);
+                $image_name = '' ;
+        
+        if(request()->hasfile('avatar'))
+         {
+
+           
+         
+               $image_name=request()->file('avatar')->getClientOriginalName();
+               request()->file('avatar')->move(public_path().'/images1/', $image_name);  
+                // request()->file('avatar')->move('/home/kgcbdc/public_html/images1/', $image_name);  
+               
+           
+         }
 
 
     
                 //create
     	 		$high = new HeigherCommitee;
-    			$high->heading = $file;
+    			$high->heading =   $image_name;
     			$high->name = request('name');
     			$high->title = request('title');
     			$high->description = request('description');
@@ -103,6 +123,7 @@ class LayoutController extends Controller
             {
                $image_name=$image->getClientOriginalName();
                 $image->move(public_path().'/images/', $image_name);  
+                // $image->move('/home/kgcbdc/public_html/images/', $image_name);  
                 $data[] = $image_name;   
             }
          }

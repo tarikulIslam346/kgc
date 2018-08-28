@@ -62,33 +62,38 @@
 
                       @csrf
 
-                         <div class="container-fluid">
-                    <div class="row" id="_r_committee_member">
-                        <div class="col-md-9 _r_section_body_right">
-                            <h1 class="text-center" style="padding-bottom: 30px">Committee Members Image</h1>
-                            <div class="row justify-content-md-center">
-                                <div class="col-md-4 _r_top">
-                                    <div class="_r_wrap_col">
-                                        <div class="_r_committee_member upload-icon">
-                                        <img id="multiImageId">
+            <div class="container-fluid">
+                            <div class="row" id="_r_committee_member">
+                                <div class="col-md-9 _r_section_body_right">
+                                    <h1 class="text-center" style="padding-bottom: 30px">Committee Members Image</h1>
+                                    <div class="row justify-content-md-center">
+                                        <div class="col-md-4 _r_top">
+                                            <div class="_r_wrap_col">
+                                                <div class="_r_committee_member upload-icon">
+                                                <img id="multiImageId">
+                                            </div>
+                                            <label> Insert Image
+                                                <input type="file" name="filename[]" id="multi-file-input">
+                                            </label>
+                                            <input type="text" name="name[]" placeholder="Name" class="_r_input_deco">
+                                           {{--  <input type="text" name="member_position" placeholder="Position" class="_r_input_deco"> --}}
+                                            </div>
+                                        </div>
                                     </div>
-                                    <label> Insert Image
-                                        <input type="file" name="filename[]" id="multi-file-input">
-                                    </label>
-                                    <input type="text" name="name[]" placeholder="Name" class="_r_input_deco">
-                                   {{--  <input type="text" name="member_position" placeholder="Position" class="_r_input_deco"> --}}
+                                    <div class="row _r_bottom mytbody"></div>
+
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="_r_add_button float-right"><i class="fa fa-plus add_row"></i></div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <button type="submit" class="btn btn-primary float-left" style="margin-top:10px">Submit</button>
+                                      </div>
                                     </div>
                                 </div>
+
                             </div>
-                            <div class="row _r_bottom mytbody"></div>
-                            <div class="_r_add_button"><i class="fa fa-plus add_row"></i></div>
                         </div>
-                    </div>
-                </div>
-
-
-
-                      <button type="submit" class="btn btn-primary" style="margin-top:10px">Submit</button>
                   
                     
                        
