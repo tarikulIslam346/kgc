@@ -16,7 +16,8 @@ class CreateSchedulesTable extends Migration
         Schema::create('schedules', function (Blueprint $table) {
             $table->increments('id');
             $table->string('tournament');
-            $table->integer('prize_money');
+            $table->string('tournament_logo');
+            // $table->integer('prize_money');
             $table->string('winner')->nullable();
             $table->date('start_date');
             $table->date('closing_date');

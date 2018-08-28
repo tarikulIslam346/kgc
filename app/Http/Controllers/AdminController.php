@@ -322,7 +322,10 @@ class AdminController extends Controller
 
         'tournament' => 'required|max:255',
 
-        'prize_money' => 'required|integer',
+        'tournament_logo' => 'required',
+                
+        'tournament_logo.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
 
         'start_date' => 'required|date|date_format:Y-m-d',
 
@@ -330,8 +333,30 @@ class AdminController extends Controller
 
 
       ]);
+  
+                $image_name = '' ;
+        
+        if(request()->hasfile('tournament_logo'))
+         {
 
-      Schedule::create(request()->except('_token','Submit'));
+           
+         
+               $image_name = request()->file('tournament_logo')->getClientOriginalName();
+               request()->file('tournament_logo')->move(public_path().'/logos/', $image_name);  
+                // request()->file('avatar')->move('/home/kgcbdc/public_html/images1/', $image_name);  
+               
+           
+         }
+
+      Schedule::create([
+
+        'tournament' => request('tournament'),
+        'tournament_logo' => $image_name,
+        'start_date' => request('start_date'),
+        'closing_date' => request('closing_date')
+
+
+      ]);
 
        return redirect('/dashboard')->with('success','Schedule created succesfully');
 

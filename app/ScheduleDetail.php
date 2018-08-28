@@ -8,18 +8,9 @@ class ScheduleDetail extends Model
 {
     //
 
-     protected $fillable = ['pos',
-							'name',
-							'to_par',
-							'hole',
-							'today',
-							'r1',
-							'r2',
-							'r3',
-							'r4',
-							'total',
-							'earnings',
-							'hfh_ranking',
+     protected $fillable = ['front9',
+							'back9',
+							
 							'schedule_id'
 						];
 

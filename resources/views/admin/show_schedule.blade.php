@@ -16,8 +16,8 @@
              <th>Update Name</th>
               <th>Winner</th>
               <th>Update Winner Name</th>
-              <th>Prize Money</th>
-              <th>Update Prize Money</th>
+              <th>Tournament Logo</th>
+              {{-- <th>Update Prize Money</th> --}}
               <th>Schedule Deuration</th>
                <th>Delete</th>
            
@@ -57,9 +57,9 @@
                    </div>
 			    </form>
             </td>
-            <td>{{ $schedule->prize_money}}  BDT </td>
-            <td>
-        	<form method="POST" action="/update_prize/{{ $schedule->id }}">
+            <td><img src="/logos/{{ $schedule->tournament_logo}}" style="width:50px;height:50px;"/>  </td>
+            {{-- <td> --}}
+     {{--    	<form method="POST" action="/update_prize/{{ $schedule->id }}">
 		                           @csrf
 
                  <div class="row">
@@ -69,8 +69,8 @@
                </div>
                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>
                </div>
-		    </form>
-            </td>
+		    </form> --}}
+          {{--   </td> --}}
             <td>{{ \Carbon\Carbon::parse($schedule->start_date)->format('F d ') }} - 
               {{ \Carbon\Carbon::parse($schedule->closing_date )->format('F d ')}} </td>
 

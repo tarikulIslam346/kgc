@@ -13,7 +13,7 @@
  
 
 {{-- @foreach($schedules as $schedule)   --}}      
-<form method="POST" action="/schedule_details">
+<form method="POST" action="/schedule_details" enctype="multipart/form-data">
   @csrf
 
 
@@ -35,92 +35,18 @@
 
   <div class="form-group">
 
-    <label for="pos">Enter Position</label>
+    <label for="front9">Enter front9 file(.pdf file)</label>
 
-    <input type="text" class="form-control" id="pos" name="pos" placeholder="Enter position" >
+    <input type="file" id="front9" name="front9" placeholder="Enter position" >
 
   </div>
-
   <div class="form-group">
 
-    <label for="name">Enter winner name</label>
+    <label for="back9">Enter front9 file(.pdf file)</label>
 
-    <input type="text" class="form-control" id="name" name="name" placeholder="enter name" 
-    >
-
-  </div>
-
-  <div class="form-row">
-    <div class="col">
-
-  
-
-    <label for="to_par">To PAR</label>
-
-    <input type="text" class="form-control" id="to_par" name="to_par" placeholder="enter to_par" >
+    <input type="file" id="back9" name="back9" placeholder="Enter position" >
 
   </div>
-
-<div class="col">
-  
-
-  <label  for="hole">Hole Count</label>
- 
-
-    <input class="form-control" id="hole" name="hole" placeholder="hole no"  type="text">
-
-          
-  </div>
-  <div class="col">
-
-  <label  for="today">Today</label>
- 
-
-    <input class="form-control" id="today" name="today" placeholder="today"  type="text" >
-
-          
-  </div>
-  </div>
-  <div class="form-row">
-    <div class="col">
-      <label for="r1">R1</label>
-      <input type="number" class="form-control" placeholder="0" name="r1"  id="r1">
-    </div>
-    <div class="col">
-      <label for="r2">R2</label>
-      <input type="number" class="form-control" placeholder="0" name="r2"  id="r2">
-
-    </div>
-    <div class="col">
-      <label for="r3">R3</label>
-      <input type="number" class="form-control" placeholder="0" name="r3"  id="r2">
-
-    </div>
-    <div class="col">
-      <label for="r4">R4</label>
-      <input type="number" class="form-control" placeholder="0" name="r4"  id="r2">
-
-    </div>
-  </div>
-  <div class="form-row">
-{{--     <div class="col">
-      <label for="total">Total</label>
-      <input type="number" class="form-control" placeholder="100" name="total"  id="total">
-    </div> --}}
-    <div class="col">
-      <label for="earnings">Earnings</label>
-      <input type="text" class="form-control" placeholder="$" name="earnings"  id="earnings">
-
-    </div>
-    <div class="col">
-      <label for="hfh_ranking">HFH RANK</label>
-      <input type="number" class="form-control" placeholder="0" name="hfh_ranking"  id="hfh_ranking">
-
-    </div>
-
-  </div><br>
-   
-   
 
 
 

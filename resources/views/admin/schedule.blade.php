@@ -15,7 +15,7 @@
  
 
         
-<form method="POST" action="/schedule">
+<form method="POST" action="/schedule" enctype="multipart/form-data">
   @csrf
 
   <div class="form-group">
@@ -27,19 +27,18 @@
   </div>
 
   <div class="form-group">
-
-    <label for="prize_money">Prize Money(BDT)</label>
-
-    <input type="text" class="form-control" id="prize_money" name="prize_money" placeholder="enter prize money" 
-    required>
+    <label for="tournament_logo">Enter Tournamnet logo<sub>(.png file require)</sub></label>
+    <input type="file" id="tournament_logo" name="tournament_logo" placeholder="Enter tournament logo" required>
 
   </div>
+
+
 
   <div class="form-group">
 
     <label for="winner">Winner name</label>
 
-    <input type="text" class="form-control" id="winner" name="winner" placeholder="enter winner name" required>
+    <input type="text" class="form-control" id="winner" name="winner" placeholder="enter winner name" >
 
   </div>
 

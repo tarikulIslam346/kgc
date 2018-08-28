@@ -8,7 +8,7 @@ class Schedule extends Model
 {
     //
 
-    protected $fillable = ['tournament','prize_money','winner','start_date','closing_date'];
+    protected $fillable = ['tournament','tournament_logo','winner','start_date','closing_date'];
 
    public function scheduleDetails(){
 

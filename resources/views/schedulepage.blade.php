@@ -36,12 +36,10 @@
       <div class="col-sm">
         Date
       </div>
-      <div class="col-sm">
+      <div class="col-md">
         Touranment
       </div>
-      <div class="col-sm">
-        Prize Money
-      </div>
+    
       <div class="col-sm">
         Winner
       </div>
