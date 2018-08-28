@@ -187,6 +187,19 @@ class AdminController extends Controller
     Submenu::where('id',$id)->delete();
     
     LayoutChoice::where('submenu_id',$id)->delete();
+
+     $hc=  HeigherCommitee::where('submenu_id',$id)->get();
+
+     $image_path = '';
+
+ foreach( $hc as $h){
+    $image_path = public_path()."/images1/$h->heading";  // Value is not URL but directory file path
+
+}
+//dd($image_path);
+ \File::delete([
+            $image_path
+        ]);
     
     // $hc=  HeigherCommitee::where('submenu_id',$id)->get();
     
