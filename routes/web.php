@@ -24,6 +24,8 @@ Route::get('/delete_menu/{id}','AdminController@delete_menu');
 Route::post('/update_menu/{id}','AdminController@update_menu');
 
 Route::post('/show_menu/{id}','AdminController@show_menu');
+
+Route::post('/add_menu_img','AdminController@add_menu_img');
 //Route::get ('/update_view','')
 
 
@@ -35,6 +37,8 @@ Route::get('/delete_submenu/{id}','AdminController@delete_submenu');
 
 
 Route::post('/layout','AdminController@create_layout');
+
+
 
 
 Route::post('/nav','AdminController@create_navigation');
@@ -51,6 +55,9 @@ Route::post('/heigher/{id}','LayoutController@store_heighercommitee');
 Route::post('/image/{id}','LayoutController@store_images');
 
 Route::post('/text/{id}','LayoutController@store_text');
+
+
+Route::get('/layout','LayoutController@create_layout');
 
 
 

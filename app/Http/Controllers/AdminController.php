@@ -143,6 +143,42 @@ class AdminController extends Controller
       
 
     }
+    public function add_menu_img(){
+
+      $id = request('menu_id');
+
+
+      $this->validate(request(), [
+            
+                
+                'menu_img' => 'required|mimes:jpeg,png,jpg,gif,svg|max:500'
+
+        ]);
+
+        $image_name = '' ;
+        
+        if(request()->hasfile('menu_img'))
+         {
+
+           
+         
+               $image_name=request()->file('menu_img')->getClientOriginalName();
+
+               request()->file('menu_img')->move(public_path().'/menu_images/', $image_name);  
+               
+               
+           
+         }
+
+      $menu = Menu::find($id);
+
+      $menu->menu_img = $image_name ;
+
+      $menu->save();
+
+         return redirect('/dashboard')->with('success',' Navigation Image added succesfully');
+    }
+
 
     /*******************for sub menu ************************************/
 
@@ -252,14 +288,14 @@ class AdminController extends Controller
 
     
 
-   LayoutChoice::updateOrCreate(request(['choice','submenu_id']));
+   LayoutChoice::create(request(['choice','submenu_id']));
 
      $choices =  LayoutChoice::select()->where('submenu_id',$id)->get();
    
 
 
 
-      return view('admin.adminlayoutform',compact('choices'));
+      return view('admin.adminlayoutform',compact('choices','id'));
     }
 
 
@@ -299,16 +335,13 @@ class AdminController extends Controller
       public function show_navigation($id,$nav){
 
              $menu = Menu::find($id);
+             $menus = Menu::where('id',$id)->get();
              $notices = Notice::all();
 
-        return view('page',compact('menu','notices'));
+        return view('page',compact('menu','notices', 'menus'));
 
 
-        // $submenulist = Navigation::where('menu',$nav)
-
-        //              ->get();
-
-        // return view('page',compact('submenulist'));
+   
 
       }
 

@@ -14,6 +14,8 @@ use App\Notice;
 
 use App\HeigherCommitee;
 use Illuminate\Support\Facades\Storage;
+use App\LayoutChoice;
+
 
 class LayoutController extends Controller
 {
@@ -28,16 +30,23 @@ class LayoutController extends Controller
     //heigher commitee message layout for  immage and message
     public function store_heighercommitee(Request $request, $id){
 
+
+         $choices =  LayoutChoice::select()->where('submenu_id',$id)->get();
+
+       
+
       
         $this->validate(request(), [
             
                  
                 'avatar' => 'required',
                 
-                'avatar.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+                'avatar.*' => 'images|mimes:jpeg,png,jpg,gif,svg'
 
         ]);
-                $image_name = '' ;
+
+
+        $image_name = '' ;
         
         if(request()->hasfile('avatar'))
          {
@@ -46,7 +55,7 @@ class LayoutController extends Controller
          
                $image_name=request()->file('avatar')->getClientOriginalName();
                request()->file('avatar')->move(public_path().'/images1/', $image_name);  
-                // request()->file('avatar')->move('/home/kgcbdc/public_html/images1/', $image_name);  
+                
                
            
          }
@@ -62,11 +71,26 @@ class LayoutController extends Controller
     			$high->submenu_id = $id;
     			$high->save();
 
+                $choices =  LayoutChoice::select()->where('submenu_id',$id)->get();
+
+                request()->session()->flash('status', 'successful!');
+
     	
 
     
-        return redirect('/dashboard')->with('success','Heigher commitee stroed successfully');
+               return view('admin.adminlayoutform',compact('choices'));
 
+    }
+
+
+    public function show_layout(){
+
+        /* $choices =  LayoutChoice::select()->where('submenu_id',$id)->get();*/
+   
+
+
+
+      return view('admin.adminlayoutform');
     }
 
     public function show_pages($name,$id,$menu){
@@ -86,19 +110,16 @@ class LayoutController extends Controller
 
         $notices = Notice::all();
 
+        $menus =  Menu::where('id',$menu)->get();
+        // dd($menus );
+
 
         $menu = Menu::find($menu);
      
     
-    return view('page',compact('h','image','menu','text','notices'));
+    return view('page',compact('h','image','menu','menus','text','notices'));
 
-    //      $submenulist = Navigation::where('menu',$menu)
-
-    //                  ->get();
-
-     
-    
-    // return view('page',compact('h','image','submenulist'));
+  
     	
        
     }
@@ -107,9 +128,13 @@ class LayoutController extends Controller
 
 
         $this->validate(request(), [
-                 'name' => 'required',
+
+                'name' => 'required',
+
                 'filename' => 'required',
-                'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
+                'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg'
+
 
         ]);
 
@@ -123,7 +148,7 @@ class LayoutController extends Controller
             {
                $image_name=$image->getClientOriginalName();
                 $image->move(public_path().'/images/', $image_name);  
-                // $image->move('/home/kgcbdc/public_html/images/', $image_name);  
+                
                 $data[] = $image_name;   
             }
          }
@@ -135,13 +160,21 @@ class LayoutController extends Controller
         
          $image->save();
 
-        return redirect('/dashboard')->with('success', 'Your images has been successfully');
+          $choices =  LayoutChoice::select()->where('submenu_id',$id)->get();
+
+         request()->session()->flash('status', 'successful!');
+
+        
+
+    
+               return view('admin.adminlayoutform',compact('choices'));
     }
 
 
      public function store_text( $id){
 
         $this->validate(request(), [
+
             'details' => 'required'
 
         ]);
@@ -152,7 +185,15 @@ class LayoutController extends Controller
          $text->submenu_id = $id;
          $text->save();
 
-         return redirect('/dashboard')->with('success', 'Your text of this page  has been added successfully');
+
+          $choices =  LayoutChoice::select()->where('submenu_id',$id)->get();
+
+         request()->session()->flash('status', 'successful!');
+
+        
+
+    
+               return view('admin.adminlayoutform',compact('choices'));
 
      }
 

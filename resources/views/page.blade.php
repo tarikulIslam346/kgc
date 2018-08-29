@@ -4,10 +4,15 @@
 
 <section class="_r_sector_wrap" id="about_us">
 
+  @if(isset($menus))
+  @foreach($menus as $menu)
 
-          <img src="/img/s4.jpeg" alt="New York" style="width: 100%; height: 450px">
 
+          <img src="/menu_images/{{$menu->menu_img}}" alt="New York" style="width: 100%; height: 450px">
 
+            @endforeach
+
+  @endif
 
       <div class="container">
         <div class="row">
@@ -37,6 +42,7 @@
               </div>
 
                 <div class="col-md-9 _r_section_speech_body_right">
+
 
                    @if(isset($h))
                            @foreach($h as $hf)
@@ -72,6 +78,20 @@
                 
          
                   @endforeach
+                  @else
+
+                                    <p> The Sport of Golf
+
+Golf is an outdoor game in which players use specially designed clubs to propel a small, hard ball over a field of play known as a course or links. The object of the game is to advance the ball around the course using as few strokes as possible. Golf is a very popular sport throughout the world.
+
+The Golf Course
+
+A golf course is divided into 18 sections, called holes. The standard course is about 5,900 to 6,400 m (about 6,500 to 7,000 yd); the individual holes may vary in length from 90 to 550 m (from 100 to 600 yd). Each hole has at one end a starting point known as a tee and, embedded in the ground at the other end, marked by a flag, a cup or cylindrical container (also called a hole) into which the ball must be …show more content…
+The smooth surface of the putting green is designed to facilitate the progress of the ball into the cup after the ball has been given a tap or gentle stroke known as a putt.
+
+Golf Strokes and Golf Clubs</p>
+                  
+
                   @endif
                  
   
@@ -125,6 +145,18 @@
                 
            
                   @endforeach
+                      @else
+
+                                    <p> The Sport of Golf
+
+Golf is an outdoor game in which players use specially designed clubs to propel a small, hard ball over a field of play known as a course or links. The object of the game is to advance the ball around the course using as few strokes as possible. Golf is a very popular sport throughout the world.
+
+The Golf Course
+
+A golf course is divided into 18 sections, called holes. The standard course is about 5,900 to 6,400 m (about 6,500 to 7,000 yd); the individual holes may vary in length from 90 to 550 m (from 100 to 600 yd). Each hole has at one end a starting point known as a tee and, embedded in the ground at the other end, marked by a flag, a cup or cylindrical container (also called a hole) into which the ball must be …show more content…
+The smooth surface of the putting green is designed to facilitate the progress of the ball into the cup after the ball has been given a tap or gentle stroke known as a putt.
+
+Golf Strokes and Golf Clubs</p>
                   @endif
 
                   @if(isset($text))
@@ -154,6 +186,18 @@
                 
          
                   @endforeach
+                      @else
+
+                                    <p> The Sport of Golf
+
+Golf is an outdoor game in which players use specially designed clubs to propel a small, hard ball over a field of play known as a course or links. The object of the game is to advance the ball around the course using as few strokes as possible. Golf is a very popular sport throughout the world.
+
+The Golf Course
+
+A golf course is divided into 18 sections, called holes. The standard course is about 5,900 to 6,400 m (about 6,500 to 7,000 yd); the individual holes may vary in length from 90 to 550 m (from 100 to 600 yd). Each hole has at one end a starting point known as a tee and, embedded in the ground at the other end, marked by a flag, a cup or cylindrical container (also called a hole) into which the ball must be …show more content…
+The smooth surface of the putting green is designed to facilitate the progress of the ball into the cup after the ball has been given a tap or gentle stroke known as a putt.
+
+Golf Strokes and Golf Clubs</p>
                   @endif
               </div>
 

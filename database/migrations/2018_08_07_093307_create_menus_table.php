@@ -17,6 +17,8 @@ class CreateMenusTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->boolean('confirmed')->nullable($value =  true);
+            $table->string('menu_img')->nullable();
+            $table->longtext('menu_details')->nullable();
             $table->timestamps();
         });
     }

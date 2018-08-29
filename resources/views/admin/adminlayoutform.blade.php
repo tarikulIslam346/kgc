@@ -11,6 +11,12 @@
     <div class="container-fluid">
       @if($choice->choice == "Message")
 
+          @if(session('status'))
+                        <div class="alert alert-success">
+                         {{ session('status') }} Message Upload
+                          </div> 
+                         @endif
+
                 
                  
 
@@ -40,7 +46,7 @@
                     <button type="submit" class="btn btn-primary btn-sm">Submit</button>
 
                       </form>
-                   {{--    @endforeach --}}
+                      
                   
 
 
@@ -52,11 +58,11 @@
 
           
 
-                        {{--  @if(session('success'))
+                        @if(session('status'))
                         <div class="alert alert-success">
-                         {{ session('success') }}
+                         {{ session('status') }}
                           </div> 
-                         @endif --}}
+                         @endif
 
                   <form action="/image/{{$choice->submenu_id}}" method="POST" enctype="multipart/form-data">
 
@@ -111,6 +117,12 @@
                    @endif
                     @if($choice->choice == "Text")
 
+                    @if(session('status'))
+                        <div class="alert alert-success">
+                         {{ session('status') }}
+                          </div> 
+                         @endif
+
                 
                  
 
@@ -138,17 +150,38 @@
                    @endif
                       
 
-
+<a href ="/dashboard" class="btn btn-primary">Go back</a>
 
 
 
     </div>
+    
 </section>
  
                 
                    @endforeach
                    @endif
-                   <script>
+
+                
+
+
+               @if(count($errors) > 0)
+               @foreach($errors->all() as $error)
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                              <p> {{ $error }}</p>
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                       
+                @endforeach
+                   
+               @endif
+
+
+
+                                 
+            <script>
             tinymce.init({ 
                 selector:'#message_text',
                   body_class: 'my_class',
