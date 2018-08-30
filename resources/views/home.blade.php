@@ -2,6 +2,7 @@
 
 @section('content')
 @include('layouts.slider')
+@include('layouts.footer')
 
 
 

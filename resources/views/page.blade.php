@@ -208,6 +208,7 @@ Golf Strokes and Golf Clubs</p>
         </div>
       </div>
     </section>
+    @include('layouts.footer')
 
 
 

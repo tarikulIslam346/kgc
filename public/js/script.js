@@ -201,11 +201,10 @@ jQuery(document).ready(function($){
                 }
                 reader.readAsDataURL(input.files[0]);
             }
-        } 
-
-
-
-                // create menu for admin
+        }     
+        
+        
+        // create menu for admin
     $("#_r_show_nav_1").show();
     $("#_r_navbar_1").click(function(){
         $("#_r_show_nav_1").show();
@@ -233,6 +232,6 @@ jQuery(document).ready(function($){
         $("#_r_show_nav_2").hide();
         $("#_r_show_nav_3").hide();
         $("#_r_show_nav_4").show();
-    });    
+    });
 
 });

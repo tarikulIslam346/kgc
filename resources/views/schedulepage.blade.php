@@ -77,5 +77,6 @@ $(document).ready(function(){
  });
 });
 </script>
+@include('layouts.footer')
 
 @endsection

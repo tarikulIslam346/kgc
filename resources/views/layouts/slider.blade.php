@@ -4,16 +4,28 @@
           <!-- The slideshow -->
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="img/s1.jpeg" alt="Los Angeles">
+              <img src="img/01.png" alt="Los Angeles">
             </div>
             <div class="carousel-item">
-              <img src="img/s2.jpeg" alt="Chicago">
+              <img src="img/02.png" alt="Chicago">
             </div>
             <div class="carousel-item">
-              <img src="img/s3.jpeg" alt="New York">
+              <img src="img/03.png" alt="New York">
             </div>
              <div class="carousel-item">
-              <img src="img/s4.jpeg" alt="New York">
+              <img src="img/04.png" alt="New York">
+            </div>
+            <div class="carousel-item">
+              <img src="img/05.png" alt="New York">
+            </div>
+            <div class="carousel-item">
+              <img src="img/06.png" alt="New York">
+            </div>
+            <!--<div class="carousel-item">-->
+            <!--  <img src="img/07.png" alt="New York">-->
+            <!--</div>-->
+            <div class="carousel-item">
+              <img src="img/08.png" alt="New York">
             </div>
           </div>
 
@@ -23,6 +35,11 @@
             <li data-target="#demo" data-slide-to="1"></li>
             <li data-target="#demo" data-slide-to="2"></li>
             <li data-target="#demo" data-slide-to="3"></li>
+            <li data-target="#demo" data-slide-to="4"></li>
+            <li data-target="#demo" data-slide-to="5"></li>
+            <li data-target="#demo" data-slide-to="6"></li>
+            <!--<li data-target="#demo" data-slide-to="7"></li>-->
+            <li data-target="#demo" data-slide-to="7"></li>
           </ul>
           
           <!-- Left and right controls -->
