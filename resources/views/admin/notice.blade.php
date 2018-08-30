@@ -32,8 +32,8 @@
                               </button>
                             </div>
                            @endif
-                       <table class="table table-striped table-dark">
-                         <thead>
+                       <table class="table table-striped table-bordered table-hover Regular shadow">
+         <thead style="background-color:#ccffd9;">
                            <tr>
                              <th>Notice</th>
 

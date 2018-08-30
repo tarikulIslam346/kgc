@@ -1,5 +1,5 @@
-<table class="table table-striped table-dark">
-         <thead>
+<table class="table table-striped table-bordered table-hover Regular shadow">
+         <thead style="background-color:#ccffd9;">
            <tr>
              <th>fornt9</th>
              {{-- <th>Update Pos</th> --}}
@@ -13,10 +13,10 @@
        <tbody>
 
 
-        @if(isset($scheduleDetails))
+        @if(isset($scheduleDetails) && count($scheduleDetails)>0)
          @foreach($scheduleDetails as $scheduleDetail)
            <tr>
-             <td><a href="/front9/{{ $scheduleDetail->front9 }}">File 1</a></td>
+             <td><a href="/front9/{{ $scheduleDetail->front9 }}"style="color:black !important;">File 1</a></td>
              {{-- <td> --}}
 		{{-- 	 	<form method="POST" action="/update_tournament/{{ $schedule->id }}">
 			                           @csrf
@@ -30,7 +30,7 @@
                    </div>
 			    </form> --}}
         {{--     </td> --}}
-            <td><a href="/back9/{{ $scheduleDetail->back9 }}">File 2</a></td>
+            <td><a href="/back9/{{ $scheduleDetail->back9 }}"style="color:black !important;">File 2</a></td>
              {{-- <td> --}}
 		{{-- 	 	<form method="POST" action="/update_winner/{{ $schedule->id }}">
 			                           @csrf
@@ -54,6 +54,8 @@
              
 
               @endforeach
+              @else
+              <tr><td colspan="3">No schedule details</td></tr>
 
                
            @endif

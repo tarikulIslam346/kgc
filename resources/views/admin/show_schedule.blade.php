@@ -1,7 +1,7 @@
       
       
   @if(session('success'))
-                            <div class="alert  alert-success fade show" role="alert">
+                            <div class="alert  alert-success fade show Regular shadow" role="alert">
                                {{ session('success') }} 
                               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -9,8 +9,8 @@
                             </div>
                                   
                            @endif  
-<table class="table table-striped table-dark">
-         <thead>
+<table class="table table-striped table-bordered table-hover Regular shadow">
+         <thead style="background-color:#ccffd9;">
            <tr>
              <th>Tournament name</th>
              <th>Update Name</th>
@@ -26,10 +26,10 @@
        <tbody>
 
 
-        @if(isset($schedules))
+        @if(isset($schedules) && count($schedules)>0)
          @foreach($schedules as $schedule)
            <tr>
-             <td>{{ $schedule->tournament }}</td>
+             <td style="border-radius:5px 5px solid black;">{{ $schedule->tournament }}</td>
              <td>
 			 	<form method="POST" action="/update_tournament/{{ $schedule->id }}">
 			                           @csrf
@@ -57,7 +57,7 @@
                    </div>
 			    </form>
             </td>
-            <td><img src="/logos/{{ $schedule->tournament_logo}}" style="width:50px;height:50px;"/>  </td>
+            <td><img src="/logos/{{ $schedule->tournament_logo}}" style="width:50px;height:50px;border-radius:25px ;"/>  </td>
             {{-- <td> --}}
      {{--    	<form method="POST" action="/update_prize/{{ $schedule->id }}">
 		                           @csrf
@@ -83,9 +83,13 @@
              
 
               @endforeach
+              @else
+              <tr>
+              <td colspan="7">No schedule</td>
+               </tr>
 
                
-           @endif
+              @endif
          </tbody>
        </table>
 

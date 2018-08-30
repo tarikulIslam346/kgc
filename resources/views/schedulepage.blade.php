@@ -3,50 +3,41 @@
 @section('content')
 
 
-  <div class="container box">
+
+  <div class="container box"  style="margin-top:60px;">
    
    <div class="panel panel-default">
     <div class="panel-heading">Find Tournament</div>
     <div class="panel-body">
      <div class="input-group mb-3">
        <div class="input-group-prepend">
-        <input class="form-control" type="date"/>
+       {{--  <input class="form-control" type="date"/> --}}
       <input type="text" name="search"  id="text" class="form-control" placeholder="Search Customer Data" />
       <button id="search" class="btn btn-primary"><i class="fa fa-search"></i>Search</button>
     </div>
      </div>
 
-    {{--  <div class="table-responsive"> --}}
-      {{-- <h3 align="center">Total Data : <span id="total_records"></span></h3> --}}
-{{--       <table class="table table-striped table-bordered" style="border:none;">
-       <thead>
-        <tr>
-         <th>Date</th>
-         <th>Touranment</th>
-         <th>Prize Money</th>
-         <th>Winner</th>
-        
-        </tr>
-       </thead>
-       <tbody>
-       </tbody>
-      </table> --}}
-    {{--  </div> --}}
-    <div class="row">
-      <div class="col-sm">
+
+    <div class="row" style="margin-top:60px;">
+      <div class="col-sm" style="background-color: grey; box-shadow: 2px 2px;color:lightgreen;">
         Date
       </div>
-      <div class="col-md">
+      <div class="col-md"style="background-color: grey; box-shadow: 2px 2px;color:lightgreen;">
         Touranment
       </div>
     
-      <div class="col-sm">
+      <div class="col-sm"style="background-color: grey; box-shadow: 2px 2px;color:lightgreen;">
         Winner
       </div>
     </div>
-    <div  id="list">
-    </div>
 
+    <div  id="list"style="border-bottom:2px solid; padding-bottom:20px;padding-top:20px;">
+
+    </div>
+     {{-- <h3 style='color:#03a9f4;'>Full schedule</h3>
+
+        <hr style='background-color:lightgreen'>
+ --}}
 
 
     </div>    

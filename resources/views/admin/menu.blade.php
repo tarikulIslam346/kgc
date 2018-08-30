@@ -19,8 +19,10 @@
                               </ul>
                             </nav>
 
-                        <table class="table table-striped table-dark" id="_r_show_nav_1" style="display: none;">
-                         <thead>
+                        <table class="table table-striped table-bordered table-hover Regular shadow" id="_r_show_nav_1" style="display: none;">
+                          
+         <thead style="background-color:#ccffd9;">
+                        
                            <tr>
                              <th>Navigation name</th>
                              <th>Show / Hide</th>
@@ -82,8 +84,8 @@
 
 
 
-                         <table class="table table-striped table-dark"">
-                         <thead>
+                        <table class="table table-striped table-bordered table-hover Regular shadow">
+         <thead style="background-color:#ccffd9;">
                            <tr>
                              <th>Navigation name</th>
                              <th>Edit Navigation Name</th>
@@ -126,18 +128,36 @@
 
                        <div id="_r_show_nav_3" style="display: none;">
 
-                        <form method="POST" action="/add_menu_img"  enctype="multipart/form-data">
+                        <form   method="POST" action="/add_menu_img"  enctype="multipart/form-data">
                           @csrf
-                          <div class="form-group">
+                           {{-- <div class="file-field">
+                              <div class="btn btn-primary btn-sm float-left">
+                                  <span>Choose file</span>
+                                  <input type="file" name="menu_img">
+                              </div>
+                              <div class="file-path-wrapper">
+                                  <input class="file-path validate" type="text" placeholder="Upload your file">
+                              </div>
+                          </div> --}}
+                           <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                              </div>
+                              <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"  name="menu_img">
+                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                              </div>
+                            </div>
+                         {{--  <div class="form-group">
                           <label for="menu_img">Select New Image</h5>
                           <input type="file" name="menu_img">
-                          </div>
+                          </div> --}}
                       
 
                         <div class="row">
                           <div class="col-md-12">
                             <h5>Select Menu for Edit Image</h5>
-                            <select name="menu_id">
+                            <select  class="form-control"   name="menu_id">
                                   
                                   <option selected>select layout </option>
                                   @if(isset($menus))                                       
@@ -150,9 +170,11 @@
                             </select>
                           </div>
                         </div>
+
                           <button type="submit" class="btn btn-primary  btn-large">Submit</button>
 
                           </form>
+
                            @if($errors->has('menu_img'))
                               <div class="alert alert-danger alert-dismissible fade show" role="alert">
                               <p>{{ $errors->first('menu_img') }} </p>

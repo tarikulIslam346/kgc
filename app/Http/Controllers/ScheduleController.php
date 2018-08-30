@@ -20,7 +20,7 @@ class ScheduleController extends Controller
 
  
     /***************************/
-    public function search(Request $request)
+ public function search(Request $request)
     {
      if($request->ajax())
      {
@@ -30,7 +30,7 @@ class ScheduleController extends Controller
       {
        $data = Schedule::where('tournament', 'like', '%'.$query.'%')
         
-         ->orderBy('id', 'desc')
+         ->orderBy('start_date', 'desc')
 
          ->simplePaginate(5);
           // ->orWhere('Address', 'like', '%'.$query.'%')
@@ -41,21 +41,92 @@ class ScheduleController extends Controller
       }
       else
       {
-       $data = Schedule::orderBy('id', 'desc')
+       $data = Schedule::orderBy('start_date', 'desc')
        ->simplePaginate(5);
          // ->get();
       }
+
       $total_row = $data->count();
+      $count = 0;
+      $count2 = 0;
+
       if($total_row > 0)
       {
        foreach($data as $row)
        {
-        $output .= "<div class='row'>
-        <div class='col-sm'>".Carbon::parse($row->start_date)->format('F d ').'-'.Carbon::parse($row->closing_date)->format('F d ')."</div>
-         <div class='col-md' style='background-color:red;'><img src='/logos/".$row->tournament_logo."'style='height:25px;width:25px;'><a href='/schedule/".$row->id."'>"
+        if($row->start_date > date("Y-m-d")){
+          if($count==0){
+
+          $count++;
+
+        $output .= "
+        <h3 style='color:#03a9f4;'>Upcomming</h3>
+
+        <hr style='background-color:lightgreen'>";
+          }
+
+         $output .= "
+     
+
+        <div class='row'>
+
+
+        <div class='col-sm'>"
+
+        .Carbon::parse($row->start_date)->format('F d ').'-'.Carbon::parse($row->closing_date)->format('F d ')."
+
+        </div>
+
+         <div class='col-md'>
+
+         <img src='/logos/".$row->tournament_logo."
+
+         'style='height:25px;width:25px;'><a href='/schedule/".$row->id."' style='color:#03a9f4 !important;'>"
+
          .$row->tournament."
+
          </a></div>
-         <div class='col-sm'>".$row->winner."</div></div>";
+
+         <div class='col-sm'>".$row->winner."</div></div><hr>
+        
+         ";
+
+         
+
+       }else{
+           if($count2==0){
+               $output .= "
+                <h3 style='color:#03a9f4;'>Full schedule</h3>
+
+        <hr style='background-color:lightgreen'>";
+        $count2++;
+               
+           }
+
+         $output .= "
+
+
+        <div class='row'>
+
+        <div class='col-sm'>"
+
+        .Carbon::parse($row->start_date)->format('F d ').'-'.Carbon::parse($row->closing_date)->format('F d ')."
+
+        </div>
+
+         <div class='col-md'>
+
+         <img src='/logos/".$row->tournament_logo."
+
+         'style='height:25px;width:25px;'><a href='/schedule/".$row->id."' style='color:#03a9f4 !important;'>"
+
+         .$row->tournament."
+
+         </a></div>
+
+         <div class='col-sm'>".$row->winner."</div></div><hr>";
+
+       }
       
        }
       }
@@ -63,7 +134,11 @@ class ScheduleController extends Controller
       {
        $output =  "
        <div class='row'>
-        <div class='col-sm'>No Data Found</div>
+
+        <div class='col-sm' style='color:#03a9f4; font-size:15px;'>
+
+        No Tournament Schedule  found
+        </div>
        </div>
        ";
       }
