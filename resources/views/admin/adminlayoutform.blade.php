@@ -82,7 +82,7 @@
                                                 <input type="file" name="filename[]" id="multi-file-input">
                                             </label>
                                             <input type="text" name="name[]" placeholder="Name" class="_r_input_deco">
-                                           {{--  <input type="text" name="member_position" placeholder="Position" class="_r_input_deco"> --}}
+                                            <input type="text" name="title[]" placeholder="Position" class="_r_input_deco">
                                             </div>
                                         </div>
                                     </div>

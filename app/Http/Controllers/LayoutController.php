@@ -156,6 +156,7 @@ class LayoutController extends Controller
          $image= new Image;
          $image->img_url= $data;
          $image->name = request('name');
+         $image->title = request('title');
          $image->submenu_id = $id;
         
          $image->save();
