@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     //
-    protected $fillbale= ['img_url','name','submenu_id','title'];
+    protected $fillbale= ['img_url','name','title','submenu_id'];
 
     protected $casts = [
 

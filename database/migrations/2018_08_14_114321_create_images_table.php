@@ -17,7 +17,7 @@ class CreateImagesTable extends Migration
             $table->increments('id');
             $table->longText('img_url');
             $table->longText('name');
-            $table->string('title');
+            $table->longText('title');
             $table->integer('submenu_id')->unique();
             $table->timestamps();
         });

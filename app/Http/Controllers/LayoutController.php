@@ -125,6 +125,7 @@ class LayoutController extends Controller
     }
 
     public function store_images(Request $request, $id){
+        // dd(request()->all());
 
 
         $this->validate(request(), [

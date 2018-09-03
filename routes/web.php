@@ -26,6 +26,8 @@ Route::post('/update_menu/{id}','AdminController@update_menu');
 Route::post('/show_menu/{id}','AdminController@show_menu');
 
 Route::post('/add_menu_img','AdminController@add_menu_img');
+
+Route::post('/add_description','AdminController@add_description');
 //Route::get ('/update_view','')
 
 
@@ -74,6 +76,9 @@ Route::post('/update_prize/{id}','AdminController@update_prize');
 Route::get('/schedule','ScheduleController@index');
 
 Route::get('/schedule_search','ScheduleController@search');
+
+Route::get('/schedule_date_range/{id}','ScheduleController@schedule_date_range');
+
 
 Route::get('/{id}/schedule/details','ScheduleController@delete_schedule_details');
 

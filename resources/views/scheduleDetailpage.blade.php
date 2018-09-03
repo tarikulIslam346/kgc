@@ -33,9 +33,9 @@
         @if(isset($scheduleDetails))
          @foreach($scheduleDetails as $scheduleDetail)
            <tr>
-             <td><a href="/front9/{{ $scheduleDetail->front9 }}">File 1</a></td>
+             <td><a href="/front9/{{ $scheduleDetail->front9 }}">{{$scheduleDetail->front9}}</a></td>
   
-            <td><a href="/back9/{{ $scheduleDetail->back9 }}">File 2</a></td>
+            <td><a href="/back9/{{ $scheduleDetail->back9 }}">{{$scheduleDetail->back9}}</a></td>
  
               
             

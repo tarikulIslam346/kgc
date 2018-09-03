@@ -96,6 +96,21 @@ class AdminController extends Controller
           
            $submenu->save();
       }
+
+        //delete menu Image
+      
+      $menu= Menu::where('id',$id)->get();
+    
+      $image_path = '';
+
+         foreach( $menu as $m){
+            $image_path = public_path()."/menu_images/$m->menu_img";  // Value is not URL but directory file path
+        
+        }
+
+         \File::delete([
+                    $image_path
+                ]);
      
 
      //delete from menu
@@ -177,6 +192,28 @@ class AdminController extends Controller
       $menu->save();
 
          return redirect('/dashboard')->with('success',' Navigation Image added succesfully');
+    }
+     public function add_description(){
+
+      $id = request('menu_id');
+
+
+      $this->validate(request(), [
+            
+                'menu_details' => 'required'
+                
+
+        ]);
+
+      
+
+      $menu = Menu::find($id);
+
+      $menu->menu_details = request('menu_details') ;
+
+      $menu->save();
+
+         return redirect('/dashboard')->with('success',' Navigation Description added succesfully');
     }
 
 

@@ -151,7 +151,7 @@ jQuery(document).ready(function($){
                                     '<div class="_r_committee_member upload-icon"><img id="multiImageId'+count+'"></div>'+
                                     '<label> Insert Image <input type="file" name="filename[]" id="multi-file-input'+count+'"></label>'+
                                     '<input type="text" name="name[]" placeholder="Name" class="_r_input_deco">'+
-                                    // '<input type="text" name="member_position" placeholder="Position" class="_r_input_deco"></div>'+
+                                    '<input type="text" name="title[]" placeholder="Position" class="_r_input_deco"></div>'+
                                     '<div class="_r_remove_deco"><i class="fa fa-trash remove_area"></i></div>'+
                                     '</div>');
 
@@ -233,5 +233,40 @@ jQuery(document).ready(function($){
         $("#_r_show_nav_3").hide();
         $("#_r_show_nav_4").show();
     });
+
+
+ $('.add_schedule').on('click', function() {
+
+            $('.mytbody').last().after(
+
+                '<tr class="mytbody">' +
+
+                '<td class=""> <input type="date" name="date[]"></td>' +
+
+                '<td class=""> <input type="file" name="front9[]" ></td>' +
+
+                '<td class=""> <input type="file" name="back9[]" ></td>' +
+
+                '<td style="text-align:center">' +
+
+                '<i class="fa fa-times remove_note_sheet_area text-center" style="color: red;font-size: 20px ;line-height: 1.5;"></i>' +
+
+                '</td>'+
+
+                '</tr>');
+
+
+
+            $(".remove_note_sheet_area").on('click', function(){
+
+                $(this).parent().parent("tr").remove();
+
+            });
+
+        });
+
+
+
+
 
 });

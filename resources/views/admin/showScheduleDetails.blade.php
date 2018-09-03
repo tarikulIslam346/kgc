@@ -1,6 +1,8 @@
 <table class="table table-striped table-bordered table-hover Regular shadow">
          <thead style="background-color:#ccffd9;">
            <tr>
+            <th> date</th>
+            {{-- <th> Schedule Name</th> --}}
              <th>fornt9</th>
              {{-- <th>Update Pos</th> --}}
               <th>back9</th>
@@ -16,7 +18,10 @@
         @if(isset($scheduleDetails) && count($scheduleDetails)>0)
          @foreach($scheduleDetails as $scheduleDetail)
            <tr>
-             <td><a href="/front9/{{ $scheduleDetail->front9 }}"style="color:black !important;">File 1</a></td>
+             <td>{{ $scheduleDetail->date}}</td>
+             {{-- <td>{{ $scheduleDetail->schedules()->tournament}}</td> --}}
+
+             <td><a href="/front9/{{ $scheduleDetail->front9 }}"style="color:black !important;">{{ $scheduleDetail->front9 }}</a></td>
              {{-- <td> --}}
 		{{-- 	 	<form method="POST" action="/update_tournament/{{ $schedule->id }}">
 			                           @csrf
@@ -30,7 +35,7 @@
                    </div>
 			    </form> --}}
         {{--     </td> --}}
-            <td><a href="/back9/{{ $scheduleDetail->back9 }}"style="color:black !important;">File 2</a></td>
+            <td><a href="/back9/{{ $scheduleDetail->back9 }}"style="color:black !important;">{{ $scheduleDetail->back9 }}</a></td>
              {{-- <td> --}}
 		{{-- 	 	<form method="POST" action="/update_winner/{{ $schedule->id }}">
 			                           @csrf

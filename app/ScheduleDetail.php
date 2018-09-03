@@ -8,7 +8,7 @@ class ScheduleDetail extends Model
 {
     //
 
-     protected $fillable = ['front9',
+     protected $fillable = ['date','front9',
 							'back9',
 							
 							'schedule_id'

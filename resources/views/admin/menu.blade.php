@@ -69,17 +69,10 @@
                            <div class="input-group-prepend">
                                <span class="input-group-text">Add Menu Title Here</span>
                            </div>
-                           <input type="text" class="form-control" name="name" placeholder="Title">
+                           <input type="text" class="form-control" name="name" placeholder="Title" required>
                            <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i></button>
                          </div>
-                         @if($errors->has('name'))
-                              <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                              <p>{{ $errors->first('name') }} </p>
-                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                           @endif
+                          @include('layouts.errors')
                        </form>
 
 
@@ -139,7 +132,7 @@
                                   <input class="file-path validate" type="text" placeholder="Upload your file">
                               </div>
                           </div> --}}
-                           <div class="input-group mb-3">
+                        {{--    <div class="input-group mb-3">
                               <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                               </div>
@@ -147,11 +140,11 @@
                                 <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"  name="menu_img">
                                 <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                               </div>
-                            </div>
-                         {{--  <div class="form-group">
+                            </div> --}}
+                          <div class="form-group">
                           <label for="menu_img">Select New Image</h5>
                           <input type="file" name="menu_img">
-                          </div> --}}
+                          </div>
                       
 
                         <div class="row">
@@ -175,14 +168,7 @@
 
                           </form>
 
-                           @if($errors->has('menu_img'))
-                              <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                              <p>{{ $errors->first('menu_img') }} </p>
-                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                           @endif
+                          @include('layouts.errors')
 
 
 
@@ -192,6 +178,51 @@
                        </div>
 
                        <div id="_r_show_nav_4" style="display: none;">
+                         <form   method="POST" action="/add_description" >
+                          @csrf
+                           
+                          <div class="form-group">
+                          <label for="menu_details">Select New Image</h5>
+                          <<textarea placeholder="Write Your Speech Here" id="menu_text"  class="form-control"  name="menu_details"></textarea>
+                          </div>
+                      
+
+                        <div class="row">
+                          <div class="col-md-12">
+                            <h5>Select Menu for Insert Description</h5>
+                            <select  class="form-control"   name="menu_id">
+                                  
+                                  <option selected>select menu </option>
+                                  @if(isset($menus))                                       
+                                  @foreach($menus as $menu)
+                                 <option value="{{$menu->id}}">{{$menu->name}}</option>
+                                  @endforeach
+                                  @endif
+                            
+                             
+                            </select>
+                          </div>
+                        </div>
+
+                          <button type="submit" class="btn btn-primary  btn-large">Submit</button>
+
+                          </form>
+
+                          @include('layouts.errors')
+
+
+
 
 
                        </div>
+
+
+
+                          
+        <script>
+            tinymce.init({ 
+                selector:'#menu_text'
+  
+              
+            });
+        </script>
