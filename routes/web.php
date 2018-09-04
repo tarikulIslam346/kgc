@@ -28,7 +28,7 @@ Route::post('/show_menu/{id}','AdminController@show_menu');
 Route::post('/add_menu_img','AdminController@add_menu_img');
 
 Route::post('/add_description','AdminController@add_description');
-//Route::get ('/update_view','')
+
 
 
 Route::post('/create_submenu','AdminController@create_submenu');
@@ -63,6 +63,8 @@ Route::get('/layout','LayoutController@create_layout');
 
 
 
+//schedule routing
+
 Route::post('/schedule','AdminController@schedule_store');
 
 Route::post('/update_tournament/{id}','AdminController@update_tournament');
@@ -91,3 +93,17 @@ Route::get('/delete_schedule/{id}','ScheduleController@delete_schedule');
 Route::post('/create_notice','AdminController@store_notice');
 
 Route::get('/delete_notice/{id}','AdminController@delete_notice');
+
+
+//galary Routing
+
+
+Route::post('/create_button','GalaryController@store_button');
+
+Route::post('/create_vedio','GalaryController@store_vedio');
+
+Route::get('/delete_galary_btn/{id}','GalaryController@delete_button');
+
+Route::get('/delete_galary_vedio/{id}','GalaryController@delete_vedio');
+
+Route::get('/galary','GalaryController@index');

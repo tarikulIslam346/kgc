@@ -12,6 +12,8 @@ use App\ScheduleDetail;
 use App\Notice;
 use App\HeigherCommitee;
 use App\Text;
+use App\GalaryButton;
+use App\GalleryVedio;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -33,12 +35,15 @@ class AdminController extends Controller
         $menus = Menu::all();
         $submenus = Submenu::all();
         $layouts = Layout::all();
-        $schedules = Schedule::all();
-        $scheduleDetails = ScheduleDetail::all();
-        $notices = Notice::all();
+        $schedules = Schedule::simplePaginate(4);
+        $scheduleDetails = ScheduleDetail::simplePaginate(4);
+        $notices = Notice::simplePaginate(2);
+        $galary_btn = GalaryButton::simplePaginate(4);
+
+        $galary_vedio = GalleryVedio::simplePaginate(4);
 
         return view('admin.dashboard',compact('menus','submenus','layouts','schedules','scheduleDetails',
-          'notices'));
+          'notices','galary_btn','galary_vedio'));
       }
 
       return view('admin.index');

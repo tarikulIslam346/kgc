@@ -92,6 +92,7 @@
               @endif
          </tbody>
        </table>
+       {{$schedules->links()}}
 
 
          @if($errors->has('name'))

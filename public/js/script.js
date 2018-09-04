@@ -5,8 +5,8 @@ function setStyle(id, className) {
     localStorage.setItem('lastId', id);
     localStorage.setItem('lastClass', className);
 
-    var ids = ['showmenu', 'showmenu1', 'showmenu2', 'showmenu3', 'showmenu4', 'showmenu5','showmenu6','showmenu7','showmenu8'];
-    var classes = ['menu', 'menu1', 'menu2', 'menu3', 'menu4', 'menu5','menu6','menu7','menu8'];
+    var ids = ['showmenu', 'showmenu1', 'showmenu2', 'showmenu3', 'showmenu4', 'showmenu5','showmenu6','showmenu7','showmenu8','showmenu9','showmenu10'];
+    var classes = ['menu', 'menu1', 'menu2', 'menu3', 'menu4', 'menu5','menu6','menu7','menu8','menu9','menu10'];
 
     ids.forEach(function (item, index) {
         if(ids[index] === id) {
@@ -261,10 +261,90 @@ jQuery(document).ready(function($){
 
                 $(this).parent().parent("tr").remove();
 
-            });
+            }); 
 
         });
 
+
+ /******************gallary button *********************************/
+
+            var count_button = 1;
+
+                $('.add_button').on('click', function() {
+
+
+
+                            $('.mybutton').last().after(
+
+                                '<tr class="mybutton">' +
+
+                                '<td>'+count_button+'</td>' +
+
+                                '<td> <p>Button Name</p></td>' +
+
+                                '<td> <input type="input" name="button_name[]"></td>' +
+
+                                '<td> <p>Button link</p></td>' +
+
+                                '<td> <input type="input" name="button_link[]"></td>' +
+
+                                '<td style="text-align:center">' +
+
+                                '<i class="fa fa-times remove_button text-center" style="color: red;font-size: 20px ;line-height: 1.5;"></i>' +
+
+                                '</td>'+
+
+                                '</tr>');
+
+                            $(".remove_button").on('click', function(){
+
+                                $(this).parent().parent("tr").remove();
+                                count_button = 1;
+
+                            });
+                            count_button++;
+                        });
+// video backend js
+
+
+
+var count_video = 1;
+
+$('.add_video').on('click', function() {
+
+
+
+            $('.myvideo').last().after(
+
+                '<tr class="myvideo">' +
+
+                '<td>'+count_video+'</td>' +
+
+                '<td> <p>Insert video link after (=) sign</p></td>' +
+
+                '<td> <input type="input" name="link[]"></td>' +
+
+                '<td style="text-align:center">' +
+
+                '<i class="fa fa-times remove_video text-center" style="color: red;font-size: 20px ;line-height: 1.5;"></i>' +
+
+                '</td>'+
+
+                '</tr>');
+
+
+
+            $(".remove_video").on('click', function(){
+
+                $(this).parent().parent("tr").remove();
+
+            });
+
+
+
+            count_video++;
+
+        });
 
 
 

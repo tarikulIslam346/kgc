@@ -4,7 +4,8 @@
 
 <section class="_r_sector_wrap" id="about_us">
 
-  @if(isset($menus))
+
+     @if(isset($menus))
   @foreach($menus as $menu)
 
 
@@ -14,9 +15,8 @@
 
   @endif
 
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
+
+        <div class="container-fluid">
             <div class="row">
               <div class="col-md-12" style="padding: 0">
                 <div id="wrapper">
@@ -36,13 +36,17 @@
                 </div>
               </div>
             </div>
+        </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
             <div class="row _r_section_body">
-              <div class="col-md-3" style="background-color: gray">
+              <div class="col-md-3 _r_col3_deco">
                 @include('pagenav')
               </div>
 
                 <div class="col-md-9 _r_section_speech_body_right">
-
 
                    @if(isset($h))
                            @foreach($h as $hf)
@@ -55,9 +59,10 @@
                                     <div class="row justify-content-md-center">
 
                                         <div class="col-md-4 _r_top">
-                                            <img src="{{ Storage::url( $hf->heading ) }}"
+                               
                                             
-                                            />
+                                          <img src="/images1/{{ $hf->heading }}"/>
+                                           
                                          
                                             <h5 class="text-center">{{ $hf->name }}</h5>
                                             
@@ -78,20 +83,25 @@
                 
          
                   @endforeach
-                  @else
-                    @if(isset($menus))
-                   @foreach($menus as $menu)
-
-
-                  <p> {!!$menu->menu_details !!}</p>
-
-                  @endforeach
-
-                  @endif
-
-                                  
-                  
-
+                      @else
+                    
+                         @if(isset($menus))
+                                       @foreach($menus as $menu)
+                                       
+                                        <div class="_r_kgc_dynamicPage">
+                                            <div class="row">
+                                             <div class="col-md-12">
+                                               <p> {!!$menu->menu_details !!}</p>
+                                             </div>
+                                           </div>
+                                        </div>
+                    
+                    
+                                      <!--<p> {!!$menu->menu_details !!}</p>-->
+                    
+                                      @endforeach
+                    
+                                      @endif
                   @endif
                  
   
@@ -108,8 +118,8 @@
 
                                         <div class="col-md-4 _r_top">
                                             <img src="/images/{{ $img->img_url[0] }}"/>
-                                            <h5 class="text-center">{{ $img->name[0] }}</h5>
-                                            <h5 class="text-center">{{ $img->title[0] }}</h5>
+                                            <h5 class="text-center" style="font-weight: 600;">{{ $img->name[0] }}</h5>
+                                             <h5 class="text-center" style="padding-bottom: 10px;">{{ $img->title[0] }}</h5>
                                      
                                         </div>
                                     </div>
@@ -124,8 +134,8 @@
                                         <div class="col-md-4">
                                           
                                             <img src="/images/{{ $img->img_url[$i] }}"/>
-                                            <h5 class="text-center">{{ $img->name[$i] }}</h5>
-                                             <h5 class="text-center">{{ $img->title[$i] }}</h5>
+                                            <h5 class="text-center" style="font-weight: 600;">{{ $img->name[$i] }}</h5>
+                                             <h5 class="text-center" style="padding-bottom: 10px;">{{ $img->title[$i] }}</h5>
                                            
                                            
                                         </div>
@@ -148,15 +158,7 @@
            
                   @endforeach
                       @else
-{{--                     @if(isset($menus))
-  @foreach($menus as $menu)
 
-
-           <p> {!!$menu->menu_details !!}</p>
-
-            @endforeach
-
-  @endif --}}
 
                   @endif
 
@@ -189,16 +191,6 @@
                   @endforeach
                       @else
 
-{{--                     @if(isset($menus))
-  @foreach($menus as $menu)
-
-
-           <p> {!!$menu->menu_details !!}</p>
-
-            @endforeach
-
-  @endif --}}
-
                   @endif
               </div>
 
@@ -209,6 +201,7 @@
         </div>
       </div>
     </section>
+    
     @include('layouts.footer')
 
 

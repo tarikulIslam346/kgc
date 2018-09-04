@@ -8,6 +8,8 @@
                                   
                            @endif  
 
+                           @include('layouts.errors')
+
     <h2>Insert Schedule details</h2> 
     <hr>
  

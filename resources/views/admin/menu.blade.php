@@ -21,7 +21,7 @@
 
                         <table class="table table-striped table-bordered table-hover Regular shadow" id="_r_show_nav_1" style="display: none;">
                           
-         <thead style="background-color:#ccffd9;">
+                        <thead style="background-color:#ccffd9;">
                         
                            <tr>
                              <th>Navigation name</th>

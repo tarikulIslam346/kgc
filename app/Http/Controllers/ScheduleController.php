@@ -64,34 +64,23 @@ class ScheduleController extends Controller
           $count++;
 
         $output .= "
-        <h3 style='color:#03a9f4;'>Upcomming</h3>
-
-        <hr style='background-color:lightgreen'>";
+      <p style='border-bottom: 2px solid #10417e;color: #252525;font-size: 18px;font-weight: 600;'>Upcomming Tournament</p>";
           }
 
          $output .= "
      
 
-        <div class='row'>
+         
+        <div class='row' style='font-weight: 400;color: #222b3b;margin-bottom: 20px;padding: 15px 0px;'>
+            <div class='col-md-3'><p style='font-size:  13px;margin-top: 53px;'>".Carbon::parse($row->start_date)->format('F d ').'- '.Carbon::parse($row->closing_date)->format('F d ')."</p></div>
 
+            <div class='col-md-5' style='text-align: center;'>
+              <img src='/logos/".$row->tournament_logo." 'style='height:50px;width:50px;padding-bottom:10px'>
+                  <p><a href='/schedule/".$row->id." ' style='color: #0b3f7e !important;font-size: 20px;font-weight: 600;'>" .$row->tournament."</a></p>
+            </div>
 
-        <div class='col-sm'>"
-
-        .Carbon::parse($row->start_date)->format('F d ').'-'.Carbon::parse($row->closing_date)->format('F d ')."
-
-        </div>
-
-         <div class='col-md'>
-
-         <img src='/logos/".$row->tournament_logo."
-
-         'style='height:25px;width:25px;'><a href='/schedule/".$row->id."' style='color:#03a9f4 !important;'>"
-
-         .$row->tournament."
-
-         </a></div>
-
-         <div class='col-sm'>".$row->winner."</div></div><hr>
+            <div class='col-md-4'>".$row->winner."</div>
+         </div>
         
          ";
 
@@ -100,9 +89,7 @@ class ScheduleController extends Controller
        }else{
            if($count2==0){
                $output .= "
-                <h3 style='color:#03a9f4;'>Full schedule</h3>
-
-        <hr style='background-color:lightgreen'>";
+               <p style='border-bottom: 2px solid #10417e;color: #252525;font-size: 18px;font-weight: 600;'>Full schedule</p>";
         $count2++;
                
            }
@@ -110,25 +97,19 @@ class ScheduleController extends Controller
          $output .= "
 
 
-        <div class='row'>
+        
+       <div class='row' style='font-weight: 400;color: #222b3b;margin-bottom: 20px;padding: 15px 0px;'>
+            <div class='col-md-3' style=''><p style='font-size:  13px;margin-top: 53px;'>".Carbon::parse($row->start_date)->format('F d ').'- '.Carbon::parse($row->closing_date)->format('F d ')."</p></div>
 
-        <div class='col-sm'>"
+            <div class='col-md-5' style='text-align: center;'>
+              <img src='/logos/".$row->tournament_logo." 'style='height:50px;width:50px;padding-bottom:10px'>
+                  <p><a href='/schedule/".$row->id." ' style='color: #0b3f7e !important;font-size: 20px;font-weight: 600;'>" .$row->tournament."</a></p>
+            </div>
 
-        .Carbon::parse($row->start_date)->format('F d ').'-'.Carbon::parse($row->closing_date)->format('F d ')."
+            <div class='col-md-4'>".$row->winner."</div>
+         </div>
 
-        </div>
-
-         <div class='col-md'>
-
-         <img src='/logos/".$row->tournament_logo."
-
-         'style='height:25px;width:25px;'><a href='/schedule/".$row->id."' style='color:#03a9f4 !important;'>"
-
-         .$row->tournament."
-
-         </a></div>
-
-         <div class='col-sm'>".$row->winner."</div></div><hr>";
+         <hr>";
 
        }
       
@@ -169,7 +150,31 @@ class ScheduleController extends Controller
 
     public function delete_schedule($id){
 
+        $schedule= Schedule::where('id',$id)->get();
+    
+        $image_path = '';
+
+         foreach( $schedule as $s){
+
+            $image_path = public_path()."/logos/$s->tournament_logo";  // Value is not URL but directory file path
+        
+        }
+
+         \File::delete([
+                    $image_path
+                ]);
+
        Schedule::destroy($id);
+
+       $scheduleDetails = ScheduleDetail::select('id')->where('schedule_id',$id)->get();
+       
+       foreach($scheduleDetails as $scheduleDetail)
+
+      $this->delete_schedule_details($scheduleDetail->id);
+     
+       
+       //ScheduleDetail::where('schedule_id',$id)->delete();
+
         return redirect('/dashboard')->with('success','Schedule  deleted succesfully');
 
 
@@ -177,42 +182,25 @@ class ScheduleController extends Controller
     }
 
      public function details_store(){
-      // dd(request()->all());
 
-
-      //     $this->validate(request(),[
+        $this->validate(request(),[
 
       
 
-      //   'front9' => 'required',
+        'front9' => 'required',
                 
-      //   'front9.*' => 'file|max:2048',
+        'front9.*' => 'file|max:2048',
 
-      //   'back9' => 'required',
+        'back9' => 'required',
                 
-      //   'back9.*' => 'file|max:2048',
+        'back9.*' => 'file|max:2048',
 
 
 
 
 
-      // ]);
+      ]);
 
-
-
-
-        // if(request()->hasfile('filename'))
-        //  {
-
-        //     foreach(request()->file('filename') as $image)
-        //     {
-        //        $image_name=$image->getClientOriginalName();
-        //         $image->move(public_path().'/images/', $image_name);  
-                
-        //         $data[] = $image_name;   
-        //     }
-        //  }
-      // $data_fornt9[] = '';
   
         $file_front9 = '' ;
         
@@ -231,7 +219,7 @@ class ScheduleController extends Controller
                
            
          }
-          // dd($data_fornt9 );
+         
         $file_back9 = '' ;
         
         if(request()->hasfile('back9'))
@@ -279,20 +267,39 @@ class ScheduleController extends Controller
         $schedule->save();
       
     }
-    // dd($data);
-
-    
-
-
-      // ]);
-
-       // ScheduleDetail::create(request()->except('_token','Submit'));
-
+  
 
        return redirect('/dashboard')->with('success','Schedule details created succesfully');
      }
 
     public function delete_schedule_details($id){
+
+        $schedule= ScheduleDetail::where('id',$id)->get();
+    
+        $image_path = '';
+
+         foreach( $schedule as $s){
+          
+            $image_path = public_path()."/front9/$s->front9";  // Value is not URL but directory file path
+        
+        }
+
+         \File::delete([
+                    $image_path
+                ]);
+
+        $image_path = '';
+
+         foreach( $schedule as $s){
+          
+            $image_path = public_path()."/back9/$s->back9";  // Value is not URL but directory file path
+        
+        }
+
+         \File::delete([
+                    $image_path
+                ]);
+     
      
      ScheduleDetail::destroy($id);
 

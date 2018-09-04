@@ -60,6 +60,7 @@
                          </tbody>
                         
                       </table>
+                      {{$notices->links()}}
 
 
         <script>

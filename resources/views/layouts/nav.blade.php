@@ -16,6 +16,8 @@
                   <br>{{strtoupper('Home')}}</a></li>
                  <li><a href="/schedule" style="font-size: 12px;font-family: 'Comfortaa', cursive;">
                   <br>{{strtoupper('schedule')}}</a></li>
+                  <li><a href="/galary" style="font-size: 12px;font-family: 'Comfortaa', cursive;">
+                  <br>{{strtoupper('galary')}}</a></li>
 
                  @php
                    $count = 0;

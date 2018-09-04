@@ -28,6 +28,8 @@
                     <li id="showmenu6" onclick="setStyle('showmenu6', 'menu6')">Insert Schedule Details</li>
                     <li id="showmenu7" onclick="setStyle('showmenu7', 'menu7')">Show Schedule Details</li>
                     <li id="showmenu8" onclick="setStyle('showmenu8', 'menu8')">Create Notice</li>
+                    <li id="showmenu9" onclick="setStyle('showmenu9', 'menu9')">Create Gallery</li>
+                     <li id="showmenu9" onclick="setStyle('showmenu10', 'menu10')">Create Gallery Vedio</li>
                   </ul>
 
                   
@@ -138,6 +140,30 @@
                       </div>
                     </div>
                     <!---show_schedule ----->                  
+                  </div>
+                   <div class="menu9" style="display: none;">
+
+                   <!-- gallary-->
+                   <div class="card">
+                    <div class="card-body">
+
+                      @include("admin.galary")
+
+                      </div>
+                    </div>
+                    <!---gallary ----->                  
+                  </div>
+                   <div class="menu10" style="display: none;">
+
+                   <!-- gallary-->
+                   <div class="card">
+                    <div class="card-body">
+
+                      @include("admin.vedio")
+
+                      </div>
+                    </div>
+                    <!---gallary ----->                  
                   </div>
 
                 </div>

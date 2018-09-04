@@ -66,3 +66,4 @@
            @endif
          </tbody>
        </table>
+       {{$scheduleDetails->links()}}

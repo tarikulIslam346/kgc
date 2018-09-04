@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
- use App\Menu;
+
+use App\Menu;
+
+
+
 
 class PagesController extends Controller
 {
@@ -16,8 +20,9 @@ class PagesController extends Controller
     
     //return admin page view
     public function admin(){
+
        return view('admin.index');
     }
-
+ 
   
 }
