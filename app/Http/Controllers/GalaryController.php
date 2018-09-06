@@ -8,6 +8,8 @@ use App\GalaryButton;
 
 use App\GalleryVedio;
 
+use App\GalleryImage;
+
 class GalaryController extends Controller
 {
     //
@@ -16,8 +18,9 @@ class GalaryController extends Controller
 
     	$g_btns = GalaryButton::all();
         $g_vedios = GalleryVedio::all();
+        $g_images = GalleryImage::all();
 
-     	return view('galary.index',compact('g_btns','g_vedios'));
+     	return view('galary.index',compact('g_btns','g_vedios','g_images'));
 
      }
 
@@ -112,6 +115,85 @@ $this->validate(request(),[
         GalleryVedio::destroy($id);
         
         return redirect('/dashboard')->with('vedio_delete','Vedio deleted Successfully');
+
+    }
+
+
+     public function store_images(){
+
+
+        $this->validate(request(),[
+
+         'img_url' => 'required|max:2048',
+
+         'img_url.*' => 'image|mimes:jpeg,png,jpg,gif,svg'
+
+
+
+        ]); 
+
+
+
+
+        // foreach(request('img_url') as $img){
+
+        //     $img_url[] = $img ;
+        // }
+
+
+          if(request()->hasfile('img_url'))
+         {
+
+            foreach(request()->file('img_url') as $image)
+            {
+               $image_name=$image->getClientOriginalName();
+                $image->move(public_path().'/galleryimages/', $image_name);  
+                
+                $data[] = $image_name;   
+            }
+         }
+   
+        
+
+        //$button_link[] = request('button_link');
+
+        for( $i=0;$i<count($data);$i++)
+        {
+            $gallery = new GalleryImage;
+
+            $gallery->img_url = $data[$i];
+
+            // $button->button_link = $button_link[$i];
+
+            $gallery->save();
+
+
+        }
+
+        return redirect('/dashboard')->with('img_success','Images added Successfully');
+
+
+
+    }
+
+ public function delete_img($id){
+
+   $image =  GalleryImage::where('id',$id)->get();
+
+     $image_path = '';
+
+ foreach(    $image as $img){
+    $image_path = public_path()."/galleryimages/$img->img_url";  // Value is not URL but directory file path
+
+}
+
+ \File::delete([
+            $image_path
+        ]);
+
+        GalleryImage::destroy($id);
+        
+        return redirect('/dashboard')->with('img_delete','Image deleted Successfully');
 
     }
 

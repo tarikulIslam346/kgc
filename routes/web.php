@@ -102,8 +102,24 @@ Route::post('/create_button','GalaryController@store_button');
 
 Route::post('/create_vedio','GalaryController@store_vedio');
 
+Route::post('/create_image','GalaryController@store_images');
+
 Route::get('/delete_galary_btn/{id}','GalaryController@delete_button');
 
 Route::get('/delete_galary_vedio/{id}','GalaryController@delete_vedio');
 
+Route::get('/delete_galary_img/{id}','GalaryController@delete_img');
+
 Route::get('/galary','GalaryController@index');
+
+//home page edit 
+Route::post('/change_online_service','AdminController@store_online_service');
+
+Route::get('/delete_online_content/{id}','AdminController@delete_online_content');
+
+Route::post('/create_home_button','AdminController@store_home_button');
+
+Route::get('/delete_home_button/{id}','AdminController@delete_home_button');
+
+
+

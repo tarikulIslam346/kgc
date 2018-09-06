@@ -29,7 +29,10 @@
                     <li id="showmenu7" onclick="setStyle('showmenu7', 'menu7')">Show Schedule Details</li>
                     <li id="showmenu8" onclick="setStyle('showmenu8', 'menu8')">Create Notice</li>
                     <li id="showmenu9" onclick="setStyle('showmenu9', 'menu9')">Create Gallery</li>
-                     <li id="showmenu9" onclick="setStyle('showmenu10', 'menu10')">Create Gallery Vedio</li>
+                     <li id="showmenu10" onclick="setStyle('showmenu10', 'menu10')">Create Gallery Vedio</li>
+                     <li id="showmenu11" onclick="setStyle('showmenu11', 'menu11')">Create Gallery Image</li>
+                     <li id="showmenu12" onclick="setStyle('showmenu12', 'menu12')">Edit Homepage</li> 
+                     <li id="showmenu13" onclick="setStyle('showmenu13', 'menu13')">Edit Homepage Button</li>
                   </ul>
 
                   
@@ -160,6 +163,42 @@
                     <div class="card-body">
 
                       @include("admin.vedio")
+
+                      </div>
+                    </div>
+                    <!---gallary ----->                  
+                  </div>
+                    <div class="menu11" style="display: none;">
+
+                   <!-- gallary-->
+                   <div class="card">
+                    <div class="card-body">
+
+                      @include("admin.galaryImage")
+
+                      </div>
+                    </div>
+                    <!---gallary ----->                  
+                  </div>
+                  <div class="menu12" style="display: none;">
+
+                   <!-- gallary-->
+                   <div class="card">
+                    <div class="card-body">
+
+                      @include("admin.adminHome")
+
+                      </div>
+                    </div>
+                    <!---gallary ----->                  
+                  </div>
+                    <div class="menu13" style="display: none;">
+
+                   <!-- gallary-->
+                   <div class="card">
+                    <div class="card-body">
+
+                      @include("admin.Servicebutton")
 
                       </div>
                     </div>

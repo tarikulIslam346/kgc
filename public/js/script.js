@@ -5,8 +5,9 @@ function setStyle(id, className) {
     localStorage.setItem('lastId', id);
     localStorage.setItem('lastClass', className);
 
-    var ids = ['showmenu', 'showmenu1', 'showmenu2', 'showmenu3', 'showmenu4', 'showmenu5','showmenu6','showmenu7','showmenu8','showmenu9','showmenu10'];
-    var classes = ['menu', 'menu1', 'menu2', 'menu3', 'menu4', 'menu5','menu6','menu7','menu8','menu9','menu10'];
+    var ids = ['showmenu', 'showmenu1', 'showmenu2', 'showmenu3', 'showmenu4', 'showmenu5','showmenu6','showmenu7','showmenu8',
+    'showmenu9','showmenu10','showmenu11','showmenu12','showmenu13'];
+    var classes = ['menu', 'menu1', 'menu2', 'menu3', 'menu4', 'menu5','menu6','menu7','menu8','menu9','menu10','menu11','menu12','menu13'];
 
     ids.forEach(function (item, index) {
         if(ids[index] === id) {
@@ -233,8 +234,19 @@ jQuery(document).ready(function($){
         $("#_r_show_nav_3").hide();
         $("#_r_show_nav_4").show();
     });
+    
+    
+    // Create menu sub nav
 
-
+    $('._r_kgc_grid').on('click', function() {
+    
+        // $(this).class("active");
+        $(this).addClass('_r_kgc_grid_deco').siblings().removeClass('_r_kgc_grid_deco');
+        $(this).children().addClass('_r_kgc_li_deco');
+        $(this).siblings().children().removeClass('_r_kgc_li_deco');
+    
+    });
+    
  $('.add_schedule').on('click', function() {
 
             $('.mytbody').last().after(
@@ -261,13 +273,12 @@ jQuery(document).ready(function($){
 
                 $(this).parent().parent("tr").remove();
 
-            }); 
+            });
 
         });
-
-
- /******************gallary button *********************************/
-
+        
+        
+        
             var count_button = 1;
 
                 $('.add_button').on('click', function() {
@@ -304,7 +315,13 @@ jQuery(document).ready(function($){
                             });
                             count_button++;
                         });
-// video backend js
+                        
+                        
+                        
+                        
+                        
+                        
+                        // video backend js
 
 
 
@@ -345,8 +362,312 @@ $('.add_video').on('click', function() {
             count_video++;
 
         });
+        
+          // Multi image input
+    var count = 1;
+    $('.add_gallery').on('click', function() {
+        $('.myGallery').append('<div class="col-md-4"><div class="_r_wrap_col">'+
+                                    '<div class="_r_committee_member upload-icon"><img id="multiImageId'+count+'"></div>'+
+                                    '<label> Insert Image <input type="file" name="img_url[]" id="multi-file-input'+count+'"></label>'+
+                                    // '<input type="text" name="name[]" placeholder="Name" class="_r_input_deco">'+
+                                    // '<input type="text" name="title[]" placeholder="Position" class="_r_input_deco"></div>'+
+                                    '<div class="_r_remove_deco"><i class="fa fa-trash remove_area"></i></div>'+
+                                    '</div>');
 
 
 
+        $(".remove_area").on('click', function(){
+            $(this).parent().parent("div").remove();
+        });
+
+
+         $("#multi-file-input"+count).change(function () {
+                readURL(this);
+                // $('.upload-icon').css('border-style', 'none');
+            });
+
+         console.log("#multi-file-input"+count);
+          function readURL(input, id) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    count--;
+                    $('#multiImageId'+count).attr('src', e.target.result);
+                    console.log("#multi-file-input"+count);
+                    count++;
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+            count++;
+        });
+
+
+    // signature show
+        $("#multi-file-input").change(function () {
+            readURL(this, 'multiImageId');
+            $('.upload-icon').css('border-style', 'none');
+        });
+
+         console.log("#multi-file-input");
+          function readURL(input, id) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#' + id).attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }     
+        
+
+
+
+
+
+// Gallery image hover
+
+$( ".img-wrapper" ).hover(
+
+  function() {
+
+    $(this).find(".img-overlay").animate({opacity: 1}, 600);
+
+  }, function() {
+
+    $(this).find(".img-overlay").animate({opacity: 0}, 600);
+
+  }
+
+);
+
+
+
+// Lightbox
+
+var $overlay = $('<div id="overlay"></div>');
+
+var $image = $("<img>");
+
+var $prevButton = $('<div id="prevButton"><i class="fa fa-chevron-left"></i></div>');
+
+var $nextButton = $('<div id="nextButton"><i class="fa fa-chevron-right"></i></div>');
+
+var $exitButton = $('<div id="exitButton"><i class="fa fa-times"></i></div>');
+
+
+
+// Add overlay
+
+$overlay.append($image).prepend($prevButton).append($nextButton).append($exitButton);
+
+$("#gallery").append($overlay);
+
+
+
+// Hide overlay on default
+
+$overlay.hide();
+
+
+
+// When an image is clicked
+
+$(".img-overlay").click(function(event) {
+
+  // Prevents default behavior
+
+  event.preventDefault();
+
+  // Adds href attribute to variable
+
+  var imageLocation = $(this).prev().attr("href");
+
+  // Add the image src to $image
+
+  $image.attr("src", imageLocation);
+
+  // Fade in the overlay
+
+  $overlay.fadeIn("slow");
+
+});
+
+
+
+// When the overlay is clicked
+
+$overlay.click(function() {
+
+  // Fade out the overlay
+
+  $(this).fadeOut("slow");
+
+});
+
+
+
+// When next button is clicked
+
+$nextButton.click(function(event) {
+
+  // Hide the current image
+
+  $("#overlay img").hide();
+
+  // Overlay image location
+
+  var $currentImgSrc = $("#overlay img").attr("src");
+
+  // Image with matching location of the overlay image
+
+  var $currentImg = $('#image-gallery img[src="' + $currentImgSrc + '"]');
+
+  // Finds the next image
+
+  var $nextImg = $($currentImg.closest(".image").next().find("img"));
+
+  // All of the images in the gallery
+
+  var $images = $("#image-gallery img");
+
+  // If there is a next image
+
+  if ($nextImg.length > 0) { 
+
+    // Fade in the next image
+
+    $("#overlay img").attr("src", $nextImg.attr("src")).fadeIn(800);
+
+  } else {
+
+    // Otherwise fade in the first image
+
+    $("#overlay img").attr("src", $($images[0]).attr("src")).fadeIn(800);
+
+  }
+
+  // Prevents overlay from being hidden
+
+  event.stopPropagation();
+
+});
+
+
+
+// When previous button is clicked
+
+$prevButton.click(function(event) {
+
+  // Hide the current image
+
+  $("#overlay img").hide();
+
+  // Overlay image location
+
+  var $currentImgSrc = $("#overlay img").attr("src");
+
+  // Image with matching location of the overlay image
+
+  var $currentImg = $('#image-gallery img[src="' + $currentImgSrc + '"]');
+
+  // Finds the next image
+
+  var $nextImg = $($currentImg.closest(".image").prev().find("img"));
+
+  // Fade in the next image
+
+  $("#overlay img").attr("src", $nextImg.attr("src")).fadeIn(800);
+
+  // Prevents overlay from being hidden
+
+  event.stopPropagation();
+
+});
+
+
+
+// When the exit button is clicked
+
+$exitButton.click(function() {
+
+  // Fade out the overlay
+
+  $("#overlay").fadeOut("slow");
+
+});
+
+// count down
+
+function makeTimer() {
+
+            var sc = $('#sc_date').html();
+
+            var endTime = new Date(sc);            
+            endTime = (Date.parse(endTime) / 1000);
+
+            var now = new Date();
+            now = (Date.parse(now) / 1000);
+
+            var timeLeft = endTime - now;
+
+            var days = Math.floor(timeLeft / 86400); 
+            var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
+            var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
+            var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
+  
+            if (hours < "10") { hours = "0" + hours; }
+            if (minutes < "10") { minutes = "0" + minutes; }
+            if (seconds < "10") { seconds = "0" + seconds; }
+
+            $("#days").html(days + "<span></span>");
+            $("#hours").html(hours + "<span></span>");
+            $("#minutes").html(minutes + "<span></span>");
+            $("#seconds").html(seconds + "<span></span>");       
+
+    }
+
+    setInterval(function() { makeTimer(); }, 1000);
+
+//Home page button
+
+                var count_button = 1;
+
+                $('.add_home_button').on('click', function() {
+
+
+
+                            $('.myHomebutton').last().after(
+
+                                '<tr class="myHomebutton">' +
+
+                                '<td>'+count_button+'</td>' +
+
+                                '<td> <p>Button Name</p></td>' +
+
+                                '<td> <input type="input" name="home_button_name[]"></td>' +
+
+                                '<td> <p>Button link</p></td>' +
+
+                                '<td> <input type="input" name="home_button_link[]"></td>' +
+
+                                '<td style="text-align:center">' +
+
+                                '<i class="fa fa-times remove_home_button text-center" style="color: red;font-size: 20px ;line-height: 1.5;"></i>' +
+
+                                '</td>'+
+
+                                '</tr>');
+
+                            $(".remove_home_button").on('click', function(){
+
+                                $(this).parent().parent("tr").remove();
+                                count_button = 1;
+
+                            });
+                            count_button++;
+                        });
 
 });

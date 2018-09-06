@@ -14,6 +14,9 @@ use App\HeigherCommitee;
 use App\Text;
 use App\GalaryButton;
 use App\GalleryVedio;
+use App\GalleryImage;
+use App\HomeContent;
+use App\HomeButton;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -40,10 +43,15 @@ class AdminController extends Controller
         $notices = Notice::simplePaginate(2);
         $galary_btn = GalaryButton::simplePaginate(4);
 
+        $galary_img = GalleryImage::simplePaginate(2);
+
         $galary_vedio = GalleryVedio::simplePaginate(4);
+        $online_content = HomeContent::all();
+
+        $home_buttons = HomeButton::simplePaginate(4);
 
         return view('admin.dashboard',compact('menus','submenus','layouts','schedules','scheduleDetails',
-          'notices','galary_btn','galary_vedio'));
+          'notices','galary_btn','galary_vedio','galary_img','online_content','home_buttons'));
       }
 
       return view('admin.index');
@@ -526,6 +534,79 @@ public function delete_notice($id){
 
 
 }
+/***********Home page *********/
+
+public function store_online_service(){
+
+     $this->validate(request(),[
+
+     'home_online_text' => 'required'
+
+   ]);
+
+  $online = new HomeContent;
+  $online->home_online_text = request('home_online_text');
+  $online->save();
+
+   return redirect('/dashboard')->with('content_success','Online service info added succesfully');
+
+
+}
+public function delete_online_content($id){
+
+  HomeContent::destroy($id);
+
+ return redirect('/dashboard')->with('content_success','Online service info deleted succesfully');
+
+}
+    public function store_home_button(){
+
+    $this->validate(request(),[
+
+     'home_button_name' => 'required',
+
+     'home_button_link' => 'required'
+
+    ]);
+          foreach(request('home_button_name') as $btn_name){
+
+        $button_name[] = $btn_name ;
+      }
+    foreach(request('home_button_link') as $btn_link){
+        
+        $button_link[] = $btn_link ;
+      }
+      
+
+      //$button_link[] = request('button_link');
+
+      for( $i=0;$i<count($button_name);$i++)
+      {
+        $button = new HomeButton;
+
+        $button->home_button_name = $button_name[$i];
+
+        $button->home_button_link = $button_link[$i];
+
+        $button ->save();
+
+
+      }
+
+      return redirect('/dashboard')->with('home_btn_success','Button added Successfully');
+
+
+
+    }
+
+public function delete_home_button($id){
+
+  HomeButton::destroy($id);
+
+ return redirect('/dashboard')->with('home_btn_success','Button deleted Successfully');
+
+}
+
 
 
 

@@ -8,14 +8,22 @@
                                   
                            @endif
 
-                            <nav class="navbar navbar-expand-sm bg-primary" style="margin-bottom:20px;padding: 10px;">
+                          {{--   <nav class="navbar navbar-expand-sm bg-primary" style="margin-bottom:20px;padding: 10px;">
                               <ul class="navbar-nav" style="width: 100%">
-                                <!-- <div class="row"> -->
+                                <!- <div class="row"> ->
                                   <div class="col-md-3" style="border-right: 2px solid;"><li class="nav-item text-center" id="_r_navbar_1"> Show Nav Table</li></div>
                                   <div class="col-md-3" style="border-right: 2px solid;"><li class="nav-item text-center" id="_r_navbar_2"> Add/Edit Nav Name</li></div>
                                   <div class="col-md-3" style="border-right: 2px solid;"><li class="nav-item text-center" id="_r_navbar_3"> Add/Edit Nav Image</li></div>
                                   <div class="col-md-3"><li class="nav-item text-center" id="_r_navbar_4"> Add/Edit Nav Content</li></div>
-                                <!-- </div> -->
+                                <!- </div> ->
+                              </ul>
+                            </nav> --}}
+                                  <nav class="navbar navbar-expand-sm _r_kgc_create_pageManu">
+                              <ul class="navbar-nav">
+                                  <div class="col-md-3 _r_kgc_grid" style="border-right: 2px solid #fff;"><li class="nav-item text-center" id="_r_navbar_1"> Show Nav Table</li></div>
+                                  <div class="col-md-3 _r_kgc_grid" style="border-right: 2px solid #fff;"><li class="nav-item text-center" id="_r_navbar_2"> Add/Edit Nav Name</li></div>
+                                  <div class="col-md-3 _r_kgc_grid" style="border-right: 2px solid #fff;"><li class="nav-item text-center" id="_r_navbar_3"> Add/Edit Nav Image</li></div>
+                                  <div class="col-md-3 _r_kgc_grid"><li class="nav-item text-center" id="_r_navbar_4"> Add/Edit Nav Content</li></div>
                               </ul>
                             </nav>
 

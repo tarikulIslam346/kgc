@@ -981,3 +981,470 @@ code {
     font-size: 14px;
     font-weight: 600;
 }
+
+/*#gallery {*/
+
+/*  padding-top: 40px;*/
+
+/*}*/
+
+/*@media screen and (min-width: 991px) {*/
+
+/*  #gallery {*/
+
+/*    padding: 60px 30px 0 30px;*/
+
+/*  }*/
+
+/*}*/
+
+
+
+/*#image-gallery .row{*/
+
+/*  padding-bottom: 50px;*/
+
+/*}*/
+
+
+
+#image-gallery ._r_name_imggallary{
+
+  display: flex;
+
+}
+
+
+
+#image-gallery ._r_name_imggallary h1{
+
+  margin: auto;
+
+}
+
+
+
+
+
+.img-wrapper {
+
+  position: relative;
+
+  margin-top: 15px;
+
+  height: 280px;
+
+}
+
+.img-wrapper img {
+
+  width: 100%;
+
+  height: 280px;
+
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+}
+
+
+
+.img-overlay {
+
+  background: rgba(0, 0, 0, 0.7);
+
+  width: 100%;
+
+  height: 100%;
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  opacity: 0;
+
+
+
+}
+
+.img-overlay i {
+
+  color: #fff;
+
+  font-size: 3em;
+
+}
+
+
+
+#overlay {
+
+  background: rgba(0, 0, 0, 0.7);
+
+  width: 100%;
+
+  height: 100%;
+
+  position: fixed;
+
+  top: 0;
+
+  left: 0;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  z-index: 999;
+
+  -webkit-user-select: none;
+
+  -moz-user-select: none;
+
+  -ms-user-select: none;
+
+  user-select: none;
+
+}
+
+#overlay img {
+
+  margin: 0;
+
+  width: 80%;
+
+  height: auto;
+
+  -o-object-fit: contain;
+
+     object-fit: contain;
+
+  /*padding: 5%;*/
+
+}
+
+@media screen and (min-width: 768px) {
+
+  #overlay img {
+
+    width: 60%;
+
+  }
+
+}
+
+@media screen and (min-width: 1200px) {
+
+  #overlay img {
+
+    width: 50%;
+
+    height: 80%
+
+  }
+
+}
+
+
+
+#nextButton {
+
+  color: #fff;
+
+  font-size: 2em;
+
+  transition: opacity 0.8s;
+
+}
+
+#nextButton:hover {
+
+  opacity: 0.7;
+
+}
+
+@media screen and (min-width: 768px) {
+
+  #nextButton {
+
+    font-size: 3em;
+
+  }
+
+}
+
+
+
+#prevButton {
+
+  color: #fff;
+
+  font-size: 2em;
+
+  transition: opacity 0.8s;
+
+}
+
+#prevButton:hover {
+
+  opacity: 0.7;
+
+}
+
+@media screen and (min-width: 768px) {
+
+  #prevButton {
+
+    font-size: 3em;
+
+  }
+
+}
+
+
+
+#exitButton {
+
+  color: #fff;
+
+  font-size: 2em;
+
+  transition: opacity 0.8s;
+
+  position: absolute;
+
+  top: 15px;
+
+  right: 15px;
+
+}
+
+#exitButton:hover {
+
+  opacity: 0.7;
+
+}
+
+@media screen and (min-width: 768px) {
+
+  #exitButton {
+
+    font-size: 3em;
+
+  }
+
+}
+
+
+
+
+
+/*online_service*/
+
+._r_kgc_content_head{
+    margin: 150px 0 30px 0;
+    text-align: center;
+}
+
+._r_kgc_content_head ._r_kgc_hr{
+    margin: 0 0 30px 0;
+    display: block;
+    border: none;
+    height: 1px;
+    background: #0071B9;
+    background: linear-gradient(to right, white, #0071B9, #26ABFF, #0071B9, white);
+}
+
+._r_kgc_content_head ._r_kgc_content_head_title{
+    font-weight: 800;
+  text-transform: uppercase;
+  /*font-size: 48px;*/
+  line-height: 56px;
+  /*margin: 0 0 25px 0;*/
+  padding: 0;
+    color: #283e4a;
+}
+
+._r_kgc_content_head ._r_kgc_content_head_body{
+    line-height: 30px;
+    font-size: 16px;
+}
+
+._r_kgc_content_body button{
+    height: 80px;
+}
+._r_kgc_content_body .btn-outline-secondary{
+    border: 2px solid #0071B9;
+    color: #0071B9 !important;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+
+
+#upcomming_tournament{
+    margin-bottom:150px;
+}
+
+#upcomming_tournament ._r_kgc_countdown_tournament{
+    text-align: center;
+}
+
+#upcomming_tournament ._r_kgc_countdown_tournament ._r_kgc_countdown_tournament_wrap{
+    height: 450px;
+    border: 1px solid;
+    background-color: #283e4a;
+}
+
+#upcomming_tournament ._r_kgc_countdown_tournament ._r_kgc_countdown_title{
+    text-align: left;
+    margin-left: 47px;
+    color: #fff;
+}
+#upcomming_tournament ._r_kgc_countdown_tournament ._r_kgc_countdown_title ._r_kgc_tname{
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+#upcomming_tournament ._r_kgc_countdown_tournament img{
+    height: 220px;
+    margin-bottom: 15%;
+}
+
+#upcomming_tournament ._r_kgc_countdown_table_wrap{
+    height: 450px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+#upcomming_tournament .scrollbar
+{
+    background: #F5F5F5;
+    overflow-y: scroll;
+}
+
+#upcomming_tournament #style-8::-webkit-scrollbar
+{
+    width: 15px;
+    background-color: #F5F5F5;
+}
+
+#upcomming_tournament #style-8::-webkit-scrollbar-thumb
+{
+    background-color: #000000;  
+}
+
+#upcomming_tournament ._r_kgc_countdown_table_wrap ._r_kgc_countdown_table_img{
+    display: flex;
+    border-right:2px solid;
+}
+
+#upcomming_tournament ._r_kgc_countdown_table_wrap ._r_kgc_countdown_table_img img{
+    height: 50px;
+    margin: auto;
+}
+
+#upcomming_tournament ._r_kgc_countdown_table_wrap ._r_kgc_tbl_name{
+    font-size: 15px;
+    color: #fff;
+}
+#upcomming_tournament ._r_kgc_countdown_table_wrap ._r_kgc_countdown_row_deco{
+    background-color: #283e4a;
+    padding: 10px;
+    color: #fff;
+    border-bottom: 1px solid;
+}
+
+#upcomming_tournament ._r_kgc_content_head ._r_kgc_hr{
+    margin: 0 0 30px 0;
+    display: block;
+    border: none;
+    height: 1px;
+    background: #0071B9;
+    background: linear-gradient(to right, white, #0071B9, #26ABFF, #0071B9, white);
+}
+
+#upcomming_tournament ._r_kgc_countdown_tournament ._r_kgc_content_head_title{
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 56px;
+    color: #0b3f7e;
+    font-size: 20px;
+}
+
+#upcomming_tournament ._r_kgc_countdown_tournament #_r_kgc_timer div {
+  display: inline-block;
+  line-height: 4;
+  font-size: 20px;
+  padding: 0 10px;
+  width: 60px;
+  height: 80px;
+  background-color: #724bd0;
+}
+
+._r_kgc_video_wrap{
+  margin-bottom: 150px;
+}
+
+#upcomming_tournament span {
+  display: block;
+  font-size: 20px;
+  color: red;
+}
+
+#upcomming_tournament #days {
+  font-size: 100px;
+  /*color: #f07c22;*/
+  color: #fff
+}
+#upcomming_tournament #hours {
+  font-size: 100px;
+  /*color: #f07c22;*/
+  color: #fff
+}
+#upcomming_tournament #minutes {
+  font-size: 100px;
+ /*color: #f07c22;*/
+ color: #fff
+}
+#upcomming_tournament #seconds {
+  font-size: 50px;
+  /*color: #f07c22;*/
+  color: #fff
+}
+
+/*create menu sub nav*/
+
+._r_kgc_create_pageManu{
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #283e4a;
+    position: relative;
+    height: 42px;
+    padding-left: 0;
+
+}
+._r_kgc_create_pageManu ul{
+    width: 100%;
+    position: absolute;
+    height: 42px;
+    bottom: 0;
+    line-height: 40px;
+    cursor: pointer;
+}
+._r_kgc_create_pageManu ._r_kgc_grid_deco{
+   background-color:#fff; 
+}
+._r_kgc_create_pageManu ._r_kgc_li_deco {
+   color: #000;
+}
