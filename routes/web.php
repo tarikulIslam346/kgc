@@ -121,5 +121,7 @@ Route::post('/create_home_button','AdminController@store_home_button');
 
 Route::get('/delete_home_button/{id}','AdminController@delete_home_button');
 
+// Route::post('/contact','')
+
 
 

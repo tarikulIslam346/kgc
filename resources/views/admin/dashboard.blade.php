@@ -8,9 +8,9 @@
         <div class="container-fluid">
           <div class="row _r_row_wrap">
             <div class="col-md-2 _r_col_wrap">
-              <div class="text-center _r_logo">
+              <!-- <div class="text-center _r_logo">
                 <img src="/img/logo.png">
-              </div>
+              </div> -->
               <nav class="navbar navbar-expand-lg">
                 <button class="navbar-toggler pull-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon bg-light"></span>
@@ -24,15 +24,15 @@
                     <li id="showmenu2" onclick="setStyle('showmenu2', 'menu2')">Create Layout</li>
                     <li id="showmenu3" onclick="setStyle('showmenu3', 'menu3')">Create Menu</li>
                     <li id="showmenu4" onclick="setStyle('showmenu4', 'menu4')">Schedule</li>
-                    <li id="showmenu5" onclick="setStyle('showmenu5', 'menu5')">Show Schedule</li>
-                    <li id="showmenu6" onclick="setStyle('showmenu6', 'menu6')">Insert Schedule Details</li>
-                    <li id="showmenu7" onclick="setStyle('showmenu7', 'menu7')">Show Schedule Details</li>
+                    <!-- <li id="showmenu5" onclick="setStyle('showmenu5', 'menu5')">Show Schedule</li> -->
+                    <!-- <li id="showmenu6" onclick="setStyle('showmenu6', 'menu6')">Insert Schedule Details</li> -->
+                    <!-- <li id="showmenu7" onclick="setStyle('showmenu7', 'menu7')">Show Schedule Details</li> -->
                     <li id="showmenu8" onclick="setStyle('showmenu8', 'menu8')">Create Notice</li>
-                    <li id="showmenu9" onclick="setStyle('showmenu9', 'menu9')">Create Gallery</li>
-                     <li id="showmenu10" onclick="setStyle('showmenu10', 'menu10')">Create Gallery Vedio</li>
-                     <li id="showmenu11" onclick="setStyle('showmenu11', 'menu11')">Create Gallery Image</li>
-                     <li id="showmenu12" onclick="setStyle('showmenu12', 'menu12')">Edit Homepage</li> 
-                     <li id="showmenu13" onclick="setStyle('showmenu13', 'menu13')">Edit Homepage Button</li>
+                    <li id="showmenu9" onclick="setStyle('showmenu9', 'menu9')">Create Gallery Page</li>
+                     <!--<li id="showmenu10" onclick="setStyle('showmenu10', 'menu10')">Create Gallery Vedio</li>-->
+                     <!--<li id="showmenu11" onclick="setStyle('showmenu11', 'menu11')">Create Gallery Image</li>-->
+                     <li id="showmenu12" onclick="setStyle('showmenu12', 'menu12')">Homepage</li> 
+                     <!--<li id="showmenu13" onclick="setStyle('showmenu13', 'menu13')">Edit Homepage Button</li>-->
                   </ul>
 
                   
@@ -100,39 +100,9 @@
                     </div>
                      <!-- Scedule create -->               
                   </div>
-                   <div class="menu5" style="display: none;">
-
-                   <!-- show_schedule -->
-                   <div class="card">
-                    <div class="card-body">
-                      @include("admin.show_schedule")
-
-                      </div>
-                    </div>
-                    <!---show_schedule ----->                  
-                  </div>
-                     <div class="menu6" style="display: none;">
-
-                   <!-- show_schedule -->
-                   <div class="card">
-                    <div class="card-body">
-                      @include("admin.scheduleDetails")
-
-                      </div>
-                    </div>
-                    <!---show_schedule ----->                  
-                  </div>
-                       <div class="menu7" style="display: none;">
-
-                   <!-- show_schedule -->
-                   <div class="card">
-                    <div class="card-body">
-                      @include("admin.showScheduleDetails")
-
-                      </div>
-                    </div>
-                    <!---show_schedule ----->                  
-                  </div>
+                   
+                     
+                       
                   <div class="menu8" style="display: none;">
 
                    <!-- show_schedule -->
@@ -214,35 +184,6 @@
     </section>
 
 
-<!--designe-->
-
-<style>
-.menu2 ._r_submenu_style{
-    padding-bottom: 40px;
-}
-.menu2 ._r_col_deco{
-    background-color: #111;
-    color: #fff;
-    padding: 5px 15px;
-}
-
-.menu2 ._r_col_deco label{
-    margin-bottom: 0px;
-}
-
-.menu2 ._r_select_deco select{
-   border-radius: 0;
-    height: 34px;
-}
-
-.menu2 ._r_select_deco{
-   padding-left: 0;
-}
-
-.menu2 ._r_sub_button{
-   padding-bottom: 20px;
-   border-bottom: 2px solid #000;
-}
-</style>
 
 @endsection
+
