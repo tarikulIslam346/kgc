@@ -46,6 +46,9 @@ li{
 }
 
 
+/*animated button*/
+
+
 ._r_show_menu{
     background-color: #0069d9;
 }
@@ -315,10 +318,116 @@ a:hover{
 
 }
 
+
+/*going down button*/
+
+._r_kgc_curve_row{
+  display: flex;
+}
+
+._r_kgc_curve_col{
+  margin: auto;
+  display:flex;
+}
+
+._r_kgc_curve_wrap {
+    height: 145px;
+    background-color: #fff;
+    border-top-right-radius: 100%;
+    border-top-left-radius: 100%;
+
+
+
+    margin:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+    /*background: #36454F;*/
+    font-size: 1.75rem;
+    width:130px;
+}
+
+@-webkit-keyframes scroll {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  30% {
+    -webkit-transform: translateY(60px);
+            transform: translateY(60px);
+  }
+}
+@keyframes scroll {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  30% {
+    -webkit-transform: translateY(60px);
+            transform: translateY(60px);
+  }
+}
+svg #wheel {
+  -webkit-animation: scroll ease 2s infinite;
+          animation: scroll ease 2s infinite;
+}
+
+/**,*/
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+}
+
+/*slider*/
+
+._r_kgc_sliderContent{
+    position: absolute;
+    top: 25%;
+    color: #fff;
+    text-align: center;
+    /*left: 18.5%;*/
+    width:100%;
+}
+._r_kgc_sliderContent h2{
+    font-size: 60px;
+    
+}
+._r_kgc_sliderContent h5{
+    padding:10px;
+}
+._r_kgc_sliderContent a{
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 70px;
+    margin-top:20px;
+}
+._r_kgc_sliderContent a:hover{
+    background: #283e4a;
+}
+
+
+
+.carousel-indicators{
+bottom:40px;    
+}
+
 .carousel-inner img {
       width: 100%;
-      height: calc(100vh - 52px);
+      height: calc(100vh - 80px);
   }
+._r_kgc_sliderOverlay{
+    background-color: #000;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: .5;
+}
+
 
 ._r_sector_wrap{
     /*padding: 30px 0;*/
@@ -333,14 +442,12 @@ a:hover{
 ._r_sector_wrap ._r_section_body ul>li{
     height: 30px;
     font-weight: 600;
+    border-bottom: 1px solid lightseagreen;
+    margin:10px 0;
 }
 ._r_sector_wrap ._r_section_body ul>li:hover{
     color:lightseagreen !important;
 }
-._r_sector_wrap ._r_section_body ul>li{
-    border-bottom: 1px solid lightseagreen;
-}
-
 
 /*section committee*/
  ._r_sector_wrap ._r_section_body ._r_section_body_right ._r_bottom ._r_bottom_row{
@@ -981,6 +1088,78 @@ code {
     padding-right: 10px;
 }
 
+._r_kgc_downicon_wrap {
+    width: 120px;
+    height: 63px;
+    background: #283e4a;
+    cursor:pointer;
+}
+
+._r_kgc_downicon_wrap .arrow {
+    width: 10px;
+    height: 15px;
+    position: relative;
+    top: 20%;
+    left: 0;
+    margin: 0 auto;
+    -webkit-transform: translateY(-20%);
+    transform: translateY(-20%);
+    background: #ffffff;
+    -webkit-animation: pointer 1s ease infinite alternate;
+    animation: pointer 1s ease infinite alternate;
+}
+._r_kgc_downicon_wrap .arrow:before {
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: -15px;
+    left: -10px;
+    border-top: 15px solid #ffffff;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+}
+
+._r_kgc_downicon_wrap .tray {
+    width: 100px;
+    height: 5px;
+    position: relative;
+    bottom: -35px;
+    left: 0;
+    margin: 0 auto;
+    background: #ffffff;
+}
+.tray:before, .tray:after {
+    content: '';
+    width: 5px;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+    background: #ffffff;
+}
+._r_kgc_downicon_wrap .tray:before {
+    left: 0;
+}
+._r_kgc_downicon_wrap .tray:after {
+    right: 0;
+}
+
+@-webkit-keyframes pointer {
+    100% {
+        top: 30%;
+        -webkit-transform: translateY(-30%);
+        transform: translateY(-30%);
+    }
+}
+
+@keyframes pointer {
+    100% {
+        top: 30%;
+        -webkit-transform: translateY(-30%);
+        transform: translateY(-30%);
+    }
+}
+
 
 /*upcomming*/
 ._r_kgc_schedule ._r_kgc_schedule_show .col-md-4{
@@ -1322,6 +1501,7 @@ code {
 
 ._r_kgc_content_body button{
     height: 80px;
+    margin-bottom:40px;
 }
 ._r_kgc_content_body .btn-outline-secondary{
     border: 2px solid #0071B9;
@@ -1333,7 +1513,7 @@ code {
 
 
 #upcomming_tournament{
-    margin-bottom:150px;
+    margin-bottom:80px;
 }
 
 #upcomming_tournament ._r_kgc_countdown_tournament{

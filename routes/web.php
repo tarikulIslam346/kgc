@@ -6,11 +6,11 @@ Route::get('/', 'PagesController@home');
 
 Route::get('/admin','PagesController@admin');
 
-Route::post('/store','AdminController@store')->name('login');
+Route::post('/store','AdminController@store');
 
 Route::get('/destroy','AdminController@destroy');
 
-Route::get('/dashboard','AdminController@dashboard');
+Route::get('/dashboard','AdminController@dashboard')->name('login');;
 
 Route::get('/dashboard/{id}','AdminController@dashboard');
 
@@ -121,7 +121,11 @@ Route::post('/create_home_button','AdminController@store_home_button');
 
 Route::get('/delete_home_button/{id}','AdminController@delete_home_button');
 
-// Route::post('/contact','')
+Route::get('/contact','PagesController@contact_us');
+Route::post('/contact','PagesController@store_contact');
+Route::get('/contact/{id}','PagesController@delete_contact');
+Route::post('/mail','PagesController@send_mail');
+
 
 
 

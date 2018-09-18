@@ -14,10 +14,8 @@
              <ul class="_r-menu-item _r-left-menu-item _r_ul_deco">
                  <li><a href="/" style="font-size: 12px;font-family: 'Comfortaa', cursive;">
                   <br>{{strtoupper('Home')}}</a></li>
-                 <li><a href="/schedule" style="font-size: 12px;font-family: 'Comfortaa', cursive;">
-                  <br>{{strtoupper('schedule')}}</a></li>
-                  <li><a href="/galary" style="font-size: 12px;font-family: 'Comfortaa', cursive;">
-                  <br>{{strtoupper('galary')}}</a></li>
+                 
+                
 
                  @php
                    $count = 0;
@@ -28,11 +26,11 @@
 
                  @foreach($menus as $menu)
 
-                  @if($count == 4)
+                  @if($count == 2)
                     @break
 
                   @endif
-                   <li><a href="/nav/{{$menu->id}}/{{$menu->name}}" style="font-size: 12px;font-family: 'Comfortaa', cursive;">
+                   <li class="_r_abc"><a href="/nav/{{$menu->id}}/{{$menu->name}}" style="font-size: 12px;font-family: 'Comfortaa', cursive;">
                     <br>{{ strtoupper($menu->name) }}</a></li>
                   
 
@@ -43,6 +41,13 @@
 
                  @endforeach
                  @endif
+                 
+                 <li><a href="/show_schedule" style="font-size: 12px;font-family: 'Comfortaa', cursive;">
+                  <br>{{strtoupper('tournament')}}</a></li>
+                   <li><a href="/galary" style="font-size: 12px;font-family: 'Comfortaa', cursive;">
+                  <br>{{strtoupper('gallery')}}</a></li>
+                   <li><a href="/contact" style="font-size: 12px;font-family: 'Comfortaa', cursive;">
+                  <br>{{strtoupper('Contact Us')}}</a></li>
 
                
                  
@@ -58,7 +63,7 @@
                     @if (isset($menus))
 
                    @foreach($menus as $menu)
-                   @if($count >=5) @continue   @endif
+                   @if($count >=3) @continue   @endif
                    
                     <li>{{strtoupper($menu->name)}}</li>
 

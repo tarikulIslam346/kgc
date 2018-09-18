@@ -58,8 +58,11 @@
 
                             <table>
                                 <thead>
-                                <p>Address: Shaheed Sharani, Near Post Office, Dhaka Cantonment, Dhaka 1206</br>
-                                </thead>
+                                    @php
+                                    $var = \App\Contact::latest()->first();
+                                    @endphp
+                                <p> {!! $var->contact_details !!} <p>
+                              {{--   </thead>
                                 <tbody>
                                 <tr>
                                     <td>Tuesday</td>
@@ -92,7 +95,7 @@
                                 </tbody>
                                 <tfoot style="background-color: #6c757d">
                                 <p>Founded: 1956Region served: Bangladesh Phone: 01730-004616</p>
-                                </tfoot>
+                                </tfoot> --}}
                             </table>
                         </div>
                     </div>

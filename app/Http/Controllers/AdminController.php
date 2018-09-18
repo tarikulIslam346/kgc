@@ -17,6 +17,7 @@ use App\GalleryVedio;
 use App\GalleryImage;
 use App\HomeContent;
 use App\HomeButton;
+use App\Contact;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -49,9 +50,10 @@ class AdminController extends Controller
         $online_content = HomeContent::all();
 
         $home_buttons = HomeButton::simplePaginate(4);
+        $contact = Contact::all();
 
         return view('admin.dashboard',compact('menus','submenus','layouts','schedules','scheduleDetails',
-          'notices','galary_btn','galary_vedio','galary_img','online_content','home_buttons'));
+          'notices','galary_btn','galary_vedio','galary_img','online_content','home_buttons','contact'));
       }
 
       return view('admin.index');

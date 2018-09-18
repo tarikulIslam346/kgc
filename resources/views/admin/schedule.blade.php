@@ -1,4 +1,18 @@
- @if(session('success'))
+
+  <!-- Material Design for Bootstrap fonts and icons -->
+  {{--   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons"> --}}
+
+    <!-- Material Design for Bootstrap CSS -->
+   {{--  <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" > --}}
+
+
+{{-- 
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" ></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" ></script>
+    <script>$(document).ready(function() { $('form').bootstrapMaterialDesign(); });</script> --}}
+
+@if(session('success'))
                     <div class="alert  alert-success fade show" role="alert">
                        {{ session('success') }} 
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -12,6 +26,7 @@
 
                              <nav class="navbar navbar-expand-sm _r_kgc_create_pageManu">
                               <ul class="navbar-nav">
+                                 <!-- <li id="showmenu5" onclick="setStyle('showmenu5', 'menu5')">Show Schedule</li> -->
                                   <div class="col-md-3 _r_kgc_grid_se" style="border-right: 2px solid #fff;"><li class="nav-item text-center" id="_r_shedule_1"> Create Schedule</li></div>
                                   <div class="col-md-3 _r_kgc_grid_se" style="border-right: 2px solid #fff;"><li class="nav-item text-center" id="_r_shedule_2"> Add/Show Schedule</li></div>
                                   <div class="col-md-3 _r_kgc_grid_se" style="border-right: 2px solid #fff;"><li class="nav-item text-center" id="_r_shedule_3"> Insert Schedule Details</li></div>
@@ -28,11 +43,22 @@
  
                 <form method="POST" action="/schedule" enctype="multipart/form-data">
                   @csrf
+
+   {{--                  <div class="form-group">
+    <label for="exampleInputEmail1" class="bmd-label-floating">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1">
+    <span class="bmd-help">We'll never share your email with anyone else.</span>
+  </div>
+
+    <div class="form-group">
+    <label for="exampleInputPassword1" class="bmd-label-floating">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1">
+  </div> --}}
                   
                    <div class="row">
                       <div class="col-md-6 card">
                            <div class="form-group">
-                            <label for="tournament"><b>Enter Tournamnet Name</b></label>
+                            <label for="tournament" class="bmd-label-floating"><b>Enter Tournamnet Name</b></label>
                             <input type="text" class="form-control" id="tournament" name="tournament" placeholder="Enter tournament name" required>
                           </div>
                       </div>

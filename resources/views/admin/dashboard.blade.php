@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <!--designe-->
 <section class="_r_dashboard">
       <div class="_r_dashboard_wrap">
@@ -24,7 +25,7 @@
                     <li id="showmenu2" onclick="setStyle('showmenu2', 'menu2')">Create Layout</li>
                     <li id="showmenu3" onclick="setStyle('showmenu3', 'menu3')">Create Menu</li>
                     <li id="showmenu4" onclick="setStyle('showmenu4', 'menu4')">Schedule</li>
-                    <!-- <li id="showmenu5" onclick="setStyle('showmenu5', 'menu5')">Show Schedule</li> -->
+              {{--       <li id="showmenu5" onclick="setStyle('showmenu5', 'menu5')">Show Schedule</li> --}}
                     <!-- <li id="showmenu6" onclick="setStyle('showmenu6', 'menu6')">Insert Schedule Details</li> -->
                     <!-- <li id="showmenu7" onclick="setStyle('showmenu7', 'menu7')">Show Schedule Details</li> -->
                     <li id="showmenu8" onclick="setStyle('showmenu8', 'menu8')">Create Notice</li>
@@ -32,7 +33,7 @@
                      <!--<li id="showmenu10" onclick="setStyle('showmenu10', 'menu10')">Create Gallery Vedio</li>-->
                      <!--<li id="showmenu11" onclick="setStyle('showmenu11', 'menu11')">Create Gallery Image</li>-->
                      <li id="showmenu12" onclick="setStyle('showmenu12', 'menu12')">Homepage</li> 
-                     <!--<li id="showmenu13" onclick="setStyle('showmenu13', 'menu13')">Edit Homepage Button</li>-->
+                     <li id="showmenu13" onclick="setStyle('showmenu13', 'menu13')">Edit Contact Us</li>
                   </ul>
 
                   
@@ -168,7 +169,7 @@
                    <div class="card">
                     <div class="card-body">
 
-                      @include("admin.Servicebutton")
+                      @include("admin.contact")
 
                       </div>
                     </div>
