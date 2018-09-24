@@ -3,140 +3,38 @@
       <div id="demo" class="carousel slide" data-ride="carousel">
           <!-- The slideshow -->
           <div class="carousel-inner">
-            <div class="carousel-item active">
+              @php $count = 0; @endphp
+              @if(isset($slides))
+              @foreach($slides as $slide)
+              @php
+                $count = $count+1;
+              @endphp
+            <div class="carousel-item  <?php if($count==1){?>active<?php }?>">
             <div class="_r_kgc_sliderOverlay"></div>
-              <img src="img/a.png" alt="Los Angeles">
+              <img src="/slider/{{$slide->slider_image}}" alt="Los Angeles">
               <div class="_r_kgc_sliderContent">
                   <div class="container">
                       <div class="row">
                           <div class="col-md-12 text-center">
-                            <h2 class="animated fadeInLeft">kurmitola Golf Club, Dhaka</h2>
-                            <h5 class="animated fadeInUp">Lorem ipsum dolor sit amet consectetur adipisicing elit</h5>
-                            <p class="animated fadeInUp"><a href="#" class="btn btn-transparent btn-rounded btn-large">Learn More</a></p>
+                            <h2 class="animated fadeInLeft">{{$slide->title}}</h2>
+                            <h5 class="animated fadeInUp">{{$slide->sub_title}}</h5>
+                            <p class="animated fadeInUp"><a href="{{$slide->link}}" class="btn btn-transparent btn-rounded btn-large">Learn More</a></p>
                           </div>
                       </div>
                   </div>
               </div>
             </div>
-            
-            <div class="carousel-item">
-            <div class="_r_kgc_sliderOverlay"></div>
-              <img src="img/b.png" alt="Chicago">
-              <div class="_r_kgc_sliderContent">
-                  <div class="container">
-                      <div class="row">
-                          <div class="col-md-12 text-center">
-                            <h2 class="animated fadeInRight">kurmitola Golf Club, Dhaka</h2>
-                            <h5 class="animated fadeInUp">Lorem ipsum dolor sit amet consectetur adipisicing elit</h5>
-                            <p class="animated fadeInUp"><a href="#" class="btn btn-transparent btn-rounded btn-large">Learn More</a></p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-            <div class="_r_kgc_sliderOverlay"></div>
-              <img src="img/c.png" alt="New York">
-              <div class="_r_kgc_sliderContent">
-                  <div class="container">
-                      <div class="row">
-                          <div class="col-md-12 text-center">
-                            <h2 class="animated fadeInDown">kurmitola Golf Club, Dhaka</h2>
-                            <h5 class="animated fadeInUp">Lorem ipsum dolor sit amet consectetur adipisicing elit</h5>
-                            <p class="animated fadeInUp"><a href="#" class="btn btn-transparent btn-rounded btn-large">Learn More</a></p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-            </div>
-             <div class="carousel-item">
-            <div class="_r_kgc_sliderOverlay"></div>
-              <img src="img/d.png" alt="New York">
-              <div class="_r_kgc_sliderContent">
-                  <div class="container">
-                      <div class="row">
-                          <div class="col-md-12 text-center">
-                            <h2 class="animated fadeInRight">kurmitola Golf Club, Dhaka</h2>
-                            <h5 class="animated fadeInUp">Lorem ipsum dolor sit amet consectetur adipisicing elit</h5>
-                            <p class="animated fadeInUp"><a href="#" class="btn btn-transparent btn-rounded btn-large">Learn More</a></p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-            <div class="_r_kgc_sliderOverlay"></div>
-              <img src="img/e.png" alt="New York">
-              <div class="_r_kgc_sliderContent">
-                  <div class="container">
-                      <div class="row">
-                          <div class="col-md-12 text-center">
-                            <h2 class="animated fadeInUp">kurmitola Golf Club, Dhaka</h2>
-                            <h5 class="animated fadeInUp">Lorem ipsum dolor sit amet consectetur adipisicing elit</h5>
-                            <p class="animated fadeInUp"><a href="#" class="btn btn-transparent btn-rounded btn-large">Learn More</a></p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-            <div class="_r_kgc_sliderOverlay"></div>
-              <img src="img/f.png" alt="New York">
-              <div class="_r_kgc_sliderContent">
-                  <div class="container">
-                      <div class="row">
-                          <div class="col-md-12 text-center">
-                            <h2 class="animated fadeInDown">kurmitola Golf Club, Dhaka</h2>
-                            <h5 class="animated fadeInUp">Lorem ipsum dolor sit amet consectetur adipisicing elit</h5>
-                            <p class="animated fadeInUp"><a href="#" class="btn btn-transparent btn-rounded btn-large">Learn More</a></p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-            </div>
-            
-            <div class="carousel-item">
-            <div class="_r_kgc_sliderOverlay"></div>
-              <img src="img/g.png" alt="New York">
-              <div class="_r_kgc_sliderContent">
-                  <div class="container">
-                      <div class="row">
-                          <div class="col-md-12 text-center">
-                            <h2 class="animated fadeInLeft">kurmitola Golf Club, Dhaka</h2>
-                            <h5 class="animated fadeInUp">Lorem ipsum dolor sit amet consectetur adipisicing elit</h5>
-                            <p class="animated fadeInUp"><a href="#" class="btn btn-transparent btn-rounded btn-large">Learn More</a></p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-            </div>
+            @endforeach
+            @endif
           </div>
 
           <!-- Indicators -->
           <ul class="carousel-indicators">
-            <li data-target="#demo" data-slide-to="0" class="active"></li>
-            <li data-target="#demo" data-slide-to="1"></li>
-            <li data-target="#demo" data-slide-to="2"></li>
-            <li data-target="#demo" data-slide-to="3"></li>
-            <li data-target="#demo" data-slide-to="4"></li>
-            <li data-target="#demo" data-slide-to="5"></li>
-            <li data-target="#demo" data-slide-to="6"></li>
-            <li data-target="#demo" data-slide-to="7"></li>
-            <li data-target="#demo" data-slide-to="7"></li>
+            @for($i=0;$i<$count;$i++)
+            <li data-target="#demo" data-slide-to="{{$i}}" class="<?php if($i==0){?>active<?php }?>"></li>
+            @endfor
           </ul>
-          
-          <!-- Left and right controls -->
-          <!--<a class="carousel-control-prev" href="#demo" data-slide="prev">-->
-          <!--  <span class="carousel-control-prev-icon"></span>-->
-          <!--</a>-->
-          <!--<a class="carousel-control-next" href="#demo" data-slide="next">-->
-          <!--  <span class="carousel-control-next-icon"></span>-->
-          <!--</a>-->
       </div>
-      
-      
-
-
         <div class="container-fluid" style="position: absolute;bottom: -115px;width:100%">
             <div class="row _r_kgc_curve_row">
                 <div class="col-md-2 _r_kgc_curve_col">
@@ -150,9 +48,6 @@
                 </div>
             </div>
         </div>
-      
-      
-      
     </div>
     <!-- slider -->
     
